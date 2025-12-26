@@ -42,7 +42,7 @@ const blogData = [
     { 
         title: "My First Hackathon", 
         desc: "Lessons learned building 'HawkEye' in a 48-hour coding sprint.", 
-        tags: ["Hackathon", "Dev"],
+        tags: ["Hackathon", "AI"],
         // UPDATED PATH: Note the plural 'blogs' folder
         link: "pages/blogs/hackathon/my-first-hackathon.html" 
     },
@@ -51,7 +51,7 @@ const blogData = [
 const thoughtData = [
     {   title: "Lessons from Life", 
         date: "Dec 2025", 
-        desc: "What hiking taught me about patience and the importance of the journey.", 
+        desc: "Insights on growth, discipline, and learning from both success and failure.", 
         link: "pages/thoughts/lessons-from-life.html" 
     },
 ];
@@ -115,7 +115,7 @@ const learningData = [
         id: "github",
         title: "Git & GitHub Mastery",
         desc: "Version control essentials for modern software development.",
-        status: "Planned",
+        status: "Completed",
         icon: "git-branch",
         color: "text-orange-600 dark:text-orange-400",
         link: "pages/learning/github/learning-github.html",
@@ -154,6 +154,59 @@ const renderBlog = (item) => {
 };
 const renderThought = (item) => { return `<a href="${root}${item.link}" class="group block p-5 rounded-xl bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 hover:border-primary/50 dark:hover:border-primary/50 hover:shadow-md dark:hover:bg-slate-800 transition-all"><div class="flex justify-between items-start mb-2"><h3 class="text-base font-bold text-gray-900 dark:text-white group-hover:text-primary transition-colors">${item.title}</h3><span class="text-[10px] font-mono text-gray-400 dark:text-slate-500 whitespace-nowrap bg-gray-50 dark:bg-slate-800 px-2 py-1 rounded">${item.date}</span></div><p class="text-sm text-gray-600 dark:text-slate-400 line-clamp-2">${item.desc}</p></a>`; };
 const renderLearning = (item) => { return `<a href="${root}${item.link}" class="group relative flex flex-col gap-4 p-5 rounded-xl border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-primary/50 dark:hover:border-primary/50 hover:shadow-md dark:hover:bg-slate-800 transition-all h-full"><div class="flex justify-between items-start"><div class="flex items-center gap-4"><div class="p-3 rounded-lg bg-gray-50 dark:bg-slate-800 ${item.color} group-hover:scale-110 transition-transform"><i data-lucide="${item.icon}" class="w-6 h-6"></i></div><div><h3 class="text-base font-bold text-gray-900 dark:text-white group-hover:text-primary transition-colors">${item.title}</h3><span class="inline-block mt-1 text-[10px] uppercase font-bold tracking-wide text-gray-500 dark:text-slate-400 border border-gray-200 dark:border-slate-700 px-2 py-0.5 rounded-full bg-gray-50 dark:bg-slate-800/50">${item.status}</span></div></div><i data-lucide="chevron-right" class="w-5 h-5 text-gray-300 dark:text-slate-600 group-hover:text-primary transition-colors"></i></div><p class="text-sm text-gray-500 dark:text-slate-400 line-clamp-2 leading-relaxed mt-auto">${item.desc}</p></a>`; };
+
+
+// --- FILTER LOGIC (NEW) ---
+function filterProjects(category) {
+    // 1. Visual Update: Switch button styles
+    const buttons = ['all', 'in-process', 'completed'];
+    buttons.forEach(id => {
+        const btn = document.getElementById(`btn-${id}`);
+        if (btn) {
+            // Reset to inactive style
+            btn.classList.remove('bg-primary', 'text-white', 'shadow-lg', 'shadow-primary/25');
+            btn.classList.add('bg-white', 'dark:bg-slate-800', 'text-gray-600', 'dark:text-slate-300');
+        }
+    });
+
+    // Set clicked button to active style
+    const activeBtn = document.getElementById(`btn-${category}`);
+    if (activeBtn) {
+        activeBtn.classList.remove('bg-white', 'dark:bg-slate-800', 'text-gray-600', 'dark:text-slate-300');
+        activeBtn.classList.add('bg-primary', 'text-white', 'shadow-lg', 'shadow-primary/25');
+    }
+
+    // 2. Logic Update: Filter the data
+    const container = document.getElementById('learning-list-full');
+    if (!container) return; // Guard clause in case we are on home page
+
+    container.innerHTML = ''; // Clear current list
+
+    let filteredData = [];
+
+    // MAP HTML BUTTON CATEGORIES TO YOUR DATA STRINGS
+    if (category === 'all') {
+        filteredData = learningData;
+    } else if (category === 'in-process') {
+        // Your data uses "In Progress", HTML sends "in-process"
+        filteredData = learningData.filter(item => item.status === "In Progress");
+    } else if (category === 'completed') {
+        // Your data uses "Completed"
+        filteredData = learningData.filter(item => item.status === "Completed");
+    }
+
+    // 3. Render
+    if (filteredData.length === 0) {
+        container.innerHTML = `<div class="col-span-full text-center py-10 text-gray-500">No items found in this category.</div>`;
+    } else {
+        filteredData.forEach(item => {
+            container.innerHTML += renderLearning(item);
+        });
+    }
+
+    // 4. Re-initialize icons for new elements
+    lucide.createIcons();
+}
 
 // --- RENDER DSA ---
 function renderDSACourse(dataId) {

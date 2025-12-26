@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Currently Learning | Parsa Abbasian</title>
+    <title>Currently Learning</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -32,15 +32,27 @@
         </div>
     </nav>
 
-    <main class="max-w-4xl mx-auto px-6 pt-32 pb-20">
-        <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">My Learning Journey</h1>
-        <p class="text-gray-600 dark:text-slate-400 mb-12 max-w-2xl leading-relaxed">
-            I believe in continuous improvement. Here is a snapshot of the technical topics I am currently diving into, tracking my progress from "Just Started" to "Mastery".
-        </p>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="learning-list-full">
-            </div>
-    </main>
+<main class="max-w-4xl mx-auto px-6 pt-32 pb-20">
+    <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">My Learning Journey</h1>
+    <p class="text-gray-600 dark:text-slate-400 mb-8 max-w-2xl leading-relaxed">
+        I believe in continuous improvement. Here is a snapshot of the technical topics I am currently diving into, tracking my progress from "Just Started" to "Mastery".
+    </p>
+
+    <div class="flex flex-wrap gap-3 mb-10">
+        <button onclick="filterProjects('all')" id="btn-all" class="filter-btn px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 bg-primary text-white shadow-lg shadow-primary/25">
+            All
+        </button>
+        <button onclick="filterProjects('in-process')" id="btn-in-process" class="filter-btn px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 bg-white dark:bg-slate-800 text-gray-600 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-slate-700 border border-gray-200 dark:border-white/10">
+            In Process
+        </button>
+        <button onclick="filterProjects('completed')" id="btn-completed" class="filter-btn px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 bg-white dark:bg-slate-800 text-gray-600 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-slate-700 border border-gray-200 dark:border-white/10">
+            Completed
+        </button>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="learning-list-full">
+        </div>
+</main>
     <script src="../../js/script.js"></script>
 </body>
 </html>

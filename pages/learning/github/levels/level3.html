@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 3: The Collaborator | Git Mastery</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../css/style.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] }, colors: { primary: '#6366f1' } } }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-slate-950 text-gray-900 dark:text-slate-300 font-sans transition-colors duration-300">
+    
+    <nav class="fixed w-full z-50 top-0 start-0 border-b border-gray-200 dark:border-white/5 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md transition-colors duration-300">
+        <div class="max-w-4xl mx-auto flex items-center justify-between px-6 py-4">
+            <a href="../learning-github.html" class="flex items-center gap-2 text-gray-500 dark:text-slate-400 hover:text-primary dark:hover:text-white transition-colors">
+                <i data-lucide="arrow-left" class="w-5 h-5"></i> <span class="hidden sm:inline">Back to Levels</span>
+            </a>
+            <button id="theme-toggle" class="p-2 text-gray-500 dark:text-slate-400 hover:text-primary dark:hover:text-white transition-colors focus:outline-none">
+                <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+                <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
+            </button>
+        </div>
+    </nav>
+
+    <main class="max-w-3xl mx-auto px-6 pt-32 pb-20">
+        
+        <div class="mb-10">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-100 dark:bg-orange-500/10 text-orange-700 dark:text-orange-400 text-xs font-bold uppercase tracking-wider mb-4">Level 3</div>
+            <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">The Collaborator</h1>
+            <p class="text-lg text-gray-600 dark:text-slate-400">Working with teams, mastering the Pull Request, and resolving the dreaded Merge Conflict.</p>
+        </div>
+
+        <div class="space-y-16">
+            
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm">1</span> 
+                    The Team Workflow Concepts
+                </h2>
+                
+                
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+                    <div class="p-6 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl">
+                        <div class="flex items-center gap-2 mb-3 text-orange-600 dark:text-orange-400 font-bold">
+                            <i data-lucide="download-cloud" class="w-5 h-5"></i> Clone
+                        </div>
+                        <p class="text-sm leading-relaxed">"Download" an entire project from the cloud to your computer for the first time.</p>
+                    </div>
+                    <div class="p-6 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl">
+                        <div class="flex items-center gap-2 mb-3 text-purple-600 dark:text-purple-400 font-bold">
+                            <i data-lucide="refresh-cw" class="w-5 h-5"></i> Pull
+                        </div>
+                        <p class="text-sm leading-relaxed">"Update" your computer with the changes your teammates pushed to the cloud.</p>
+                    </div>
+                    <div class="p-6 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl">
+                        <div class="flex items-center gap-2 mb-3 text-green-600 dark:text-green-400 font-bold">
+                            <i data-lucide="git-pull-request" class="w-5 h-5"></i> PR
+                        </div>
+                        <p class="text-sm leading-relaxed">"Asking permission." You don't just shove code into the main codebase; you ask the team to review it first.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm">2</span> 
+                    The Simulation (Let's Break Things)
+                </h2>
+                <p class="mb-4 text-gray-600 dark:text-slate-400">We are going to simulate a situation where you and a "teammate" edit the same file at the same time.</p>
+                
+                <div class="space-y-8">
+                    <div>
+                        <p class="text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">Step 1: The Teammate (Edit on GitHub)</p>
+                        <p class="text-sm text-gray-600 dark:text-slate-400 mb-2">Go to GitHub.com, edit <code>index.html</code>, and commit this change:</p>
+                        
+                        <div class="bg-slate-950 rounded-xl overflow-hidden border border-slate-800 font-mono text-sm shadow-2xl">
+                            <div class="flex gap-2 p-3 border-b border-slate-800 bg-slate-900/50">
+                                <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                            </div>
+                            <div class="p-5 text-slate-300">
+                                &lt;h1&gt;Welcome to the <span class="text-blue-400 font-bold">BEST</span> Website&lt;/h1&gt;
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <p class="text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">Step 2: You (Edit Locally)</p>
+                        <p class="text-sm text-gray-600 dark:text-slate-400 mb-2"><strong>Do NOT pull yet.</strong> Edit <code>index.html</code> on your computer differently:</p>
+                        
+                        <div class="bg-slate-950 rounded-xl overflow-hidden border border-slate-800 font-mono text-sm shadow-2xl">
+                            <div class="flex gap-2 p-3 border-b border-slate-800 bg-slate-900/50">
+                                <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                            </div>
+                            <div class="p-5 text-slate-300">
+                                &lt;h1&gt;Welcome to <span class="text-green-400 font-bold">MY COOL</span> Website&lt;/h1&gt;
+                            </div>
+                        </div>
+
+                        <div class="mt-4">
+                            <p class="text-sm text-gray-600 dark:text-slate-400 mb-2">Then save and commit:</p>
+                            <div class="bg-slate-950 rounded-xl overflow-hidden border border-slate-800 font-mono text-sm shadow-2xl">
+                                <div class="flex gap-2 p-3 border-b border-slate-800 bg-slate-900/50">
+                                    <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                    <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                    <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                                </div>
+                                <div class="p-5 text-slate-300">
+                                    git add .<br>
+                                    git commit -m "Updated title locally"
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm">3</span> 
+                    The Collision & Resolution
+                </h2>
+                
+                <div class="space-y-8">
+                    
+                    <div>
+                        <h3 class="font-bold text-gray-900 dark:text-white mb-2">1. The Crash (Push)</h3>
+                        <p class="text-sm text-gray-600 dark:text-slate-400 mb-3">When you try to push, Git panics.</p>
+                        
+                        <div class="bg-slate-950 rounded-xl overflow-hidden border border-slate-800 font-mono text-sm shadow-2xl">
+                            <div class="flex gap-2 p-3 border-b border-slate-800 bg-slate-900/50">
+                                <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                            </div>
+                            <div class="p-5 text-slate-300">
+                                <span class="text-green-400">git</span> push<br>
+                                <span class="text-red-500 font-bold">! [rejected]</span> error: failed to push some refs...
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="font-bold text-gray-900 dark:text-white mb-2">2. The Fix (Pull)</h3>
+                        <p class="text-sm text-gray-600 dark:text-slate-400 mb-3">Download the conflicting changes.</p>
+                        
+                        <div class="bg-slate-950 rounded-xl overflow-hidden border border-slate-800 font-mono text-sm shadow-2xl">
+                            <div class="flex gap-2 p-3 border-b border-slate-800 bg-slate-900/50">
+                                <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                            </div>
+                            <div class="p-5 text-slate-300">
+                                <span class="text-green-400">git</span> pull
+                                <p class="text-orange-500 mt-2">CONFLICT (content): Merge conflict in index.html</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="font-bold text-gray-900 dark:text-white mb-2">3. The Markers (Open the File)</h3>
+                        <p class="text-sm text-gray-600 dark:text-slate-400 mb-3">Open <code>index.html</code>. You will see this mess:</p>
+                        
+                        
+
+                        <div class="bg-slate-950 rounded-xl overflow-hidden border border-slate-800 font-mono text-sm shadow-2xl">
+                            <div class="flex gap-2 p-3 border-b border-slate-800 bg-slate-900/50">
+                                <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                            </div>
+                            <div class="p-5 text-gray-300 leading-relaxed">
+                                <span class="text-red-400 block mb-1">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</span>
+                                <div class="pl-4 border-l-2 border-green-500/30 text-green-300">
+                                    &lt;h1&gt;Welcome to MY COOL Website&lt;/h1&gt;
+                                </div>
+                                <span class="text-slate-500 block my-1">=======</span>
+                                <div class="pl-4 border-l-2 border-blue-500/30 text-blue-300">
+                                    &lt;h1&gt;Welcome to the BEST Website&lt;/h1&gt;
+                                </div>
+                                <span class="text-red-400 block mt-1">&gt;&gt;&gt;&gt;&gt;&gt;&gt; a1b2c3...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm">4</span> 
+                    Forking & Pull Requests
+                </h2>
+                
+                
+                <p class="mb-4 text-gray-600 dark:text-slate-400">How to contribute to open source (e.g., NASA, Facebook) without working there.</p>
+                <ol class="space-y-6 list-decimal list-inside text-gray-700 dark:text-slate-300">
+                    <li>
+                        <strong>Fork:</strong> Click the "Fork" button on their GitHub page. This copies their repo to <em>your</em> profile.
+                    </li>
+                    <li>
+                        <strong>Clone & Edit:</strong> Download your fork, make changes, and push back to your fork.
+                    </li>
+                    <li>
+                        <strong>Pull Request:</strong> Click "New Pull Request". This sends a message to the original owner: <span class="italic">"Hey, I fixed a bug. Want to merge it?"</span>
+                    </li>
+                </ol>
+            </section>
+
+            <section class="mt-12">
+                <div class="bg-gradient-to-br from-gray-900 to-gray-800 text-white rounded-2xl p-8 shadow-xl border border-gray-700">
+                    <div class="flex items-center gap-3 mb-6">
+                        <i data-lucide="file-text" class="text-primary"></i>
+                        <h2 class="text-2xl font-bold">Mastery Notes: Cheat Sheet</h2>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="font-bold text-yellow-400 mb-2 flex items-center gap-2"><i data-lucide="star" class="w-4 h-4"></i> The Golden Rule</h3>
+                            <p class="text-sm text-gray-300 font-mono border-l-2 border-yellow-400 pl-3">ALWAYS <strong>git pull</strong> before you start working!</p>
+                        </div>
+
+                        <div>
+                            <h3 class="font-bold text-primary mb-2">2. New Commands</h3>
+                            <div class="bg-slate-950 rounded-lg overflow-hidden border border-slate-800 font-mono text-xs shadow-lg">
+                                <div class="flex gap-1.5 p-2 border-b border-slate-800 bg-slate-900/50">
+                                    <div class="w-2.5 h-2.5 rounded-full bg-red-500"></div>
+                                    <div class="w-2.5 h-2.5 rounded-full bg-yellow-500"></div>
+                                    <div class="w-2.5 h-2.5 rounded-full bg-green-500"></div>
+                                </div>
+                                <div class="p-3 text-slate-300 space-y-2">
+                                    <div><span class="text-green-400">git</span> clone &lt;URL&gt; <span class="text-gray-500 ml-2">// Download repo</span></div>
+                                    <div><span class="text-green-400">git</span> pull origin main <span class="text-gray-500 ml-2">// Update local</span></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h3 class="font-bold text-primary mb-2">3. Resolving Conflicts Workflow</h3>
+                            <div class="bg-slate-950 rounded-lg overflow-hidden border border-slate-800 font-mono text-xs shadow-lg">
+                                <div class="flex gap-1.5 p-2 border-b border-slate-800 bg-slate-900/50">
+                                    <div class="w-2.5 h-2.5 rounded-full bg-red-500"></div>
+                                    <div class="w-2.5 h-2.5 rounded-full bg-yellow-500"></div>
+                                    <div class="w-2.5 h-2.5 rounded-full bg-green-500"></div>
+                                </div>
+                                <div class="p-3 text-slate-300 space-y-2">
+                                    <div>1. <span class="text-green-400">git</span> pull <span class="text-gray-500 ml-2">// Get conflict</span></div>
+                                    <div>2. <span class="text-gray-400">Fix code</span> <span class="text-gray-500 ml-2">// Delete markers</span></div>
+                                    <div>3. <span class="text-green-400">git</span> add .</div>
+                                    <div>4. <span class="text-green-400">git</span> commit -m "Fixed conflict"</div>
+                                    <div>5. <span class="text-green-400">git</span> push</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <script src="../../../../js/script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

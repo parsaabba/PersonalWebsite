@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 4: The Time Lord | Git Mastery</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../css/style.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] }, colors: { primary: '#6366f1' } } }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-slate-950 text-gray-900 dark:text-slate-300 font-sans transition-colors duration-300">
+    
+    <nav class="fixed w-full z-50 top-0 start-0 border-b border-gray-200 dark:border-white/5 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md transition-colors duration-300">
+        <div class="max-w-4xl mx-auto flex items-center justify-between px-6 py-4">
+            <a href="../learning-github.html" class="flex items-center gap-2 text-gray-500 dark:text-slate-400 hover:text-primary dark:hover:text-white transition-colors">
+                <i data-lucide="arrow-left" class="w-5 h-5"></i> <span class="hidden sm:inline">Back to Levels</span>
+            </a>
+            <button id="theme-toggle" class="p-2 text-gray-500 dark:text-slate-400 hover:text-primary dark:hover:text-white transition-colors focus:outline-none">
+                <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+                <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
+            </button>
+        </div>
+    </nav>
+
+    <main class="max-w-3xl mx-auto px-6 pt-32 pb-20">
+        
+        <div class="mb-10">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-100 dark:bg-orange-500/10 text-orange-700 dark:text-orange-400 text-xs font-bold uppercase tracking-wider mb-4">Level 4</div>
+            <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">The Time Lord</h1>
+            <p class="text-lg text-gray-600 dark:text-slate-400">Rewriting history, fixing mistakes cleanly, and recovering lost data.</p>
+        </div>
+
+        <div class="space-y-16">
+            
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm">1</span> 
+                    Rebase vs. Merge
+                </h2>
+                
+                
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                    <div class="p-6 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl">
+                        <div class="flex items-center gap-2 mb-3 text-orange-600 dark:text-orange-400 font-bold">
+                            <i data-lucide="git-merge" class="w-5 h-5"></i> Merge
+                        </div>
+                        <p class="text-sm leading-relaxed mb-3">Tie two branches together with a knot. It preserves history exactly as it happened (even the messy parts).</p>
+                        <p class="text-xs text-gray-500 italic">Analogy: A truthful diary.</p>
+                    </div>
+                    <div class="p-6 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl">
+                        <div class="flex items-center gap-2 mb-3 text-purple-600 dark:text-purple-400 font-bold">
+                            <i data-lucide="arrow-up-circle" class="w-5 h-5"></i> Rebase
+                        </div>
+                        <p class="text-sm leading-relaxed mb-3">Rewrite history to make it look like a straight line. It moves your work to the "tip" of the main branch.</p>
+                        <p class="text-xs text-gray-500 italic">Analogy: A polished resume.</p>
+                    </div>
+                </div>
+                <div class="mt-4 p-4 bg-orange-50 dark:bg-orange-900/10 border border-orange-100 dark:border-orange-800/30 rounded-lg text-sm text-orange-800 dark:text-orange-400 flex gap-3">
+                    <i data-lucide="alert-triangle" class="w-5 h-5 shrink-0"></i>
+                    <p><strong>Warning:</strong> Never use rebase on a shared branch (like main). Only use it on private feature branches.</p>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm">2</span> 
+                    The Project (Squashing Commits)
+                </h2>
+                <p class="mb-4 text-gray-600 dark:text-slate-400">You made 5 messy commits and want to combine them into one perfect commit.</p>
+                
+                
+
+                <div class="space-y-6 mt-6">
+                    
+                    <div>
+                        <p class="text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">1. Start interactive rebase</p>
+                        <div class="bg-slate-950 rounded-xl overflow-hidden border border-slate-800 font-mono text-sm shadow-2xl">
+                            <div class="flex gap-2 p-3 border-b border-slate-800 bg-slate-900/50">
+                                <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                            </div>
+                            <div class="p-4 text-slate-300">
+                                <span class="text-green-400">git</span> rebase -i HEAD~5
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <p class="text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">2. The Editor Opens (Change 'pick' to 'squash')</p>
+                        <div class="bg-slate-950 rounded-xl overflow-hidden border border-slate-800 font-mono text-sm shadow-2xl">
+                            <div class="flex gap-2 p-3 border-b border-slate-800 bg-slate-900/50">
+                                <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                            </div>
+                            <div class="p-4 font-mono text-sm">
+                                <div class="text-green-400">pick a1b2c Added login</div>
+                                <div class="text-yellow-400">squash d4e5f Fix typo</div>
+                                <div class="text-yellow-400">squash g7h8i Forgot semicolon</div>
+                                <div class="text-yellow-400">squash j0k1l Wip</div>
+                                <div class="text-yellow-400">squash m3n4o Final fix</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-4 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl">
+                        <p class="text-sm"><strong>3. Result:</strong> Git combines them. You type a new message like "Feature: Login System". History is now clean!</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm">3</span> 
+                    Reset vs. Revert
+                </h2>
+                
+                
+
+                <div class="bg-primary/5 border border-primary/20 rounded-xl p-6 mt-6">
+                    <div class="flex flex-col gap-8">
+                        <div class="flex gap-4">
+                            <div class="mt-1"><i data-lucide="trash-2" class="text-primary w-5 h-5"></i></div>
+                            <div class="w-full">
+                                <h3 class="font-bold text-gray-900 dark:text-white">1. Git Reset (Time Travel)</h3>
+                                <p class="text-sm text-gray-600 dark:text-slate-400 mb-3">"It never happened." You jump back in time.</p>
+                                
+                                <div class="bg-slate-950 rounded-xl overflow-hidden border border-slate-800 font-mono text-sm shadow-2xl mb-4">
+                                    <div class="flex gap-2 p-3 border-b border-slate-800 bg-slate-900/50">
+                                        <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                                    </div>
+                                    <div class="p-4 text-slate-300 space-y-2">
+                                        <div>
+                                            <span class="text-green-400">git</span> reset --soft HEAD~1 
+                                            <span class="text-gray-500 block sm:inline sm:ml-2">// Keep files changed</span>
+                                        </div>
+                                        <div>
+                                            <span class="text-green-400">git</span> reset --hard HEAD~1 
+                                            <span class="text-gray-500 block sm:inline sm:ml-2">// Delete changes (Dangerous)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div class="mt-1"><i data-lucide="rotate-ccw" class="text-primary w-5 h-5"></i></div>
+                            <div class="w-full">
+                                <h3 class="font-bold text-gray-900 dark:text-white">2. Git Revert (The Apology)</h3>
+                                <p class="text-sm text-gray-600 dark:text-slate-400 mb-3">"It happened, but I am fixing it." Safe for shared branches.</p>
+                                
+                                <div class="bg-slate-950 rounded-xl overflow-hidden border border-slate-800 font-mono text-sm shadow-2xl">
+                                    <div class="flex gap-2 p-3 border-b border-slate-800 bg-slate-900/50">
+                                        <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                                    </div>
+                                    <div class="p-4 text-slate-300">
+                                        <span class="text-green-400">git</span> revert &lt;commit-hash&gt;
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm">4</span> 
+                    The "Aha!" Moment (Reflog)
+                </h2>
+                
+                
+
+                <p class="mb-4 text-gray-600 dark:text-slate-400">You accidentally ran <code>reset --hard</code> and deleted your work. <strong>It is not gone.</strong> Git keeps a secret diary called Reflog.</p>
+                
+                <div class="bg-slate-950 rounded-xl overflow-hidden border border-slate-800 font-mono text-sm shadow-2xl">
+                    <div class="flex gap-2 p-3 border-b border-slate-800 bg-slate-900/50">
+                        <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                    </div>
+                    <div class="p-4 text-slate-300 space-y-4">
+                        <div>
+                            <div class="text-gray-500 mb-1">// 1. View the secret diary</div>
+                            <div class="text-gray-200 mb-2"><span class="text-green-400">git</span> reflog</div>
+                            
+                            <div class="pl-4 border-l-2 border-gray-700 text-gray-400 text-xs">
+                                <p>a1b2c HEAD@{0}: reset: moving to HEAD~1</p>
+                                <p><span class="text-yellow-400 font-bold">d4e5f</span> HEAD@{1}: commit: My important work</p>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="text-gray-500 mb-1">// 2. Rescue the lost commit</div>
+                            <div class="text-gray-200"><span class="text-green-400">git</span> reset --hard d4e5f</div>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-green-600 dark:text-green-400 font-bold mt-3 text-sm flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4"></i> Poof! Your deleted files are back.</p>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm">5</span> 
+                    Cherry-Picking
+                </h2>
+                
+                
+
+                <p class="mb-4 text-gray-600 dark:text-slate-400">Sometimes you don't want to merge a whole branch. You just want <strong>one specific commit</strong>.</p>
+                
+                <div class="bg-slate-950 rounded-xl overflow-hidden border border-slate-800 font-mono text-sm shadow-2xl">
+                    <div class="flex gap-2 p-3 border-b border-slate-800 bg-slate-900/50">
+                        <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                    </div>
+                    <div class="p-4 text-slate-300">
+                        <span class="text-green-400">git</span> cherry-pick &lt;commit-hash&gt;
+                    </div>
+                </div>
+                <p class="text-xs text-gray-500 mt-2">Git copies that specific commit and pastes it onto your current branch.</p>
+            </section>
+
+            <section class="mt-12">
+                <div class="bg-gradient-to-br from-gray-900 to-gray-800 text-white rounded-2xl p-8 shadow-xl border border-gray-700">
+                    <div class="flex items-center gap-3 mb-6">
+                        <i data-lucide="file-text" class="text-primary"></i>
+                        <h2 class="text-2xl font-bold">Level 4 Cheat Sheet</h2>
+                    </div>
+
+                    <div class="space-y-6">
+                        
+                        <div>
+                            <h3 class="font-bold text-primary mb-2">1. Clean History (Squash)</h3>
+                            <div class="bg-slate-950 rounded-lg overflow-hidden border border-slate-800 font-mono text-xs shadow-lg">
+                                <div class="flex gap-1.5 p-2 border-b border-slate-800 bg-slate-900/50">
+                                    <div class="w-2.5 h-2.5 rounded-full bg-red-500"></div>
+                                    <div class="w-2.5 h-2.5 rounded-full bg-yellow-500"></div>
+                                    <div class="w-2.5 h-2.5 rounded-full bg-green-500"></div>
+                                </div>
+                                <div class="p-3 text-slate-300">
+                                    <span class="text-green-400">git</span> rebase -i HEAD~n
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h3 class="font-bold text-primary mb-2">2. Undo Commands</h3>
+                            <div class="bg-slate-950 rounded-lg overflow-hidden border border-slate-800 font-mono text-xs shadow-lg">
+                                <div class="flex gap-1.5 p-2 border-b border-slate-800 bg-slate-900/50">
+                                    <div class="w-2.5 h-2.5 rounded-full bg-red-500"></div>
+                                    <div class="w-2.5 h-2.5 rounded-full bg-yellow-500"></div>
+                                    <div class="w-2.5 h-2.5 rounded-full bg-green-500"></div>
+                                </div>
+                                <div class="p-3 text-slate-300 space-y-2">
+                                    <div><span class="text-green-400">git</span> reset --soft HEAD~1 <span class="text-gray-500 ml-2">// Undo commit only</span></div>
+                                    <div><span class="text-green-400">git</span> reset --hard HEAD~1 <span class="text-gray-500 ml-2">// DELETE code</span></div>
+                                    <div><span class="text-green-400">git</span> revert &lt;hash&gt; <span class="text-gray-500 ml-2">// Safe undo</span></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h3 class="font-bold text-primary mb-2">3. The Savior (Reflog)</h3>
+                            <div class="bg-slate-950 rounded-lg overflow-hidden border border-slate-800 font-mono text-xs shadow-lg">
+                                <div class="flex gap-1.5 p-2 border-b border-slate-800 bg-slate-900/50">
+                                    <div class="w-2.5 h-2.5 rounded-full bg-red-500"></div>
+                                    <div class="w-2.5 h-2.5 rounded-full bg-yellow-500"></div>
+                                    <div class="w-2.5 h-2.5 rounded-full bg-green-500"></div>
+                                </div>
+                                <div class="p-3 text-slate-300 space-y-2">
+                                    <div><span class="text-green-400">git</span> reflog <span class="text-gray-500 ml-2">// View history</span></div>
+                                    <div><span class="text-green-400">git</span> reset --hard &lt;hash&gt; <span class="text-gray-500 ml-2">// Recover</span></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h3 class="font-bold text-primary mb-2">4. Cherry Pick</h3>
+                            <div class="bg-slate-950 rounded-lg overflow-hidden border border-slate-800 font-mono text-xs shadow-lg">
+                                <div class="flex gap-1.5 p-2 border-b border-slate-800 bg-slate-900/50">
+                                    <div class="w-2.5 h-2.5 rounded-full bg-red-500"></div>
+                                    <div class="w-2.5 h-2.5 rounded-full bg-yellow-500"></div>
+                                    <div class="w-2.5 h-2.5 rounded-full bg-green-500"></div>
+                                </div>
+                                <div class="p-3 text-slate-300">
+                                    <span class="text-green-400">git</span> cherry-pick &lt;hash&gt; <span class="text-gray-500 ml-2">// Copy commit</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <script src="../../../../js/script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

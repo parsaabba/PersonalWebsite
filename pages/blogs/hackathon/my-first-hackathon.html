@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My First Hackathon | Parsa Abbasian</title>
+    <title>HawkEye Hackathon | Parsa Abbasian</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -44,19 +44,19 @@
             <header class="mb-10 border-b border-gray-200 dark:border-white/10 pb-10">
                 <div class="flex gap-2 mb-6">
                     <span class="px-3 py-1 text-xs font-bold uppercase tracking-wider rounded-md bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400">Hackathon</span>
-                    <span class="px-3 py-1 text-xs font-bold uppercase tracking-wider rounded-md bg-purple-50 dark:bg-purple-500/10 text-purple-600 dark:text-purple-400">Dev</span>
+                    <span class="px-3 py-1 text-xs font-bold uppercase tracking-wider rounded-md bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400">AI</span>
                 </div>
                 <h1 class="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
-                    My First Hackathon: Building 'HawkEye' in 48 Hours
+                    HawkEye: 12 Hours. Zero Code to Execution.
                 </h1>
                 <div class="flex items-center gap-6 text-sm text-gray-500 dark:text-slate-400 font-medium">
                     <div class="flex items-center gap-2">
                         <i data-lucide="calendar" class="w-4 h-4"></i>
-                        <span>Oct 15, 2025</span>
+                        <span>Oct 2025</span>
                     </div>
                     <div class="flex items-center gap-2">
                         <i data-lucide="clock" class="w-4 h-4"></i>
-                        <span>5 min read</span>
+                        <span>4 min read</span>
                     </div>
                 </div>
             </header>
@@ -64,55 +64,55 @@
             <div class="prose prose-lg prose-indigo dark:prose-invert max-w-none text-gray-600 dark:text-slate-400 leading-loose">
                 
                 <p class="text-xl font-medium text-gray-900 dark:text-slate-200 mb-8">
-                    Walking into the venue, the energy was electric. Hundreds of students, endless supplies of caffeine, and a simple goal: build something amazing in 48 hours.
+                    Yesterday at the CSHub Local Hack Day, my first hackathon ever, my teammate <strong>Soroush Baraouf</strong> and I challenged ourselves to build a fully functional product in just one day.
                 </p>
 
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white mt-12 mb-6">The Result: Meet "HawkEye" 🚀</h2>
                 <p class="mb-6">
-                    For my first hackathon, I teamed up with three other students to build <strong>HawkEye</strong>, an object detection web app designed to help visually impaired users identify objects in their surroundings using their phone camera.
+                    Resellers spend hours manually logging inventory. HawkEye changes that. You simply record a video pan of a clothing rack, and our AI analyzes the footage. It identifies items (e.g., "Vintage Levi's 501"), detects specific damage like a missing button, and instantly estimates market value.
                 </p>
 
-                <h2 class="text-2xl font-bold text-gray-900 dark:text-white mt-12 mb-6">The Tech Stack</h2>
+                <div class="bg-indigo-50 dark:bg-indigo-900/20 border-l-4 border-indigo-500 p-6 my-8 rounded-r-lg">
+                    <h3 class="font-bold text-gray-900 dark:text-white mb-2">Project Roles</h3>
+                    <ul class="list-none space-y-2 m-0 p-0 text-sm">
+                        <li><strong>Frontend & UX:</strong> Designed the user interface and overall experience.</li>
+                    </ul>
+                </div>
+
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white mt-12 mb-6">The Challenge: Raw Video Processing</h2>
+                <p class="mb-6">
+                    The main technical hurdle was processing raw video for the <strong>#GoogleGemini 2.5 Flash API</strong>.
+                </p>
+                <p class="mb-6">
+                    <strong>The Fix:</strong> I built an <strong>#FFmpeg</strong> pipeline to extract frames and timestamps, enabling Gemini to process video at a granular level for deeper analysis. This unlocked a full spectrum of Gemini’s multimodal capabilities: video understanding, image interpretation, voice detection, text generation, reasoning, and real-time data retrieval.
+                </p>
+
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mt-8 mb-4">How Gemini Powers the Backend</h3>
                 <ul class="list-disc pl-5 space-y-3 mb-8">
-                    <li><strong>Frontend:</strong> HTML/CSS for a responsive mobile interface.</li>
-                    <li><strong>Backend:</strong> Python (Flask) to handle image processing requests.</li>
-                    <li><strong>AI Model:</strong> OpenCV and YOLOv3 for real-time object detection.</li>
+                    <li>Analyze video frames and identify items with high accuracy</li>
+                    <li>Detect condition details like missing buttons or wear</li>
+                    <li>Interpret audio cues (if present)</li>
+                    <li>Search the web for live market prices</li>
+                    <li>Reason about value ranges and suggest a lower and higher price based on condition</li>
+                    <li>Generate optimized listing descriptions for online marketplaces</li>
                 </ul>
 
-                <h2 class="text-2xl font-bold text-gray-900 dark:text-white mt-12 mb-6">The Challenge: 3 AM Bug Hunting</h2>
                 <p class="mb-6">
-                    Everything was going smoothly until about 3:00 AM on Saturday. We hit a major roadblock trying to stream the video feed from the frontend to the Python backend without significant lag.
+                    We designed the pipeline so Gemini acts as the backbone of our product and an end-to-end assistant, from visual understanding to pricing intelligence to marketplace-ready text.
                 </p>
 
-                <div class="bg-gray-900 rounded-xl p-6 mb-8 overflow-x-auto border border-white/10 font-mono text-sm shadow-lg">
-                    <p class="text-gray-500 mb-2">// Optimizing frame capture loop</p>
-                    <p class="text-purple-400">def <span class="text-blue-400">generate_frames</span>():</p>
-                    <p class="pl-4 text-slate-300">while <span class="text-yellow-300">True</span>:</p>
-                    <p class="pl-8 text-slate-300">success, frame = camera.read()</p>
-                    <p class="pl-8 text-slate-300">if not success:</p>
-                    <p class="pl-12 text-pink-400">break</p>
-                    <p class="pl-8 text-gray-500"># Process frame here...</p>
-                </div>
-
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white mt-12 mb-6">Deployment & The "Meta" Twist</h2>
                 <p class="mb-6">
-                    After hours of debugging and switching from HTTP requests to WebSockets, we finally got the latency down to under 200ms. The feeling of seeing that first successful detection box draw around a water bottle was incredible.
+                    The application was containerized with Docker and deployed on Render.
                 </p>
-
-                <h2 class="text-2xl font-bold text-gray-900 dark:text-white mt-12 mb-6">Lessons Learned</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
-                    <div class="p-5 bg-white dark:bg-slate-900 rounded-xl border border-gray-200 dark:border-white/5">
-                        <div class="font-bold text-gray-900 dark:text-white mb-2">Scope Management</div>
-                        <p class="text-sm">We planned too many features. Cutting 50% of them saved the project.</p>
-                    </div>
-                    <div class="p-5 bg-white dark:bg-slate-900 rounded-xl border border-gray-200 dark:border-white/5">
-                        <div class="font-bold text-gray-900 dark:text-white mb-2">Git Conflicts</div>
-                        <p class="text-sm">Committing to `main` without pulling first is a recipe for disaster.</p>
-                    </div>
-                </div>
+                <p class="mb-6">
+                    But here is the "Meta" twist: We didn't just use AI; we built <em>with</em> it. We utilized the <strong>#GeminiCLI</strong> (my favorite new AI toy) as an agentic assistant to handle boilerplate code and rapid debugging, allowing us to hit the strict 12-hour deadline.
+                </p>
 
                 <hr class="border-gray-200 dark:border-white/10 my-10">
 
                 <p class="italic text-lg text-gray-500 dark:text-slate-500">
-                    HawkEye didn't win first place, but the experience taught me more about software engineering in a weekend than I learned in a month of lectures. I can't wait for the next one.
+                    A huge thanks to my teammate Soroush Baraouf for the incredible collaboration. Going from zero code to execution in 12 hours was an intense but rewarding experience.
                 </p>
             </div>
 
