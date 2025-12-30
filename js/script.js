@@ -59,7 +59,7 @@ const currentProjectData = [
         title: "AlgoDrift", 
         desc: "A high-performance, framework-free visualizer for algorithms and data structures.", 
         tech: ["HTML5", "CSS3", "Vanilla JS"], 
-        status: "Active", 
+        status: "Active Beta", 
         link: "https://algodrift.vercel.app/",
         icon: "bar-chart-2", 
         color: "text-purple-500" 
