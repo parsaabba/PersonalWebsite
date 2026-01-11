@@ -16,24 +16,80 @@
 
     // --- DATA DEFINITIONS ---
 
-    const experienceData = [
-        { title: "Bachelor of Engineering", 
+    // 1. EDUCATION DATA
+    const educationData = [
+        { 
+            title: "Bachelor of Engineering", 
             subtitle: "Lassonde School of Engineering - York University", 
             date: "2025 - Present | Expected 2029", 
             description: "Computer Engineering Student. Awarded York International Scholarship of Distinction.", 
-            details: ["ISAYU Event Coordinator (Sep 2025 - Present)", "Note Share & Class Rep @ MATH 1013 (Sep 2025 - Present)"], 
+            details: [
+                "Undergraduate Researcher | Space Geodesy Lab",
+                "ISAYU Event Coordinator (Sep 2025 - Present)",
+                "Note Share & Class Rep @ MATH 1013 (Sep 2025 - Present)"
+            ], 
             bg: "bg-indigo-50 dark:bg-indigo-500/10", 
             color: "text-indigo-600 dark:text-indigo-400", 
-            icon: "graduation-cap" },
-
-        { title: "Ontario Secondary School Diploma", 
+            icon: "graduation-cap" 
+        },
+        { 
+            title: "Ontario Secondary School Diploma", 
             subtitle: "Earl Haig Secondary School", 
             date: "2023 - 2025", 
-            description: "Graduated as Ontario Scholar (x2). Active in Library Club.", 
-            details: ["Library Club Member (2024 - 2025)", "Library Volunteer (Feb 2024 - June 2024)"], 
+            description: "Graduated as Ontario Scholar (x2).", 
+            grade: "4.0 GPA",
+            details: [
+                "Library Club Member (2024 - 2025)",
+                "Library Volunteer (Feb 2024 - June 2024)"
+            ], 
             bg: "bg-blue-50 dark:bg-blue-500/10", 
             color: "text-blue-600 dark:text-blue-400", 
-            icon: "school" }
+            icon: "school" 
+        }
+    ];
+
+    // 2. PROFESSIONAL & RESEARCH EXPERIENCE
+    const experienceData = [
+        { 
+            title: "Undergraduate Researcher", 
+            subtitle: "Space Geodesy Lab — York University", 
+            date: "Jan 2026 - Present", 
+            description: "Conducting scientific research on 'A Data-Driven Exploration of Extreme Weather Events Using Satellite and Model Data' under Dr. Spiros Pagiatakis and Yuying (Alice) Wang.", 
+            details: [
+                "Navigating the full scientific programming workflow: data acquisition, analysis, and visualization",
+                "Utilizing satellite and climate model datasets to examine atmospheric research topics",
+                "Developing AI-driven machine learning algorithms to discover patterns in weather system impacts",
+                "Building high-level data analysis competencies for atmospheric and climate science"
+            ], 
+            bg: "bg-emerald-50 dark:bg-emerald-500/10", 
+            color: "text-emerald-600 dark:text-emerald-400", 
+            icon: "microscope" 
+        }
+    ];
+
+    // 3. VOLUNTEERING & LEADERSHIP
+    const volunteeringData = [
+        { 
+            title: "Event Coordinator", 
+            subtitle: "Iranian Students Association at York University (ISAYU)", 
+            date: "Sep 2025 - Present", 
+            description: "Coordinating student events and supporting community engagement.", 
+            details: ["Collaborating with team members to organize recreational and cultural activities"], 
+            bg: "bg-orange-50 dark:bg-orange-500/10", 
+            color: "text-orange-600 dark:text-orange-400", 
+            icon: "users" 
+        },
+        { 
+            title: "Class Rep & Note Share Volunteer", 
+            subtitle: "MATH 1013 — York University", 
+            date: "Sep 2025 - Dec 2025", 
+            description: ["Liaised between students and faculty to communicate feedback and advocate for academic improvements",
+                "Supported inclusive education by providing high-quality, structured technical notes for students with accessibility requirements",],
+            details: ["Supporting accessible learning through structured note sharing"], 
+            bg: "bg-purple-50 dark:bg-purple-500/10", 
+            color: "text-purple-600 dark:text-purple-400", 
+            icon: "hand-helping" 
+        }
     ];
 
     const currentProjectData = [
@@ -379,13 +435,134 @@
         ];
 
     // --- RENDERERS ---
-    const renderExperience = (item) => { const detailsHtml = item.details.map(det => `<li class="text-gray-600 dark:text-slate-400 mt-1 flex items-start gap-2"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-gray-400 dark:bg-slate-600 shrink-0"></span> ${det}</li>`).join(''); return `<div class="relative pl-8 group mb-8 last:mb-0"><span class="absolute top-1 -left-[5px] w-2.5 h-2.5 rounded-full bg-gray-300 dark:bg-slate-700 border border-white dark:border-slate-900 group-hover:bg-primary transition-colors ring-4 ring-white dark:ring-slate-950"></span><h3 class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-primary transition-colors">${item.title}</h3><p class="text-sm text-primary font-medium mb-1">${item.subtitle}</p><p class="text-xs text-gray-500 dark:text-slate-500 font-mono mb-3 uppercase tracking-wide">${item.date}</p><p class="text-gray-700 dark:text-slate-300 mb-2 leading-relaxed">${item.description}</p><ul class="text-sm">${detailsHtml}</ul></div>`; };
-    const renderCurrentProject = (item) => { const iconName = item.icon || 'zap'; const iconColor = item.color || 'text-yellow-500'; return `<a href="${item.link}" target="_blank" class="group block p-6 rounded-xl bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 hover:border-primary/50 dark:hover:border-primary/50 hover:shadow-lg dark:hover:bg-slate-800 transition-all"><div class="flex justify-between items-center mb-3"><div class="flex gap-2"><i data-lucide="${iconName}" class="w-5 h-5 ${iconColor}"></i><span class="font-bold text-gray-900 dark:text-white group-hover:text-primary transition-colors">${item.title}</span></div><span class="text-[10px] uppercase font-bold tracking-wide text-primary border border-primary/20 bg-primary/5 px-2 py-0.5 rounded-full">${item.status}</span></div><p class="text-sm text-gray-600 dark:text-slate-400 mb-4 line-clamp-2">${item.desc}</p><div class="flex flex-wrap gap-2">${item.tech.map(t => `<span class="text-xs text-gray-500 dark:text-slate-500 bg-gray-100 dark:bg-slate-800 px-2 py-1 rounded-md">${t}</span>`).join('')}</div></a>`; };
-    const renderProject = (item) => { return `<a href="${item.link}" target="_blank" class="group block p-6 rounded-xl bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 hover:border-primary/50 dark:hover:border-primary/50 hover:shadow-lg dark:hover:bg-slate-800 transition-all"><div class="flex justify-between items-center mb-3"><div class="flex gap-2"><i data-lucide="folder" class="w-5 h-5 text-primary"></i><span class="font-bold text-gray-900 dark:text-white group-hover:text-primary transition-colors">${item.title}</span></div><div class="flex items-center gap-1 text-gray-500 dark:text-slate-500 text-xs">${item.stars === 'Hackathon' ? '<i data-lucide="trophy" class="w-3 h-3 text-yellow-500"></i>' : '<i data-lucide="star" class="w-3 h-3"></i>'} ${item.stars}</div></div><p class="text-sm text-gray-600 dark:text-slate-400 mb-4 line-clamp-2">${item.desc}</p><div class="flex flex-wrap gap-2">${item.tech.map(t => `<span class="text-xs text-gray-500 dark:text-slate-500 bg-gray-100 dark:bg-slate-800 px-2 py-1 rounded-md">${t}</span>`).join('')}</div></a>`; };
-    const renderCertificate = (item) => { return `<a href="${item.link}" target="_blank" class="group block p-5 rounded-xl bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 hover:border-primary/50 dark:hover:border-primary/50 hover:shadow-md dark:hover:bg-slate-800 transition-all"><div class="flex justify-between items-start mb-4"><div class="p-2 rounded-lg ${item.bg} ${item.color} group-hover:scale-110 transition-transform"><i data-lucide="${item.icon}" class="w-6 h-6"></i></div><i data-lucide="external-link" class="w-4 h-4 text-gray-400 dark:text-slate-600 group-hover:text-gray-900 dark:group-hover:text-white transition-colors"></i></div><h4 class="font-bold text-gray-900 dark:text-white mb-1 group-hover:text-primary transition-colors">${item.title}</h4><p class="text-xs text-gray-500 dark:text-slate-500">${item.org} • ${item.date}</p></a>`; };
-    const renderBlog = (item) => { const Tag = item.link ? 'a' : 'div'; const hrefAttr = item.link ? `href="${root}${item.link}"` : ''; return `<${Tag} ${hrefAttr} class="group p-6 rounded-xl bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 hover:border-primary/50 dark:hover:border-primary/50 hover:shadow-md dark:hover:bg-slate-800 transition-all cursor-pointer h-full flex flex-col"><div class="flex flex-wrap gap-2 mb-4">${item.tags.map(tag => `<span class="px-2 py-1 text-[10px] font-bold uppercase tracking-wider rounded-md bg-gray-100 dark:bg-slate-800 text-gray-500 dark:text-slate-400 group-hover:text-gray-900 dark:group-hover:text-white">${tag}</span>`).join('')}</div><h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2 group-hover:text-primary transition-colors">${item.title}</h3><p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed flex-1">${item.desc}</p><div class="mt-4 flex items-center text-xs text-gray-500 dark:text-slate-500 group-hover:text-primary transition-colors">Read Article <i data-lucide="arrow-right" class="w-3 h-3 ml-1"></i></div></${Tag}>`; };
-    const renderThought = (item) => { return `<a href="${root}${item.link}" class="group block p-5 rounded-xl bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 hover:border-primary/50 dark:hover:border-primary/50 hover:shadow-md dark:hover:bg-slate-800 transition-all"><div class="flex justify-between items-start mb-2"><h3 class="text-base font-bold text-gray-900 dark:text-white group-hover:text-primary transition-colors">${item.title}</h3><span class="text-[10px] font-mono text-gray-400 dark:text-slate-500 whitespace-nowrap bg-gray-50 dark:bg-slate-800 px-2 py-1 rounded">${item.date}</span></div><p class="text-sm text-gray-600 dark:text-slate-400 line-clamp-2">${item.desc}</p></a>`; };
-    const renderLearning = (item) => { return `<a href="${root}${item.link}" class="group relative flex flex-col gap-4 p-5 rounded-xl border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-primary/50 dark:hover:border-primary/50 hover:shadow-md dark:hover:bg-slate-800 transition-all h-full"><div class="flex justify-between items-start"><div class="flex items-center gap-4"><div class="p-3 rounded-lg bg-gray-50 dark:bg-slate-800 ${item.color} group-hover:scale-110 transition-transform"><i data-lucide="${item.icon}" class="w-6 h-6"></i></div><div><h3 class="text-base font-bold text-gray-900 dark:text-white group-hover:text-primary transition-colors">${item.title}</h3><span class="inline-block mt-1 text-[10px] uppercase font-bold tracking-wide text-gray-500 dark:text-slate-400 border border-gray-200 dark:border-slate-700 px-2 py-0.5 rounded-full bg-gray-50 dark:bg-slate-800/50">${item.status}</span></div></div><i data-lucide="chevron-right" class="w-5 h-5 text-gray-300 dark:text-slate-600 group-hover:text-primary transition-colors"></i></div><p class="text-sm text-gray-500 dark:text-slate-400 line-clamp-2 leading-relaxed mt-auto">${item.desc}</p></a>`; };
+
+const renderExperience = (item) => { 
+    // Render the list of details/bullets
+    const detailsHtml = item.details.map(det => `
+        <li class="text-gray-600 dark:text-slate-400 mt-1 flex items-start gap-2">
+            <span class="mt-2 w-1.5 h-1.5 rounded-full bg-gray-400 dark:bg-slate-600 shrink-0"></span> 
+            ${det}
+        </li>`).join(''); 
+
+    // NEW: Logic to render the grade (GPA) badge only if it exists in the data
+    const gradeHtml = item.grade ? `
+        <div class="inline-flex items-center gap-1.5 mb-3 px-2 py-1 rounded-md bg-gray-100 dark:bg-slate-800 border border-gray-200 dark:border-slate-700">
+            <i data-lucide="award" class="w-3.5 h-3.5 text-primary"></i>
+            <span class="text-xs font-bold text-gray-700 dark:text-slate-300">${item.grade}</span>
+        </div>` : '';
+
+    return `
+        <div class="relative pl-8 group mb-8 last:mb-0">
+            <span class="absolute top-1 -left-[5px] w-2.5 h-2.5 rounded-full bg-gray-300 dark:bg-slate-700 border border-white dark:border-slate-900 group-hover:bg-primary transition-colors ring-4 ring-white dark:ring-slate-950"></span>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-primary transition-colors">${item.title}</h3>
+            <p class="text-sm text-primary font-medium mb-1">${item.subtitle}</p>
+            <p class="text-xs text-gray-500 dark:text-slate-500 font-mono mb-2 uppercase tracking-wide">${item.date}</p>
+            
+            ${gradeHtml} 
+
+            <p class="text-gray-700 dark:text-slate-300 mb-2 leading-relaxed">${item.description}</p>
+            <ul class="text-sm">${detailsHtml}</ul>
+        </div>`; 
+};
+
+const renderCurrentProject = (item) => { 
+    const iconName = item.icon || 'zap'; 
+    const iconColor = item.color || 'text-yellow-500'; 
+    return `
+        <a href="${item.link}" target="_blank" class="group block p-6 rounded-xl bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 hover:border-primary/50 dark:hover:border-primary/50 hover:shadow-lg dark:hover:bg-slate-800 transition-all">
+            <div class="flex justify-between items-center mb-3">
+                <div class="flex gap-2">
+                    <i data-lucide="${iconName}" class="w-5 h-5 ${iconColor}"></i>
+                    <span class="font-bold text-gray-900 dark:text-white group-hover:text-primary transition-colors">${item.title}</span>
+                </div>
+                <span class="text-[10px] uppercase font-bold tracking-wide text-primary border border-primary/20 bg-primary/5 px-2 py-0.5 rounded-full">${item.status}</span>
+            </div>
+            <p class="text-sm text-gray-600 dark:text-slate-400 mb-4 line-clamp-2">${item.desc}</p>
+            <div class="flex flex-wrap gap-2">
+                ${item.tech.map(t => `<span class="text-xs text-gray-500 dark:text-slate-500 bg-gray-100 dark:bg-slate-800 px-2 py-1 rounded-md">${t}</span>`).join('')}
+            </div>
+        </a>`; 
+};
+
+const renderProject = (item) => { 
+    return `
+        <a href="${item.link}" target="_blank" class="group block p-6 rounded-xl bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 hover:border-primary/50 dark:hover:border-primary/50 hover:shadow-lg dark:hover:bg-slate-800 transition-all">
+            <div class="flex justify-between items-center mb-3">
+                <div class="flex gap-2">
+                    <i data-lucide="folder" class="w-5 h-5 text-primary"></i>
+                    <span class="font-bold text-gray-900 dark:text-white group-hover:text-primary transition-colors">${item.title}</span>
+                </div>
+                <div class="flex items-center gap-1 text-gray-500 dark:text-slate-500 text-xs">
+                    ${item.stars === 'Hackathon' ? '<i data-lucide="trophy" class="w-3 h-3 text-yellow-500"></i>' : '<i data-lucide="star" class="w-3 h-3"></i>'} 
+                    ${item.stars}
+                </div>
+            </div>
+            <p class="text-sm text-gray-600 dark:text-slate-400 mb-4 line-clamp-2">${item.desc}</p>
+            <div class="flex flex-wrap gap-2">
+                ${item.tech.map(t => `<span class="text-xs text-gray-500 dark:text-slate-500 bg-gray-100 dark:bg-slate-800 px-2 py-1 rounded-md">${t}</span>`).join('')}
+            </div>
+        </a>`; 
+};
+
+const renderCertificate = (item) => { 
+    return `
+        <a href="${item.link}" target="_blank" class="group block p-5 rounded-xl bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 hover:border-primary/50 dark:hover:border-primary/50 hover:shadow-md dark:hover:bg-slate-800 transition-all">
+            <div class="flex justify-between items-start mb-4">
+                <div class="p-2 rounded-lg ${item.bg} ${item.color} group-hover:scale-110 transition-transform">
+                    <i data-lucide="${item.icon}" class="w-6 h-6"></i>
+                </div>
+                <i data-lucide="external-link" class="w-4 h-4 text-gray-400 dark:text-slate-600 group-hover:text-gray-900 dark:group-hover:text-white transition-colors"></i>
+            </div>
+            <h4 class="font-bold text-gray-900 dark:text-white mb-1 group-hover:text-primary transition-colors">${item.title}</h4>
+            <p class="text-xs text-gray-500 dark:text-slate-500">${item.org} • ${item.date}</p>
+        </a>`; 
+};
+
+const renderBlog = (item) => { 
+    const Tag = item.link ? 'a' : 'div'; 
+    const hrefAttr = item.link ? `href="${root}${item.link}"` : ''; 
+    return `
+        <${Tag} ${hrefAttr} class="group p-6 rounded-xl bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 hover:border-primary/50 dark:hover:border-primary/50 hover:shadow-md dark:hover:bg-slate-800 transition-all cursor-pointer h-full flex flex-col">
+            <div class="flex flex-wrap gap-2 mb-4">
+                ${item.tags.map(tag => `<span class="px-2 py-1 text-[10px] font-bold uppercase tracking-wider rounded-md bg-gray-100 dark:bg-slate-800 text-gray-500 dark:text-slate-400 group-hover:text-gray-900 dark:group-hover:text-white">${tag}</span>`).join('')}
+            </div>
+            <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2 group-hover:text-primary transition-colors">${item.title}</h3>
+            <p class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed flex-1">${item.desc}</p>
+            <div class="mt-4 flex items-center text-xs text-gray-500 dark:text-slate-500 group-hover:text-primary transition-colors">
+                Read Article <i data-lucide="arrow-right" class="w-3 h-3 ml-1"></i>
+            </div>
+        </${Tag}>`; 
+};
+
+const renderThought = (item) => { 
+    return `
+        <a href="${root}${item.link}" class="group block p-5 rounded-xl bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 hover:border-primary/50 dark:hover:border-primary/50 hover:shadow-md dark:hover:bg-slate-800 transition-all">
+            <div class="flex justify-between items-start mb-2">
+                <h3 class="text-base font-bold text-gray-900 dark:text-white group-hover:text-primary transition-colors">${item.title}</h3>
+                <span class="text-[10px] font-mono text-gray-400 dark:text-slate-500 whitespace-nowrap bg-gray-50 dark:bg-slate-800 px-2 py-1 rounded">${item.date}</span>
+            </div>
+            <p class="text-sm text-gray-600 dark:text-slate-400 line-clamp-2">${item.desc}</p>
+        </a>`; 
+};
+
+const renderLearning = (item) => { 
+    return `
+        <a href="${root}${item.link}" class="group relative flex flex-col gap-4 p-5 rounded-xl border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-primary/50 dark:hover:border-primary/50 hover:shadow-md dark:hover:bg-slate-800 transition-all h-full">
+            <div class="flex justify-between items-start">
+                <div class="flex items-center gap-4">
+                    <div class="p-3 rounded-lg bg-gray-50 dark:bg-slate-800 ${item.color} group-hover:scale-110 transition-transform">
+                        <i data-lucide="${item.icon}" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-base font-bold text-gray-900 dark:text-white group-hover:text-primary transition-colors">${item.title}</h3>
+                        <span class="inline-block mt-1 text-[10px] uppercase font-bold tracking-wide text-gray-500 dark:text-slate-400 border border-gray-200 dark:border-slate-700 px-2 py-0.5 rounded-full bg-gray-50 dark:bg-slate-800/50">${item.status}</span>
+                    </div>
+                </div>
+                <i data-lucide="chevron-right" class="w-5 h-5 text-gray-300 dark:text-slate-600 group-hover:text-primary transition-colors"></i>
+            </div>
+            <p class="text-sm text-gray-500 dark:text-slate-400 line-clamp-2 leading-relaxed mt-auto">${item.desc}</p>
+        </a>`; 
+};
 
     // --- FILTER LOGIC ---
     function filterProjects(category) {
@@ -517,6 +694,9 @@
         }
 
         // 2. CONTENT INJECTIONS
+        injectContent(educationData, 'education-list', renderExperience);
+        injectContent(experienceData, 'experience-list', renderExperience);
+        injectContent(volunteeringData, 'volunteering-list', renderExperience);
         injectContent(experienceData, 'experience-list', renderExperience);
         injectContent(currentProjectData, 'current-project-list', renderCurrentProject); 
         injectContent(projectData, 'project-list-preview', renderProject, 2); 
