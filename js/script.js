@@ -79,7 +79,17 @@
             color: "text-orange-600 dark:text-orange-400", 
             icon: "users" 
         },
-        { 
+        // { 
+        //     title: "Class Rep", 
+        //     subtitle: "MATH 1028 & EECS 1021 — York University", 
+        //     date: "Jan 2026 - Present", 
+        //     description: ["Liaised between students and faculty to communicate feedback and advocate for academic improvements",
+        //         "Supported inclusive education by providing high-quality, structured technical notes for students with accessibility requirements",],
+        //     bg: "bg-purple-50 dark:bg-purple-500/10", 
+        //     color: "text-purple-600 dark:text-purple-400", 
+        //     icon: "hand-helping" 
+        // },
+        {
             title: "Class Rep & Note Share Volunteer", 
             subtitle: "MATH 1013 — York University", 
             date: "Sep 2025 - Dec 2025", 
@@ -93,15 +103,6 @@
     ];
 
     const currentProjectData = [
-        { 
-            title: "LassondeHub", 
-            desc: "A centralized academic resource portal built for lassonde engineering students.", 
-            tech: ["HTML5", "Tailwind CSS", "Vanilla JS"], 
-            status: "Active Beta", 
-            link: "https://lassondehub.vercel.app/",
-            icon: "zap",
-            color: "text-yellow-500"
-        },
         { 
             title: "Leetcoders", 
             desc: "A community platform dedicated to mastering Data Structures and Algorithms.", 
