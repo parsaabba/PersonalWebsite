@@ -72,7 +72,7 @@
         { 
             title: "Event Coordinator", 
             subtitle: "Iranian Students Association at York University (ISAYU)", 
-            date: "Sep 2025 - Present", 
+            date: "Sep 2025 - Jan 2026", 
             description: "Coordinating student events and supporting community engagement.", 
             details: ["Collaborating with team members to organize recreational and cultural activities"], 
             bg: "bg-orange-50 dark:bg-orange-500/10", 
