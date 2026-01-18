@@ -128,7 +128,7 @@
             desc: "Built a web app for object detection during a 48-hour hackathon sprint. Integrated computer vision concepts with a frontend interface.", 
             tech: ["HTML/CSS", "Python", "Computer Vision"], 
             stars: "Hackathon", 
-            link: "https://github.com/parsaabba" }
+            link: "https://github.com/parsaabbasian" }
     ];
 
     const certificateData = [
