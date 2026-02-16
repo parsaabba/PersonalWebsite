@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undercut Hackathon</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/style.css">
+    <link rel="icon" type="image/svg+xml" href="../../../assets/icons/favicon.svg">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] }, colors: { primary: '#6366f1' } } }
+        }
+        // Immediate Theme Check to prevent flash
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+</head>
+
+<body class="bg-gray-50 dark:bg-slate-950 text-gray-900 dark:text-slate-300 font-sans transition-colors duration-300">
+
+    <nav
+        class="fixed w-full z-50 top-0 start-0 border-b border-gray-200 dark:border-white/5 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md transition-colors duration-300">
+        <div class="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
+            <a href="../../../index.html"
+                class="flex items-center gap-2 text-gray-500 dark:text-slate-400 hover:text-primary dark:hover:text-white transition-colors">
+                <i data-lucide="arrow-left" class="w-5 h-5"></i> Back to Home
+            </a>
+            <span class="font-bold text-gray-900 dark:text-white">Blog</span>
+            <button id="theme-toggle"
+                class="p-2 text-gray-500 dark:text-slate-400 hover:text-primary dark:hover:text-white transition-colors focus:outline-none">
+                <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+                <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
+            </button>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-6 pt-32 pb-20">
+        <article class="max-w-3xl mx-auto">
+
+            <header class="mb-10 border-b border-gray-200 dark:border-white/10 pb-10">
+                <div class="flex gap-2 mb-6">
+                    <span
+                        class="px-3 py-1 text-xs font-bold uppercase tracking-wider rounded-md bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400">Hackathon</span>
+                    <span
+                        class="px-3 py-1 text-xs font-bold uppercase tracking-wider rounded-md bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">Full-Stack</span>
+                </div>
+                <h1 class="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
+                    Undercut: Building a Production-Grade AI Car Platform
+                </h1>
+                <div class="flex items-center gap-6 text-sm text-gray-500 dark:text-slate-400 font-medium">
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="calendar" class="w-4 h-4"></i>
+                        <span>Jan 2026</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="clock" class="w-4 h-4"></i>
+                        <span>6 min read</span>
+                    </div>
+                </div>
+            </header>
+
+            <div
+                class="prose prose-lg prose-indigo dark:prose-invert max-w-none text-gray-600 dark:text-slate-400 leading-loose">
+
+                <p class="text-xl font-medium text-gray-900 dark:text-slate-200 mb-8">
+                    For my second hackathon, my teammate <strong>Soroush Baraouf</strong> and I took on an ambitious
+                    challenge: building a full-stack, production-ready platform that uses AI and quantitative analysis
+                    to help people find underpriced used cars in the Toronto market.
+                </p>
+
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white mt-12 mb-6">The Result: Meet "Undercut" 🚗
+                </h2>
+                <p class="mb-6">
+                    The used car market is notoriously opaque. Buyers lack tools to determine if a listing is fairly
+                    priced or a potential scam. Undercut levels the playing field by combining high-frequency web
+                    scraping, quantitative pricing algorithms, and Google Gemini AI analysis to give buyers "unfair"
+                    market intelligence.
+                </p>
+
+                <div class="bg-indigo-50 dark:bg-indigo-900/20 border-l-4 border-indigo-500 p-6 my-8 rounded-r-lg">
+                    <h3 class="font-bold text-gray-900 dark:text-white mb-2">My project role:</h3>
+                    <ul class="list-none space-y-2 m-0 p-0 text-sm">
+                        <li><strong>Backend Architecture:</strong> Designed and built the FastAPI backend with
+                            SQLAlchemy ORM.</li>
+                        <li><strong>AI Integration:</strong> Implemented Google Gemini 1.5 Flash for listing analysis
+                            and negotiation scripts.</li>
+                        <li><strong>Quantitative Engine:</strong> Developed Fair Market Value (FMV) calculation and deal
+                            grading algorithms.</li>
+                    </ul>
+                </div>
+
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white mt-12 mb-6">The Challenge: Building a
+                    Complete Ecosystem</h2>
+                <p class="mb-6">
+                    Unlike a typical hackathon project, Undercut required building three interconnected systems:
+                </p>
+
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mt-8 mb-4">1. The Scraper ("The Hunter") - Go
+                </h3>
+                <p class="mb-6">
+                    Built with <strong>Playwright for Go</strong>, the scraper navigates AutoTrader.ca to extract car
+                    listings. The main challenge was bypassing anti-bot protections on a JavaScript-heavy site. We
+                    implemented stealth techniques and headless browser automation to scrape thousands of listings
+                    within a 100km radius of Toronto.
+                </p>
+
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mt-8 mb-4">2. The Backend ("The Controller")
+                    - Python FastAPI</h3>
+                <p class="mb-6">
+                    The backend is the brain of Undercut. I architected a <strong>FastAPI</strong> application with:
+                </p>
+                <ul class="list-disc pl-5 space-y-3 mb-8">
+                    <li><strong>SQLAlchemy ORM</strong> for database interactions with PostgreSQL</li>
+                    <li><strong>Pydantic schemas</strong> for type-safe request/response validation</li>
+                    <li><strong>Rate limiting</strong> using SlowAPI to prevent abuse</li>
+                    <li><strong>Comprehensive REST API</strong> with 15+ endpoints for cars, users, and alerts</li>
+                    <li><strong>Quantitative services</strong> for FMV calculation and deal grading (S/A/B/C/F tiers)
+                    </li>
+                </ul>
+
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mt-8 mb-4">3. The Frontend - Next.js 14</h3>
+                <p class="mb-6">
+                    My teammate built a modern React interface using <strong>Next.js 14</strong> with the App Router,
+                    featuring:
+                </p>
+                <ul class="list-disc pl-5 space-y-3 mb-8">
+                    <li>Server-side rendering for optimal performance</li>
+                    <li>Radix UI components for accessibility</li>
+                    <li>Framer Motion animations for smooth interactions</li>
+                    <li>TanStack Query for efficient data fetching</li>
+                </ul>
+
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white mt-12 mb-6">The AI Integration: Gemini as
+                    "The Mechanic"</h2>
+                <p class="mb-6">
+                    I integrated <strong>Google Gemini 1.5 Flash</strong> to power two critical features:
+                </p>
+
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mt-8 mb-4">Red Flag Detection</h3>
+                <p class="mb-6">
+                    The AI scans seller descriptions for concerning keywords like "rebuilt title," "needs work," or
+                    "running rough." It acts as a virtual expert mechanic, providing instant verdicts on whether a deal
+                    is worth pursuing.
+                </p>
+
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mt-8 mb-4">Negotiation Script Generator</h3>
+                <p class="mb-6">
+                    Once a user finds a car, Gemini generates a personalized negotiation script. It includes:
+                </p>
+                <ul class="list-disc pl-5 space-y-3 mb-8">
+                    <li>Specific data points from our FMV analysis</li>
+                    <li>A suggested opening offer price</li>
+                    <li>Key leverage points based on market data</li>
+                    <li>A walk-away threshold</li>
+                </ul>
+
+                <p class="mb-6">
+                    The prompt engineering was critical. I designed the system prompt to make Gemini act as a "ruthless
+                    expert car flipper," ensuring unbiased, profit-focused analysis.
+                </p>
+
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white mt-12 mb-6">The Quantitative Engine</h2>
+                <p class="mb-6">
+                    I built a custom pricing algorithm that calculates Fair Market Value (FMV) for each listing. The
+                    system then assigns a deal grade:
+                </p>
+                <ul class="list-disc pl-5 space-y-3 mb-8">
+                    <li><strong>S-Tier:</strong> 10%+ below FMV (exceptional opportunity)</li>
+                    <li><strong>A-Tier:</strong> 5-10% below FMV (great deal)</li>
+                    <li><strong>B-Tier:</strong> Within 5% of FMV (fair price)</li>
+                    <li><strong>C-Tier:</strong> 5-10% above FMV (overpriced)</li>
+                    <li><strong>F-Tier:</strong> 10%+ above FMV (avoid)</li>
+                </ul>
+
+                <p class="mb-6">
+                    Additionally, I implemented a <strong>Total Cost of Ownership (TCO) calculator</strong> that factors
+                    in fuel costs, depreciation, insurance, and maintenance to show users the real monthly cost of
+                    ownership.
+                </p>
+
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white mt-12 mb-6">Database Design & Architecture
+                </h2>
+                <p class="mb-6">
+                    The application uses <strong>PostgreSQL</strong> hosted on Supabase. I designed a normalized schema
+                    with four main tables:
+                </p>
+                <ul class="list-disc pl-5 space-y-3 mb-8">
+                    <li><strong>cars:</strong> Stores all scraped listings with VIN indexing</li>
+                    <li><strong>users:</strong> User profiles with onboarding completion tracking</li>
+                    <li><strong>alerts:</strong> "Sniper alerts" for instant notifications on new deals</li>
+                    <li><strong>saved_cars:</strong> Junction table for user watchlists</li>
+                </ul>
+
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white mt-12 mb-6">Testing & Quality Assurance</h2>
+                <p class="mb-6">
+                    I wrote a comprehensive test suite using <strong>pytest</strong>, covering:
+                </p>
+                <ul class="list-disc pl-5 space-y-3 mb-8">
+                    <li>Unit tests for all CRUD endpoints</li>
+                    <li>Service layer tests for FMV, TCO, and deal grading</li>
+                    <li>Integration tests for search and trending features</li>
+                    <li>Mock AI responses to avoid API costs during testing</li>
+                </ul>
+
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white mt-12 mb-6">Deployment & DevOps</h2>
+                <p class="mb-6">
+                    The entire stack is containerized with <strong>Docker</strong> and orchestrated using <strong>Docker
+                        Compose</strong>. The frontend is deployed on <strong>Vercel</strong>, while the backend and
+                    scraper run on managed cloud infrastructure.
+                </p>
+
+                <hr class="border-gray-200 dark:border-white/10 my-10">
+
+                <p class="italic text-lg text-gray-500 dark:text-slate-500">
+                    This hackathon taught me the importance of system design, API architecture, and building
+                    production-grade features under pressure. A huge thanks to Soroush Baraouf for the incredible
+                    teamwork. Building a full-stack AI platform from scratch was the most challenging and rewarding
+                    coding experience I've had.
+                </p>
+            </div>
+
+        </article>
+    </main>
+
+    <script src="../../../js/script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

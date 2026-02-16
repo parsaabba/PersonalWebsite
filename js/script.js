@@ -169,9 +169,9 @@ const blogData = [
     },
     {
         title: "My Second Hackathon",
-        desc: "Lessons from my next high-intensity coding sprint and building under pressure.",
-        tags: ["Hackathon", "Engineering"],
-        link: "#"
+        desc: "Building Undercut: A full-stack AI platform for finding underpriced cars.",
+        tags: ["Hackathon", "Full-Stack"],
+        link: "pages/blogs/hackathon/my-second-hackathon.html"
     },
 ];
 
