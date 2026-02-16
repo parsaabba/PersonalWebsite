@@ -25,7 +25,7 @@ const educationData = [
         description: "Computer Engineering Student. Awarded York International Scholarship of Distinction.",
         details: [
             "Undergraduate Researcher | Space Geodesy Lab",
-            "ISAYU Event Coordinator (Sep 2025 - Present)",
+            "ISAYU Event Coordinator (Sep 2025 - Jan 2026)",
             "Note Share & Class Rep @ MATH 1013 (Sep 2025 - Present)"
         ],
         bg: "bg-indigo-50 dark:bg-indigo-500/10",
