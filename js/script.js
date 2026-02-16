@@ -64,6 +64,20 @@ const experienceData = [
         bg: "bg-emerald-50 dark:bg-emerald-500/10",
         color: "text-emerald-600 dark:text-emerald-400",
         icon: "microscope"
+    },
+    {
+        title: "Vice President",
+        subtitle: "MBH&Co.",
+        date: "Jan 2026 - Present",
+        description: "Helping businesses grow through trusted relationships, meaningful connections, and structured collaboration.",
+        details: [
+            "Leading strategic initiatives to foster business growth through relationship building",
+            "Implementing structured collaboration frameworks for team efficiency",
+            "Developing meaningful connections within the business community"
+        ],
+        bg: "bg-indigo-50 dark:bg-indigo-500/10",
+        color: "text-indigo-600 dark:text-indigo-400",
+        icon: "briefcase"
     }
 ];
 
@@ -80,23 +94,10 @@ const volunteeringData = [
         icon: "users"
     },
     {
-        title: "Class Rep",
-        subtitle: "MATH 1028 & PHYS 1801 — York University",
-        date: "Jan 2026 - Present",
-        description: "Representing student interests and supporting academic accessibility.",
-        details: [
-            "Liaised between students and faculty to communicate feedback and advocate for academic improvements",
-            "Supported inclusive education by providing high-quality, structured technical notes for students with accessibility requirements"
-        ],
-        bg: "bg-purple-50 dark:bg-purple-500/10",
-        color: "text-purple-600 dark:text-purple-400",
-        icon: "hand-helping"
-    },
-    {
         title: "Class Rep & Note Share Volunteer",
-        subtitle: "MATH 1013 — York University",
-        date: "Sep 2025 - Dec 2025",
-        description: "Supporting accessible learning through structured note sharing.",
+        subtitle: "MATH 1013, 1028 & PHYS 1801 — York University",
+        date: "Sep 2025 - Present",
+        description: "Representing student interests and supporting academic accessibility through structured technical note sharing.",
         details: [
             "Liaised between students and faculty to communicate feedback and advocate for academic improvements",
             "Supported inclusive education by providing high-quality, structured technical notes for students with accessibility requirements"
@@ -108,6 +109,15 @@ const volunteeringData = [
 ];
 
 const currentProjectData = [
+    {
+        title: "MBH&Co.",
+        desc: "A premium platform to help businesses grow through structured collaboration and trusted connections.",
+        tech: ["Supabase", "Vanilla JS", "Tailwind"],
+        status: "Beta",
+        link: "https://www.mbhandco.com/",
+        icon: "briefcase",
+        color: "text-indigo-500"
+    },
     {
         title: "Leetcoders",
         desc: "A community platform dedicated to mastering Data Structures and Algorithms.",
@@ -156,6 +166,12 @@ const blogData = [
         desc: "Lessons learned building 'HawkEye' in a 48-hour coding sprint.",
         tags: ["Hackathon", "AI"],
         link: "pages/blogs/hackathon/my-first-hackathon.html"
+    },
+    {
+        title: "My Second Hackathon",
+        desc: "Lessons from my next high-intensity coding sprint and building under pressure.",
+        tags: ["Hackathon", "Engineering"],
+        link: "#"
     },
 ];
 
