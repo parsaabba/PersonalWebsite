@@ -110,15 +110,6 @@ const volunteeringData = [
 
 const currentProjectData = [
     {
-        title: "MATH 1014",
-        desc: "An interactive platform for mastering Calculus II, featuring step-by-step practice problems for infinite sequences and series.",
-        tech: ["React", "Vite", "Tailwind CSS"],
-        status: "Active",
-        link: "https://math1014.vercel.app/",
-        icon: "sigma",
-        color: "text-blue-500"
-    },
-    {
         title: "MBH&Co.",
         desc: "A premium platform for business growth, built with a custom React 19 + Vite frontend and Wix Headless backend.",
         tech: ["React 19", "TypeScript", "Wix Headless", "Framer Motion"],
@@ -126,6 +117,15 @@ const currentProjectData = [
         link: "https://www.mbhandco.com/",
         icon: "briefcase",
         color: "text-indigo-500"
+    },
+    {
+        title: "MATH 1014",
+        desc: "An interactive platform for mastering Calculus II, featuring step-by-step practice problems for infinite sequences and series.",
+        tech: ["React", "Vite", "Tailwind CSS"],
+        status: "Active",
+        link: "https://math1014.vercel.app/",
+        icon: "sigma",
+        color: "text-blue-500"
     },
     {
         title: "Undercut",
@@ -157,6 +157,13 @@ const currentProjectData = [
 ];
 
 const projectData = [
+    {
+        title: "MBH&Co.",
+        desc: "Premium platform for business growth with custom dashboard and Wix integration.",
+        tech: ["React 19", "Wix Headless"],
+        stars: "Premium",
+        link: "https://www.mbhandco.com/"
+    },
     {
         title: "MATH 1014",
         desc: "Interactive calculus practice platform focused on infinite sequences and series with real-time feedback and detailed solutions.",
@@ -846,8 +853,8 @@ document.addEventListener("DOMContentLoaded", () => {
     injectContent(educationData, 'education-list', renderExperience);
     injectContent(experienceData, 'experience-list', renderExperience);
     injectContent(volunteeringData, 'volunteering-list', renderExperience);
-    injectContent(currentProjectData, 'current-project-list', renderCurrentProject);
-    injectContent(projectData, 'project-list-preview', renderProject, 2);
+    injectContent(currentProjectData, 'current-project-list', renderCurrentProject, 4);
+    injectContent(projectData, 'project-list-preview', renderProject, 4);
     injectContent(certificateData, 'certificate-list-preview', renderCertificate, 2);
     injectContent(blogData, 'blog-list-preview', renderBlog, 2);
     injectContent(thoughtData, 'thought-list-preview', renderThought, 2);
