@@ -108,6 +108,26 @@ const volunteeringData = [
     }
 ];
 
+// 4. TECHNICAL SKILLS
+const skillsData = [
+    {
+        category: "Languages",
+        items: ["JavaScript (ES6+)", "Python", "Go (Golang)", "C++", "Rust", "HTML5", "CSS3", "SQL", "MATLAB"]
+    },
+    {
+        category: "Frontend",
+        items: ["React", "Next.js", "Tailwind CSS", "Vite", "Framer Motion", "Supabase Auth"]
+    },
+    {
+        category: "Backend & Database",
+        items: ["Node.js", "Express", "Supabase", "PostgreSQL", "Firebase", "MongoDB"]
+    },
+    {
+        category: "Tools & AI",
+        items: ["Git & GitHub", "Docker", "Linux", "Vercel", "OpenCV", "Pandas & NumPy", "PyTorch"]
+    }
+];
+
 const currentProjectData = [
     {
         title: "MBH&Co.",
@@ -516,6 +536,23 @@ const learningData = [
 
 // --- RENDERERS ---
 
+const renderSkills = (item) => {
+    const listHtml = item.items.map(skill =>
+        `<span class="px-3 py-1 bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-slate-300 rounded-md text-sm font-medium border border-gray-200 dark:border-slate-700 hover:border-primary/50 dark:hover:border-primary/50 transition-colors cursor-default hover:text-primary dark:hover:text-primary">${skill}</span>`
+    ).join('');
+
+    return `
+        <div class="mb-8 last:mb-0">
+            <h3 class="text-xs font-bold text-gray-500 dark:text-slate-500 uppercase tracking-widest mb-4 flex items-center gap-2">
+                <span class="w-1 h-4 bg-primary rounded-full"></span>
+                ${item.category}
+            </h3>
+            <div class="flex flex-wrap gap-2.5">
+                ${listHtml}
+            </div>
+        </div>`;
+};
+
 const renderExperience = (item) => {
     // Render the list of details/bullets
     const detailsHtml = (item.details || []).map(det => `
@@ -870,6 +907,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // 4. CONTENT INJECTIONS
+    injectContent(skillsData, 'skills-list', renderSkills);
     injectContent(educationData, 'education-list', renderExperience);
     injectContent(experienceData, 'experience-list', renderExperience);
     injectContent(volunteeringData, 'volunteering-list', renderExperience);
