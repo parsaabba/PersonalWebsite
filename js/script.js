@@ -119,23 +119,24 @@ const currentProjectData = [
         color: "text-red-500"
     },
     {
+        title: "HawkEye",
+        desc: "Object detection web app built during a 48-hour hackathon sprint.",
+        tech: ["Python", "OpenCV", "HTML/CSS"],
+        status: "Hackathon",
+        link: "https://hawkeyedemo.onrender.com/",
+        icon: "eye",
+        color: "text-amber-500"
+    },
+    {
         title: "MBH&Co.",
-        desc: "A premium platform to help businesses grow through structured collaboration and trusted connections.",
-        tech: ["Supabase", "Vanilla JS", "Tailwind"],
+        desc: "A premium platform for business growth, built with a custom React 19 + Vite frontend and Wix Headless backend.",
+        tech: ["React 19", "TypeScript", "Wix Headless", "Framer Motion"],
         status: "Beta",
         link: "https://www.mbhandco.com/",
         icon: "briefcase",
         color: "text-indigo-500"
     },
-    {
-        title: "Leetcoders",
-        desc: "A community platform dedicated to mastering Data Structures and Algorithms.",
-        tech: ["HTML5", "Tailwind CSS", "JavaScript"],
-        status: "Active",
-        link: "https://leetcoders.vercel.app/",
-        icon: "code-2",
-        color: "text-blue-500"
-    },
+
     {
         title: "AlgoDrift",
         desc: "A high-performance, framework-free visualizer for algorithms and data structures.",
