@@ -727,19 +727,106 @@ function injectContent(data, elementId, renderFn, limit = null) {
     items.forEach(item => container.innerHTML += renderFn(item));
 }
 
+
+
+// --- UI INJECTION ---
+function getNavLink(hash) {
+    const isHome = window.location.pathname.endsWith('index.html') || window.location.pathname.endsWith('/');
+    return isHome ? hash : `${root}index.html${hash}`;
+}
+
+function renderNavigation() {
+    const nav = document.createElement('nav');
+    nav.className = "fixed w-full z-50 top-0 start-0 border-b border-gray-200 dark:border-white/5 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md transition-colors duration-300";
+    nav.innerHTML = `
+        <div class="max-w-6xl mx-auto flex flex-wrap items-center justify-between px-6 py-4">
+            <a href="${root}index.html" class="flex items-center gap-2 group">
+                <div class="w-8 h-8 bg-gradient-to-br from-primary to-purple-500 rounded-lg flex items-center justify-center text-white font-bold text-lg group-hover:shadow-lg group-hover:shadow-primary/50 transition-all">P</div>
+                <span class="self-center text-xl font-bold whitespace-nowrap text-gray-900 dark:text-white tracking-tight">Parsa.Dev</span>
+            </a>
+
+            <div class="flex items-center gap-4 md:order-2">
+                <button id="theme-toggle" class="p-2 text-gray-500 dark:text-slate-400 hover:text-primary dark:hover:text-white transition-colors focus:outline-none">
+                    <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+                    <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
+                </button>
+                <button id="mobile-menu-btn" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-gray-500 dark:text-slate-400 rounded-lg md:hidden hover:bg-gray-100 dark:hover:bg-white/5 focus:outline-none">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+
+            <div class="hidden w-full md:block md:w-auto md:order-1" id="navbar-default">
+                <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 dark:border-white/10 rounded-lg bg-white dark:bg-slate-900 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-transparent">
+                    <li><a href="${getNavLink('#about')}" class="block py-2 px-3 text-gray-900 dark:text-white hover:text-primary transition-colors">Overview</a></li>
+                    <li><a href="${getNavLink('#experience')}" class="block py-2 px-3 text-gray-500 dark:text-slate-400 hover:text-primary dark:hover:text-white transition-colors">Experience</a></li>
+                    <li><a href="${root}pages/learning/learning.html" class="block py-2 px-3 text-gray-500 dark:text-slate-400 hover:text-primary dark:hover:text-white transition-colors">Learning</a></li>
+                    <li><a href="${root}pages/projects/projects.html" class="block py-2 px-3 text-gray-500 dark:text-slate-400 hover:text-primary dark:hover:text-white transition-colors">Projects</a></li>
+                    <li><a href="${root}pages/blogs/blogs.html" class="block py-2 px-3 text-gray-500 dark:text-slate-400 hover:text-primary dark:hover:text-white transition-colors">Blogs</a></li>
+                    <li><a href="${getNavLink('#resume')}" class="block py-2 px-3 text-gray-500 dark:text-slate-400 hover:text-primary dark:hover:text-white transition-colors">Resume</a></li>
+                    <li><a href="${getNavLink('#contact')}" class="block py-2 px-3 text-primary font-semibold hover:text-purple-500 transition-colors">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    `;
+
+    // Check if we should replace an existing nav or prepend to body
+    const existingNav = document.querySelector('nav');
+    if (existingNav) {
+        existingNav.replaceWith(nav);
+    } else {
+        document.body.prepend(nav);
+    }
+}
+
+function renderFooter() {
+    const footer = document.createElement('footer');
+    footer.className = "border-t border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-slate-950 py-8 text-center mt-20";
+    footer.innerHTML = `
+        <p class="text-gray-500 dark:text-slate-500 text-sm">© 2026 Parsa Abbasian. Built with Vanilla JS & Tailwind.</p>
+    `;
+    const existingFooter = document.querySelector('footer');
+    if (existingFooter) {
+        existingFooter.replaceWith(footer);
+    } else {
+        // Append to body if not found
+        document.body.appendChild(footer);
+    }
+}
+
+// Initializer
 document.addEventListener("DOMContentLoaded", () => {
-    // 1. THEME PERSISTENCE
+    // 1. INJECT UI
+    renderNavigation();
+    renderFooter();
+
+    // 2. THEME PERSISTENCE
     const htmlElement = document.documentElement;
     const savedTheme = localStorage.getItem('theme');
-
-    // Default to dark mode unless 'light' is explicitly saved
     if (savedTheme === 'light') {
         htmlElement.classList.remove('dark');
     } else {
         htmlElement.classList.add('dark');
     }
 
-    // 2. CONTENT INJECTIONS
+    // 3. UI HANDLERS (Now that elements exist)
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const navbar = document.getElementById('navbar-default');
+    if (mobileBtn && navbar) mobileBtn.addEventListener('click', () => { navbar.classList.toggle('hidden'); });
+
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', () => {
+            if (htmlElement.classList.contains('dark')) {
+                htmlElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                htmlElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+    }
+
+    // 4. CONTENT INJECTIONS
     injectContent(educationData, 'education-list', renderExperience);
     injectContent(experienceData, 'experience-list', renderExperience);
     injectContent(volunteeringData, 'volunteering-list', renderExperience);
@@ -756,37 +843,25 @@ document.addEventListener("DOMContentLoaded", () => {
     injectContent(thoughtData, 'thought-list-full', renderThought);
     injectContent(learningData, 'learning-list-full', renderLearning);
 
-    // 3. RENDER CALENDARS
+    // 5. RENDER CALENDARS
     renderCalendar('dsa');
     renderCalendar('cpp');
     renderCalendar('github');
     renderCalendar('golang');
     renderCalendar('flask');
     renderCalendar('rust-core-mastery');
+    renderCalendar('cloud-infrastructure');
+    renderCalendar('machine-learning');
+    renderCalendar('deep-learning');
+    renderCalendar('data-engineering');
+    renderCalendar('mlops');
+    renderCalendar('specialized-ai');
 
     lucide.createIcons();
 
-    // 4. UI HANDLERS
+    // 6. MODAL HANDLERS
     const closeBtn = document.getElementById('modal-close-btn');
     const overlay = document.getElementById('modal-overlay');
     if (closeBtn) closeBtn.addEventListener('click', closeModal);
     if (overlay) overlay.addEventListener('click', (e) => { if (e.target === overlay) closeModal(); });
-
-    const mobileBtn = document.getElementById('mobile-menu-btn');
-    const navbar = document.getElementById('navbar-default');
-    if (mobileBtn && navbar) mobileBtn.addEventListener('click', () => { navbar.classList.toggle('hidden'); });
-
-    // 5. THEME TOGGLE HANDLER
-    const themeToggleBtn = document.getElementById('theme-toggle');
-    if (themeToggleBtn) {
-        themeToggleBtn.addEventListener('click', () => {
-            if (htmlElement.classList.contains('dark')) {
-                htmlElement.classList.remove('dark');
-                localStorage.setItem('theme', 'light');
-            } else {
-                htmlElement.classList.add('dark');
-                localStorage.setItem('theme', 'dark');
-            }
-        });
-    }
 });
