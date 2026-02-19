@@ -124,7 +124,7 @@ const skillsData = [
     },
     {
         category: "Tools & AI",
-        items: ["Git & GitHub", "Docker", "Linux", "Vercel", "OpenCV"]
+        items: ["Git & GitHub", "Docker", "Linux", "Vercel", "Render", "OpenCV"]
     }
 ];
 
