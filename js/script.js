@@ -125,7 +125,8 @@ const currentProjectData = [
         status: "Active",
         link: "https://math1014.vercel.app/",
         icon: "sigma",
-        color: "text-blue-500"
+        color: "text-blue-500",
+        customIcon: "assets/icons/math1014-logo.svg"
     },
     {
         title: "Undercut",
@@ -169,7 +170,8 @@ const projectData = [
         desc: "Interactive calculus practice platform focused on infinite sequences and series with real-time feedback and detailed solutions.",
         tech: ["React", "Vite", "Tailwind CSS"],
         stars: "Personal",
-        link: "https://math1014.vercel.app/"
+        link: "https://math1014.vercel.app/",
+        customIcon: "assets/icons/math1014-logo.svg"
     },
     {
         title: "HawkEye",
@@ -537,11 +539,16 @@ const renderExperience = (item) => {
 const renderCurrentProject = (item) => {
     const iconName = item.icon || 'zap';
     const iconColor = item.color || 'text-yellow-500';
+
+    const iconHtml = item.customIcon
+        ? `<img src="${root}${item.customIcon}" alt="${item.title}" class="w-8 h-8 rounded-lg shadow-sm border border-black/5 dark:border-white/10 shrink-0 object-cover">`
+        : `<i data-lucide="${iconName}" class="w-5 h-5 ${iconColor}"></i>`;
+
     return `
         <a href="${item.link}" target="_blank" class="group block p-6 rounded-xl bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 hover:border-primary/50 dark:hover:border-primary/50 hover:shadow-lg dark:hover:bg-slate-800 transition-all">
             <div class="flex justify-between items-center mb-3">
-                <div class="flex gap-2">
-                    <i data-lucide="${iconName}" class="w-5 h-5 ${iconColor}"></i>
+                <div class="flex gap-3 items-center">
+                    ${iconHtml}
                     <span class="font-bold text-gray-900 dark:text-white group-hover:text-primary transition-colors">${item.title}</span>
                 </div>
                 <span class="text-[10px] uppercase font-bold tracking-wide text-primary border border-primary/20 bg-primary/5 px-2 py-0.5 rounded-full">${item.status}</span>
@@ -554,11 +561,15 @@ const renderCurrentProject = (item) => {
 };
 
 const renderProject = (item) => {
+    const iconHtml = item.customIcon
+        ? `<img src="${root}${item.customIcon}" alt="${item.title}" class="w-8 h-8 rounded-lg shadow-sm border border-black/5 dark:border-white/10 shrink-0 object-cover">`
+        : `<i data-lucide="folder" class="w-5 h-5 text-primary"></i>`;
+
     return `
         <a href="${item.link}" target="_blank" class="group block p-6 rounded-xl bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 hover:border-primary/50 dark:hover:border-primary/50 hover:shadow-lg dark:hover:bg-slate-800 transition-all">
             <div class="flex justify-between items-center mb-3">
-                <div class="flex gap-2">
-                    <i data-lucide="folder" class="w-5 h-5 text-primary"></i>
+                <div class="flex gap-3 items-center">
+                    ${iconHtml}
                     <span class="font-bold text-gray-900 dark:text-white group-hover:text-primary transition-colors">${item.title}</span>
                 </div>
                 <div class="flex items-center gap-1 text-gray-500 dark:text-slate-500 text-xs">
