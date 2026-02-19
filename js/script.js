@@ -110,6 +110,15 @@ const volunteeringData = [
 
 const currentProjectData = [
     {
+        title: "Undercut",
+        desc: "A full-stack AI platform for finding underpriced cars in the Toronto market.",
+        tech: ["Next.js", "FastAPI", "Go", "Gemini AI"],
+        status: "Hackathon",
+        link: "https://undercut-seven.vercel.app/",
+        icon: "car-front",
+        color: "text-red-500"
+    },
+    {
         title: "MBH&Co.",
         desc: "A premium platform to help businesses grow through structured collaboration and trusted connections.",
         tech: ["Supabase", "Vanilla JS", "Tailwind"],
