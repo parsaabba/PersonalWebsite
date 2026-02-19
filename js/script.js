@@ -110,6 +110,15 @@ const volunteeringData = [
 
 const currentProjectData = [
     {
+        title: "MATH 1014",
+        desc: "An interactive platform for mastering Calculus II, featuring step-by-step practice problems for infinite sequences and series.",
+        tech: ["React", "Vite", "Tailwind CSS"],
+        status: "Active",
+        link: "https://math1014.vercel.app/",
+        icon: "sigma",
+        color: "text-blue-500"
+    },
+    {
         title: "MBH&Co.",
         desc: "A premium platform for business growth, built with a custom React 19 + Vite frontend and Wix Headless backend.",
         tech: ["React 19", "TypeScript", "Wix Headless", "Framer Motion"],
@@ -148,6 +157,13 @@ const currentProjectData = [
 ];
 
 const projectData = [
+    {
+        title: "MATH 1014",
+        desc: "Interactive calculus practice platform focused on infinite sequences and series with real-time feedback and detailed solutions.",
+        tech: ["React", "Vite", "Tailwind CSS"],
+        stars: "Personal",
+        link: "https://math1014.vercel.app/"
+    },
     {
         title: "HawkEye",
         desc: "Built a web app for object detection during a 48-hour hackathon sprint. Integrated computer vision concepts with a frontend interface.",
