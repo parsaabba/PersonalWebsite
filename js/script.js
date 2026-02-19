@@ -112,7 +112,7 @@ const volunteeringData = [
 const skillsData = [
     {
         category: "Languages",
-        items: ["JavaScript (ES6+)", "Python", "Go (Golang)", "C++", "Rust", "HTML5", "CSS3", "SQL", "MATLAB"]
+        items: ["JavaScript (ES6+)", "Python", "Go (Golang)", "C++", "HTML5", "CSS3", "MATLAB"]
     },
     {
         category: "Frontend",
@@ -120,11 +120,11 @@ const skillsData = [
     },
     {
         category: "Backend & Database",
-        items: ["Node.js", "Express", "Supabase", "PostgreSQL", "Firebase", "MongoDB"]
+        items: ["Node.js", "Express", "Supabase", "PostgreSQL", "Firebase"]
     },
     {
         category: "Tools & AI",
-        items: ["Git & GitHub", "Docker", "Linux", "Vercel", "OpenCV", "Pandas & NumPy", "PyTorch"]
+        items: ["Git & GitHub", "Docker", "Linux", "Vercel", "OpenCV"]
     }
 ];
 
