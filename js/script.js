@@ -110,6 +110,15 @@ const volunteeringData = [
 
 const currentProjectData = [
     {
+        title: "MBH&Co.",
+        desc: "A premium platform for business growth, built with a custom React 19 + Vite frontend and Wix Headless backend.",
+        tech: ["React 19", "TypeScript", "Wix Headless", "Framer Motion"],
+        status: "Beta",
+        link: "https://www.mbhandco.com/",
+        icon: "briefcase",
+        color: "text-indigo-500"
+    },
+    {
         title: "Undercut",
         desc: "A full-stack AI platform for finding underpriced cars in the Toronto market.",
         tech: ["Next.js", "FastAPI", "Go", "Gemini AI"],
@@ -127,16 +136,6 @@ const currentProjectData = [
         icon: "eye",
         color: "text-amber-500"
     },
-    {
-        title: "MBH&Co.",
-        desc: "A premium platform for business growth, built with a custom React 19 + Vite frontend and Wix Headless backend.",
-        tech: ["React 19", "TypeScript", "Wix Headless", "Framer Motion"],
-        status: "Beta",
-        link: "https://www.mbhandco.com/",
-        icon: "briefcase",
-        color: "text-indigo-500"
-    },
-
     {
         title: "AlgoDrift",
         desc: "A high-performance, framework-free visualizer for algorithms and data structures.",
