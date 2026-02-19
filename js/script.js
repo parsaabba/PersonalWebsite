@@ -853,13 +853,14 @@ document.addEventListener("DOMContentLoaded", () => {
     injectContent(educationData, 'education-list', renderExperience);
     injectContent(experienceData, 'experience-list', renderExperience);
     injectContent(volunteeringData, 'volunteering-list', renderExperience);
-    injectContent(currentProjectData, 'current-project-list', renderCurrentProject, 4);
+    injectContent(currentProjectData, 'current-project-list-preview', renderCurrentProject, 4);
     injectContent(projectData, 'project-list-preview', renderProject, 4);
     injectContent(certificateData, 'certificate-list-preview', renderCertificate, 2);
     injectContent(blogData, 'blog-list-preview', renderBlog, 2);
     injectContent(thoughtData, 'thought-list-preview', renderThought, 2);
     injectContent(learningData, 'learning-list-preview', renderLearning, 2);
 
+    injectContent(currentProjectData, 'current-project-list-full', renderCurrentProject);
     injectContent(projectData, 'project-list-full', renderProject);
     injectContent(certificateData, 'certificate-list-full', renderCertificate);
     injectContent(blogData, 'blog-list-full', renderBlog);
