@@ -158,7 +158,7 @@ const currentProjectData = [
     {
         title: "LassondeHub",
         desc: "The central repository for formulas, schematics, code snippets, and lecture notes for Engineering students.",
-        tech: ["HTML", "CSS", "JavaScript"],
+        tech: ["React", "Supabase", "JavaScript"],
         status: "Community",
         link: "https://lassondehub.vercel.app/",
         icon: "book-open",
