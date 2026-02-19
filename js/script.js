@@ -154,6 +154,15 @@ const currentProjectData = [
         link: "https://algodrift.vercel.app/",
         icon: "bar-chart-2",
         color: "text-purple-500"
+    },
+    {
+        title: "LassondeHub",
+        desc: "The central repository for formulas, schematics, code snippets, and lecture notes for Engineering students.",
+        tech: ["HTML", "CSS", "JavaScript"],
+        status: "Community",
+        link: "https://lassondehub.vercel.app/",
+        icon: "book-open",
+        color: "text-red-500"
     }
 ];
 
