@@ -150,7 +150,7 @@ const currentProjectData = [
     },
     {
         title: "Undercut",
-        desc: "A full-stack AI platform for finding underpriced cars in the Toronto market.",
+        desc: "A full-stack AI platform for finding underpriced cars. Developed high-performance scrapers in Go to extract real-time data for thousands of GTA car listings.",
         tech: ["Next.js", "FastAPI", "Go", "Gemini AI"],
         status: "Hackathon",
         link: "https://undercut-seven.vercel.app/",
@@ -201,6 +201,13 @@ const projectData = [
         stars: "Personal",
         link: "https://math1014.vercel.app/",
         customIcon: "assets/icons/math1014-logo.svg"
+    },
+    {
+        title: "Undercut",
+        desc: "A full-stack AI platform for finding underpriced cars. Developed high-performance scrapers in Go for real-time extraction of GTA car listings.",
+        tech: ["FastAPI", "Go", "Gemini AI"],
+        stars: "Hackathon",
+        link: "https://undercut-seven.vercel.app/"
     },
     {
         title: "HawkEye",
