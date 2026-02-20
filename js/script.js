@@ -248,7 +248,7 @@ const blogData = [
 const thoughtData = [
     {
         title: "Lessons from Life",
-        date: "Dec 2025",
+        date: "Feb 2026",
         desc: "Insights on growth, discipline, and learning from both success and failure.",
         link: "pages/thoughts/lessons-from-life.html"
     },
