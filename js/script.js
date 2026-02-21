@@ -116,7 +116,7 @@ const skillsData = [
     },
     {
         category: "Frontend",
-        items: ["React", "Next.js", "Tailwind CSS", "Vite", "Framer Motion", "Supabase Auth"]
+        items: ["React", "Next.js", "Tailwind CSS", "Mapbox", "Vite", "Framer Motion", "Supabase Auth"]
     },
     {
         category: "Backend & Database",
@@ -129,6 +129,15 @@ const skillsData = [
 ];
 
 const currentProjectData = [
+    {
+        title: "UniSpot",
+        desc: "High-performance, real-time event discovery platform for York U. Features a Live Map, GPS Verification, and instant sync via WebSockets.",
+        tech: ["React", "Go", "Mapbox", "PostgreSQL"],
+        status: "Active",
+        link: "https://yorkunispot.vercel.app/",
+        icon: "map-pin",
+        color: "text-red-500"
+    },
     {
         title: "MBH&Co.",
         desc: "A premium platform for business growth, built with a custom React 19 + Vite frontend and Wix Headless backend.",
@@ -187,6 +196,13 @@ const currentProjectData = [
 ];
 
 const projectData = [
+    {
+        title: "UniSpot",
+        desc: "Real-time event discovery platform for York U students with an immersive Live Map and GPS-verified event posting.",
+        tech: ["React", "Go", "Mapbox", "PostgreSQL"],
+        stars: "Personal",
+        link: "https://yorkunispot.vercel.app/"
+    },
     {
         title: "MBH&Co.",
         desc: "Premium platform for business growth with custom dashboard and Wix integration.",
