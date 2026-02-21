@@ -120,7 +120,7 @@ const skillsData = [
     },
     {
         category: "Backend & Database",
-        items: ["Node.js", "Express", "Supabase", "PostgreSQL", "Firebase"]
+        items: ["Node.js", "Express", "WebSocket", "Supabase", "PostgreSQL", "Firebase"]
     },
     {
         category: "Tools & AI",
