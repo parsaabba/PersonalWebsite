@@ -136,8 +136,7 @@ const currentProjectData = [
         status: "Active",
         link: "https://yorkunispot.vercel.app/",
         icon: "map-pin",
-        color: "text-red-500",
-        customIcon: "assets/icons/unispot.png"
+        color: "text-red-500"
     },
     {
         title: "MBH&Co.",
@@ -202,8 +201,7 @@ const projectData = [
         desc: "Real-time event discovery platform for York U students with an immersive Live Map and GPS-verified event posting.",
         tech: ["React", "Go", "Mapbox", "PostgreSQL"],
         stars: "Personal",
-        link: "https://yorkunispot.vercel.app/",
-        customIcon: "assets/icons/unispot.png"
+        link: "https://yorkunispot.vercel.app/"
     },
     {
         title: "MBH&Co.",
