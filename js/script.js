@@ -192,7 +192,8 @@ const currentProjectData = [
         status: "Community",
         link: "https://lassondehub.vercel.app/",
         icon: "book-open",
-        color: "text-red-500"
+        color: "text-red-500",
+        customIcon: "assets/icons/lassondehub-logo.svg"
     }
 ];
 
@@ -615,8 +616,10 @@ const renderCurrentProject = (item) => {
         ? `<img src="${root}${item.customIcon}" alt="${item.title}" class="w-8 h-8 rounded-lg shadow-sm border border-black/5 dark:border-white/10 shrink-0 object-cover">`
         : `<i data-lucide="${iconName}" class="w-5 h-5 ${iconColor}"></i>`;
 
+    const projectPath = `pages/projects/${item.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}.html`;
+
     return `
-        <a href="${item.link}" target="_blank" class="group block p-6 rounded-xl bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 hover:border-primary/50 dark:hover:border-primary/50 hover:shadow-lg dark:hover:bg-slate-800 transition-all">
+        <div class="group p-6 rounded-xl bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 hover:border-primary/50 dark:hover:border-primary/50 hover:shadow-lg dark:hover:bg-slate-800 transition-all">
             <div class="flex justify-between items-center mb-3">
                 <div class="flex gap-3 items-center">
                     ${iconHtml}
@@ -625,10 +628,18 @@ const renderCurrentProject = (item) => {
                 <span class="text-[10px] uppercase font-bold tracking-wide text-primary border border-primary/20 bg-primary/5 px-2 py-0.5 rounded-full">${item.status}</span>
             </div>
             <p class="text-sm text-gray-600 dark:text-slate-400 mb-4 line-clamp-2">${item.desc}</p>
-            <div class="flex flex-wrap gap-2">
+            <div class="flex flex-wrap gap-2 mb-6">
                 ${item.tech.map(t => `<span class="text-xs text-gray-500 dark:text-slate-500 bg-gray-100 dark:bg-slate-800 px-2 py-1 rounded-md">${t}</span>`).join('')}
             </div>
-        </a>`;
+            <div class="flex items-center gap-3">
+                <a href="${item.link}" target="_blank" class="flex-1 inline-flex items-center justify-center gap-2 px-3 py-2 bg-primary text-white text-xs font-bold rounded-lg hover:bg-primary/90 transition-all">
+                    Live Demo <i data-lucide="external-link" class="w-3 h-3"></i>
+                </a>
+                <a href="${root}${projectPath}" class="flex-1 inline-flex items-center justify-center gap-2 px-3 py-2 border border-primary/30 text-primary text-xs font-bold rounded-lg hover:bg-primary/5 transition-all">
+                    Read More <i data-lucide="book-open" class="w-3 h-3"></i>
+                </a>
+            </div>
+        </div>`;
 };
 
 const renderProject = (item) => {
@@ -636,8 +647,10 @@ const renderProject = (item) => {
         ? `<img src="${root}${item.customIcon}" alt="${item.title}" class="w-8 h-8 rounded-lg shadow-sm border border-black/5 dark:border-white/10 shrink-0 object-cover">`
         : `<i data-lucide="folder" class="w-5 h-5 text-primary"></i>`;
 
+    const projectPath = `pages/projects/${item.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}.html`;
+
     return `
-        <a href="${item.link}" target="_blank" class="group block p-6 rounded-xl bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 hover:border-primary/50 dark:hover:border-primary/50 hover:shadow-lg dark:hover:bg-slate-800 transition-all">
+        <div class="group p-6 rounded-xl bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 hover:border-primary/50 dark:hover:border-primary/50 hover:shadow-lg dark:hover:bg-slate-800 transition-all">
             <div class="flex justify-between items-center mb-3">
                 <div class="flex gap-3 items-center">
                     ${iconHtml}
@@ -649,10 +662,18 @@ const renderProject = (item) => {
                 </div>
             </div>
             <p class="text-sm text-gray-600 dark:text-slate-400 mb-4 line-clamp-2">${item.desc}</p>
-            <div class="flex flex-wrap gap-2">
+            <div class="flex flex-wrap gap-2 mb-6">
                 ${item.tech.map(t => `<span class="text-xs text-gray-500 dark:text-slate-500 bg-gray-100 dark:bg-slate-800 px-2 py-1 rounded-md">${t}</span>`).join('')}
             </div>
-        </a>`;
+            <div class="flex items-center gap-3">
+                <a href="${item.link}" target="_blank" class="flex-1 inline-flex items-center justify-center gap-2 px-3 py-2 bg-primary text-white text-xs font-bold rounded-lg hover:bg-primary/90 transition-all">
+                    Live Demo <i data-lucide="external-link" class="w-3 h-3"></i>
+                </a>
+                <a href="${root}${projectPath}" class="flex-1 inline-flex items-center justify-center gap-2 px-3 py-2 border border-primary/30 text-primary text-xs font-bold rounded-lg hover:bg-primary/5 transition-all">
+                    Read More <i data-lucide="book-open" class="w-3 h-3"></i>
+                </a>
+            </div>
+        </div>`;
 };
 
 const renderCertificate = (item) => {
