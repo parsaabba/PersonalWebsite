@@ -613,7 +613,7 @@ const renderCurrentProject = (item) => {
     const iconColor = item.color || 'text-yellow-500';
 
     const iconHtml = item.customIcon
-        ? `<img src="${root}${item.customIcon}" alt="${item.title}" class="w-8 h-8 rounded-lg shadow-sm border border-black/5 dark:border-white/10 shrink-0 object-cover">`
+        ? `<img src="${root}${item.customIcon}" alt="${item.title} icon" class="w-8 h-8 rounded-lg shadow-sm border border-black/5 dark:border-white/10 shrink-0 object-cover">`
         : `<i data-lucide="${iconName}" class="w-5 h-5 ${iconColor}"></i>`;
 
     const projectPath = `pages/projects/${item.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}.html`;
@@ -632,10 +632,10 @@ const renderCurrentProject = (item) => {
                 ${item.tech.map(t => `<span class="text-xs text-gray-500 dark:text-slate-500 bg-gray-100 dark:bg-slate-800 px-2 py-1 rounded-md">${t}</span>`).join('')}
             </div>
             <div class="flex items-center gap-3">
-                <a href="${item.link}" target="_blank" class="flex-1 inline-flex items-center justify-center gap-2 px-3 py-2 bg-primary text-white text-xs font-bold rounded-lg hover:bg-primary/90 transition-all">
+                <a href="${item.link}" target="_blank" aria-label="View live demo of ${item.title}" class="flex-1 inline-flex items-center justify-center gap-2 px-3 py-2 bg-primary text-white text-xs font-bold rounded-lg hover:bg-primary/90 transition-all">
                     Live Demo <i data-lucide="external-link" class="w-3 h-3"></i>
                 </a>
-                <a href="${root}${projectPath}" class="flex-1 inline-flex items-center justify-center gap-2 px-3 py-2 border border-primary/30 text-primary text-xs font-bold rounded-lg hover:bg-primary/5 transition-all">
+                <a href="${root}${projectPath}" aria-label="Read more about ${item.title}" class="flex-1 inline-flex items-center justify-center gap-2 px-3 py-2 border border-primary/30 text-primary text-xs font-bold rounded-lg hover:bg-primary/5 transition-all">
                     Read More <i data-lucide="book-open" class="w-3 h-3"></i>
                 </a>
             </div>
@@ -644,7 +644,7 @@ const renderCurrentProject = (item) => {
 
 const renderProject = (item) => {
     const iconHtml = item.customIcon
-        ? `<img src="${root}${item.customIcon}" alt="${item.title}" class="w-8 h-8 rounded-lg shadow-sm border border-black/5 dark:border-white/10 shrink-0 object-cover">`
+        ? `<img src="${root}${item.customIcon}" alt="${item.title} icon" class="w-8 h-8 rounded-lg shadow-sm border border-black/5 dark:border-white/10 shrink-0 object-cover">`
         : `<i data-lucide="folder" class="w-5 h-5 text-primary"></i>`;
 
     const projectPath = `pages/projects/${item.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}.html`;

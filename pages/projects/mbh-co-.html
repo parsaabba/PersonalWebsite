@@ -4,7 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MBH&Co. | Project Detail</title>
+    <title>MBH&Co. | Premium Business Growth Platform - Parsa Abbasian</title>
+    <meta name="description"
+        content="Explore MBH&Co., a premium platform for business growth built with React 19, TypeScript, and a Wix Headless backend.">
+    <meta name="keywords"
+        content="MBH&Co., Business Growth, React 19, Wix Headless, TypeScript, Framer Motion, Parsa Abbasian">
+    <link rel="canonical" href="https://parsaabbasian.com/pages/projects/mbh-co-.html">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="MBH&Co. | Project Case Study">
+    <meta property="og:description" content="A premium platform for business growth.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://parsaabbasian.com/pages/projects/mbh-co-.html">
+    <meta property="og:image" content="https://parsaabbasian.com/assets/icons/favicon.svg">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -14,11 +27,6 @@
         tailwind.config = {
             darkMode: 'class',
             theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] }, colors: { primary: '#6366f1' } } }
-        }
-        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');
         }
     </script>
 </head>
@@ -33,16 +41,17 @@
                         <i data-lucide="arrow-left" class="w-5 h-5"></i>
                     </a>
                     <span
-                        class="px-3 py-1 text-xs font-bold uppercase tracking-wider rounded-md bg-green-50 dark:bg-green-500/10 text-green-600 dark:text-green-400">Active</span>
+                        class="px-3 py-1 text-xs font-bold uppercase tracking-wider rounded-md bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400">Beta</span>
                 </div>
                 <h1 class="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">MBH&Co.</h1>
                 <p class="text-xl text-gray-600 dark:text-slate-400 leading-relaxed mb-8">
-                    High-performance, real-time event discovery platform for York U. Features a Live Map, GPS
-                    Verification, and instant sync via WebSockets.
+                    A premium digital presence for MBH&Co., a leader in business growth and networking. The project
+                    features a custom-built frontend using React 19 and Vite, seamlessly integrated with a Wix Headless
+                    backend for powerful content management.
                 </p>
 
                 <div class="flex flex-wrap gap-4">
-                    <a href="https://yorkunispot.vercel.app/" target="_blank"
+                    <a href="https://www.mbhandco.com/" target="_blank"
                         class="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white font-bold rounded-xl hover:bg-primary/90 transition-all shadow-lg shadow-primary/20">
                         View Live Project <i data-lucide="external-link" class="w-4 h-4"></i>
                     </a>
