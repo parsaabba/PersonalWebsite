@@ -130,6 +130,15 @@ const skillsData = [
 
 const currentProjectData = [
     {
+        title: "GitProfileX",
+        desc: "The next-generation GitHub Profile README generator. Build a stunning profile with premium templates and dynamic stats.",
+        tech: ["React", "TypeScript", "Tailwind", "Framer Motion"],
+        status: "Active",
+        link: "https://gitprofilex.vercel.app/",
+        icon: "github",
+        color: "text-indigo-500",
+    },
+    {
         title: "UniSpot",
         desc: "High-performance, real-time event discovery platform for York U. Features a Live Map, GPS Verification, and instant sync via WebSockets.",
         tech: ["React", "Go", "Mapbox", "PostgreSQL"],
@@ -198,6 +207,13 @@ const currentProjectData = [
 ];
 
 const projectData = [
+    {
+        title: "GitProfileX",
+        desc: "The ultimate GitHub Profile README generator with glassmorphic UI and premium templates.",
+        tech: ["React", "TypeScript", "Tailwind CSS"],
+        stars: "Personal",
+        link: "https://gitprofilex.vercel.app/",
+    },
     {
         title: "UniSpot",
         desc: "Real-time event discovery platform for York U students with an immersive Live Map and GPS-verified event posting.",
