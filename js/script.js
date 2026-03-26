@@ -39,8 +39,7 @@ const educationData = [
         description: "Graduated as Ontario Scholar (x2).",
         grade: "4.0 GPA",
         details: [
-            "Library Club Member (2024 - 2025)",
-            "Library Volunteer (Feb 2024 - June 2024)"
+            "Library Club Member (2024 - 2025)"
         ],
         bg: "bg-blue-50 dark:bg-blue-500/10",
         color: "text-blue-600 dark:text-blue-400",
@@ -108,7 +107,57 @@ const volunteeringData = [
     }
 ];
 
-// 4. TECHNICAL SKILLS
+// 4. HIGH SCHOOL ACTIVITIES
+const highSchoolData = [
+    {
+        title: "Newcomer Program Assistant",
+        subtitle: "Afterschool Program for Newcomers",
+        date: "Sep 2024 - Feb 2025",
+        description: "Volunteered at an afterschool program for newcomer youth and families, working alongside a settlement worker.",
+        details: [
+            "Assisted in organizing and running community workshops and events",
+            "Fostered an inclusive and welcoming environment for newcomer participants",
+            "Collaborated with settlement workers to bridge communication gaps for families"
+        ],
+        bg: "bg-teal-50 dark:bg-teal-500/10",
+        color: "text-teal-600 dark:text-teal-400",
+        icon: "heart-handshake",
+        collapsible: true
+    },
+    {
+        title: "Library Volunteer & Organizer",
+        subtitle: "Earl Haig Secondary School Library",
+        date: "Feb 2024 - June 2024",
+        description: "Managed library operations and supported student resources while training new staff members.",
+        details: [
+            "Organized and shelved books to ensure students and staff had easy access to resources",
+            "Managed and maintained printing equipment to support library daily operations",
+            "Represented the library on Parent-Teacher Day, communicating core goals to the school community",
+            "Trained and mentored new library assistants to help them adapt to their responsibilities"
+        ],
+        bg: "bg-blue-50 dark:bg-blue-500/10",
+        color: "text-blue-600 dark:text-blue-400",
+        icon: "book-open",
+        collapsible: true
+    },
+    {
+        title: "PIAC Conference Volunteer",
+        subtitle: "17th Annual Parent Involvement Advisory Committee (PIAC)",
+        date: "Feb 2024",
+        description: "Assisted in the coordination and logistics of the annual PIAC conference.",
+        details: [
+            "Coordinated event activities, welcomed attendees, and guided them to designated sessions",
+            "Managed event material setup and ensured smooth transitions between workshops",
+            "Provided on-site support to speakers and participants to enhance the event experience"
+        ],
+        bg: "bg-rose-50 dark:bg-rose-500/10",
+        color: "text-rose-600 dark:text-rose-400",
+        icon: "users",
+        collapsible: true
+    }
+];
+
+// 5. TECHNICAL SKILLS
 const skillsData = [
     {
         category: "Languages",
@@ -603,12 +652,17 @@ const renderExperience = (item) => {
             ${det}
         </li>`).join('');
 
-    // NEW: Logic to render the grade (GPA) badge only if it exists in the data
+    // Logic to render the grade (GPA) badge only if it exists in the data
     const gradeHtml = item.grade ? `
         <div class="inline-flex items-center gap-1.5 mb-3 px-2 py-1 rounded-md bg-gray-100 dark:bg-slate-800 border border-gray-200 dark:border-slate-700">
             <i data-lucide="award" class="w-3.5 h-3.5 text-primary"></i>
             <span class="text-xs font-bold text-gray-700 dark:text-slate-300">${item.grade}</span>
         </div>` : '';
+
+    const contentHtml = `
+        <p class="text-gray-700 dark:text-slate-300 mb-2 leading-relaxed">${Array.isArray(item.description) ? item.description.join(' ') : (item.description || '')}</p>
+        <ul class="text-sm">${detailsHtml}</ul>
+    `;
 
     return `
         <div class="relative pl-8 group mb-8 last:mb-0">
@@ -619,8 +673,18 @@ const renderExperience = (item) => {
             
             ${gradeHtml} 
 
-            <p class="text-gray-700 dark:text-slate-300 mb-2 leading-relaxed">${Array.isArray(item.description) ? item.description.join(' ') : (item.description || '')}</p>
-            <ul class="text-sm">${detailsHtml}</ul>
+            ${item.collapsible ? `
+                <details class="group/details mt-2">
+                    <summary class="list-none cursor-pointer inline-flex items-center gap-2 px-3 py-1.5 bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-slate-300 rounded-lg text-xs font-bold hover:bg-primary/10 hover:text-primary border border-transparent hover:border-primary/30 transition-all select-none focus:outline-none">
+                        <span class="group-open/details:hidden">View Details</span>
+                        <span class="hidden group-open/details:inline">Hide Details</span>
+                        <i data-lucide="chevron-right" class="w-3.5 h-3.5 group-open/details:rotate-90 transition-transform"></i>
+                    </summary>
+                    <div class="mt-4 animate-in fade-in slide-in-from-top-1 duration-300">
+                        ${contentHtml}
+                    </div>
+                </details>
+            ` : contentHtml}
         </div>`;
 };
 
@@ -973,6 +1037,7 @@ document.addEventListener("DOMContentLoaded", () => {
     injectContent(educationData, 'education-list', renderExperience);
     injectContent(experienceData, 'experience-list', renderExperience);
     injectContent(volunteeringData, 'volunteering-list', renderExperience);
+    injectContent(highSchoolData, 'high-school-list', renderExperience);
     injectContent(currentProjectData, 'current-project-list-preview', renderCurrentProject, 4);
     injectContent(projectData, 'project-list-preview', renderProject, 4);
     injectContent(certificateData, 'certificate-list-preview', renderCertificate, 2);
