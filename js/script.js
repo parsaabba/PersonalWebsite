@@ -25,8 +25,7 @@ const educationData = [
         description: "Computer Engineering Student. Awarded York International Scholarship of Distinction.",
         details: [
             "Undergraduate Researcher | Space Geodesy Lab",
-            "ISAYU Event Coordinator (Sep 2025 - Jan 2026)",
-            "Note Share & Class Rep @ MATH 1013 (Sep 2025 - Present)"
+            "Note Share & Class Rep @ MATH 1013, EECS 1028 & PHYS 1801 (Sep 2025 - Present)"
         ],
         bg: "bg-indigo-50 dark:bg-indigo-500/10",
         color: "text-indigo-600 dark:text-indigo-400",
@@ -49,6 +48,21 @@ const educationData = [
 
 // 2. PROFESSIONAL & RESEARCH EXPERIENCE
 const experienceData = [
+    {
+        title: "Operations Lead",
+        subtitle: "Google Developer Groups (GDG)",
+        date: "April 2026 - Present",
+        description: "Mastering the logistics of high-impact community events. Ensuring every workshop and meetup runs like clockwork, from venue booking to hybrid streaming.",
+        details: [
+            "Own event logistics from start to finish",
+            "Coordinate with university venue services and vendors",
+            "Manage hybrid event technology (streaming, recording, interactive polls)",
+            "Develop contingency plans for large-scale events"
+        ],
+        bg: "bg-cyan-50 dark:bg-cyan-500/10",
+        color: "text-cyan-600 dark:text-cyan-400",
+        icon: "settings"
+    },
     {
         title: "Undergraduate Researcher",
         subtitle: "Space Geodesy Lab — York University",
@@ -83,18 +97,8 @@ const experienceData = [
 // 3. VOLUNTEERING & LEADERSHIP
 const volunteeringData = [
     {
-        title: "Event Coordinator",
-        subtitle: "Iranian Students Association at York University (ISAYU)",
-        date: "Sep 2025 - Jan 2026",
-        description: "Coordinating student events and supporting community engagement.",
-        details: ["Collaborating with team members to organize recreational and cultural activities"],
-        bg: "bg-orange-50 dark:bg-orange-500/10",
-        color: "text-orange-600 dark:text-orange-400",
-        icon: "users"
-    },
-    {
         title: "Class Rep & Note Share Volunteer",
-        subtitle: "MATH 1013, 1028 & PHYS 1801 — York University",
+        subtitle: "MATH 1013, EECS 1028 & PHYS 1801 — York University",
         date: "Sep 2025 - Present",
         description: "Representing student interests and supporting academic accessibility through structured technical note sharing.",
         details: [
