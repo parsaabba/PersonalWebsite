@@ -29,7 +29,8 @@ const educationData = [
         ],
         bg: "bg-indigo-50 dark:bg-indigo-500/10",
         color: "text-indigo-600 dark:text-indigo-400",
-        icon: "graduation-cap"
+        icon: "graduation-cap",
+        logo: "assets/logos/lassonde-logo.png"
     },
     {
         title: "Ontario Secondary School Diploma",
@@ -61,7 +62,8 @@ const experienceData = [
         ],
         bg: "bg-cyan-50 dark:bg-cyan-500/10",
         color: "text-cyan-600 dark:text-cyan-400",
-        icon: "settings"
+        icon: "settings",
+        logo: "assets/logos/gdg-logo.png"
     },
     {
         title: "Undergraduate Researcher",
@@ -76,7 +78,8 @@ const experienceData = [
         ],
         bg: "bg-emerald-50 dark:bg-emerald-500/10",
         color: "text-emerald-600 dark:text-emerald-400",
-        icon: "microscope"
+        icon: "microscope",
+        logo: "assets/logos/stem-fellowship-logo.png"
     },
     {
         title: "Vice President",
@@ -90,7 +93,8 @@ const experienceData = [
         ],
         bg: "bg-indigo-50 dark:bg-indigo-500/10",
         color: "text-indigo-600 dark:text-indigo-400",
-        icon: "briefcase"
+        icon: "briefcase",
+        logo: "assets/logos/mbh-logo.png"
     }
 ];
 
@@ -107,7 +111,8 @@ const volunteeringData = [
         ],
         bg: "bg-purple-50 dark:bg-purple-500/10",
         color: "text-purple-600 dark:text-purple-400",
-        icon: "hand-helping"
+        icon: "hand-helping",
+        logo: "assets/logos/lassonde-logo.png"
     }
 ];
 
@@ -670,11 +675,20 @@ const renderExperience = (item) => {
 
     return `
         <div class="relative pl-8 group mb-8 last:mb-0">
-            <span class="absolute top-1 -left-[5px] w-2.5 h-2.5 rounded-full bg-gray-300 dark:bg-slate-700 border border-white dark:border-slate-900 group-hover:bg-primary transition-colors ring-4 ring-white dark:ring-slate-950"></span>
-            <h3 class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-primary transition-colors">${item.title}</h3>
-            <p class="text-sm text-primary font-medium mb-1">${item.subtitle}</p>
-            <p class="text-xs text-gray-500 dark:text-slate-500 font-mono mb-2 uppercase tracking-wide">${item.date}</p>
+            <span class="absolute top-2 -left-[5px] w-2.5 h-2.5 rounded-full bg-gray-300 dark:bg-slate-700 border border-white dark:border-slate-900 group-hover:bg-primary transition-colors ring-4 ring-white dark:ring-slate-950"></span>
             
+            <div class="flex items-start gap-4 mb-4">
+                ${item.logo ? `
+                <div class="shrink-0 w-12 h-12 rounded-xl bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 p-2 flex items-center justify-center shadow-sm group-hover:border-primary/50 transition-colors">
+                    <img src="${root}${item.logo}" alt="${item.subtitle} logo" class="w-full h-full object-contain rounded-lg">
+                </div>` : ''}
+                <div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-primary transition-colors">${item.title}</h3>
+                    <p class="text-sm text-primary font-medium mb-0.5">${item.subtitle}</p>
+                    <p class="text-[10px] text-gray-500 dark:text-slate-500 font-mono uppercase tracking-widest">${item.date}</p>
+                </div>
+            </div>
+
             ${gradeHtml} 
 
             ${item.collapsible ? `
