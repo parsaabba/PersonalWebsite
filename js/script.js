@@ -23,6 +23,7 @@ const educationData = [
         subtitle: "Lassonde School of Engineering - York University",
         date: "2025 - Present | Expected 2029",
         description: "Computer Engineering Student. Awarded York International Scholarship of Distinction.",
+        grade: "First Class Standing With Distinction",
         details: [
             "Undergraduate Researcher | Space Geodesy Lab",
             "Note Share & Class Rep @ MATH 1013, EECS 1028 & PHYS 1801 (Sep 2025 - Present)"
