@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Block 6: Training Neural Networks Properly</title>
+
+    <script>
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: { primary: '#7c3aed' }
+                }
+            }
+        }
+    </script>
+    <style>
+        .backdrop-blur-md {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #7c3aed;
+            border-radius: 10px;
+        }
+
+        pre {
+            font-family: 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', monospace;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 dark:bg-slate-950 text-gray-900 dark:text-slate-300 font-sans transition-colors duration-300">
+
+    
+
+    <main class="max-w-3xl mx-auto px-6 pt-32 pb-20">
+
+        <div class="mb-12">
+            <div
+                class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-violet-100 text-violet-700 dark:bg-violet-500/10 dark:text-violet-400 text-xs font-bold uppercase tracking-wider mb-4">
+                Block 6 (2-3 Days)</div>
+            <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">Regularization & Generalization</h1>
+            <p class="text-lg text-gray-600 dark:text-slate-400">Deep networks overfit by default. This block teaches
+                you how to force models to learn the underlying rule, not just the noise.</p>
+        </div>
+
+        <div class="space-y-16">
+
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                    <span
+                        class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-bold">1</span>
+                    The Overfitting Problem
+                </h2>
+                <p class="mb-6 leading-relaxed"><strong>Overfitting</strong> happens when the model is so flexible it
+                    "memorizes" the training data, including the noise, causing it to fail on new, unseen data.</p>
+
+
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+                    <div class="p-6 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl">
+                        <h3 class="font-bold mb-2 text-red-400 text-sm">Overfitting Signs</h3>
+                        <p class="text-xs text-gray-500 leading-relaxed">Low Training Loss, but High Validation Loss.
+                            The model is essentially cheating by looking at the answer key too closely.</p>
+                    </div>
+                    <div class="p-6 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl">
+                        <h3 class="font-bold mb-2 text-emerald-400 text-sm">Generalization</h3>
+                        <p class="text-xs text-gray-500 leading-relaxed">The true goal of learning. The model captures
+                            the underlying pattern (signal), not the specific random fluctuations (noise).</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                    <span
+                        class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-bold">2</span>
+                    Regularization Techniques
+                </h2>
+                <p class="mb-6 leading-relaxed">Regularization methods intentionally limit the model's freedom to
+                    prevent it from fitting the noise. Think of it as adding "constraints" to keep the model honest.</p>
+
+                <div class="space-y-6">
+                    <div class="p-6 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl">
+                        <div class="flex items-center gap-3 mb-3">
+                            <i data-lucide="layers-2" class="text-primary w-5 h-5"></i>
+                            <h4 class="font-bold text-gray-900 dark:text-white">Dropout</h4>
+                        </div>
+                        <p class="text-xs text-gray-500 leading-relaxed mb-4">Randomly disables neurons during training.
+                            This forces the network to be redundant and robust, as it can't rely on any specific neuron
+                            to do all the work.</p>
+
+                    </div>
+
+                    <div
+                        class="p-6 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl border-2 border-primary/20">
+                        <div class="flex items-center gap-3 mb-3">
+                            <i data-lucide="anchor" class="text-primary w-5 h-5"></i>
+                            <h4 class="font-bold text-gray-900 dark:text-white">L2 Regularization (Weight Decay)</h4>
+                        </div>
+                        <p class="text-xs text-gray-500 leading-relaxed mb-3">Penalizes large weights in the loss
+                            function. It prevents the model from relying too heavily on any single feature by keeping
+                            weight values small and distributed.</p>
+                        <p
+                            class="text-xs font-mono text-primary bg-slate-50 dark:bg-slate-950 p-2 rounded inline-block">
+                            $L_{total} = L_{data} + \lambda \sum w^2$</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                    <span
+                        class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-bold">3</span>
+                    The Engineer's Monitoring Habit
+                </h2>
+                <p class="mb-6 text-sm leading-relaxed">You cannot manage what you do not measure. Learning happens in
+                    the gap between Training and Validation loss. Use these plots to diagnose your model's health.</p>
+
+
+
+                <div class="overflow-x-auto rounded-xl border border-gray-200 dark:border-slate-800 mt-6">
+                    <table class="w-full text-left text-xs">
+                        <thead class="bg-slate-50 dark:bg-slate-900/50">
+                            <tr>
+                                <th class="p-4 font-bold">Learning Pattern</th>
+                                <th class="p-4 font-bold">Diagnosis</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200 dark:divide-slate-800">
+                            <tr>
+                                <td class="p-4">Both Curves Trending Down</td>
+                                <td class="p-4 text-emerald-500 font-medium">Learning well (Healthy)</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4">Train Down, Validation Climbing Up</td>
+                                <td class="p-4 text-red-500 font-bold">Overfitting (Bad)</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4">Both Curves Flat and High</td>
+                                <td class="p-4 text-orange-400 font-medium">Underfitting (Needs more capacity)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section>
+                <div class="bg-slate-950 rounded-xl p-6 border border-slate-800 shadow-lg">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="p-2 bg-primary/10 rounded text-primary">
+                            <i data-lucide="terminal" class="w-4 h-4"></i>
+                        </div>
+                        <h4 class="text-white font-bold text-sm uppercase tracking-widest">Weight Decay in PyTorch</h4>
+                    </div>
+                    <p class="text-xs text-slate-400 mb-4">Implementing weight decay is as simple as passing a parameter
+                        to your optimizer constructor.</p>
+                    <code
+                        class="text-xs text-violet-400 font-mono bg-slate-900 p-3 rounded block border border-white/5">optimizer = torch.optim.Adam(model.parameters(), weight_decay=1e-4)</code>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    
+
+    <script>
+        lucide.createIcons();
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const html = document.documentElement;
+        const updateIcon = (isDark) => {
+            themeIcon.setAttribute('data-lucide', isDark ? 'sun' : 'moon');
+            lucide.createIcons();
+        };
+        updateIcon(html.classList.contains('dark'));
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            const isDark = html.classList.contains('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            updateIcon(isDark);
+        });
+    </script>
+</body>
+
+</html>

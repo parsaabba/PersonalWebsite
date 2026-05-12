@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML Block 2: What Is Supervised Learning?</title>
+
+    <script>
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: { 
+                extend: { 
+                    fontFamily: { sans: ['Inter', 'sans-serif'] }, 
+                    colors: { primary: '#6366f1' } 
+                } 
+            }
+        }
+    </script>
+    <style>
+        .backdrop-blur-md { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #6366f1; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-slate-950 text-gray-900 dark:text-slate-300 font-sans transition-colors duration-300">
+    
+    
+
+    <main class="max-w-3xl mx-auto px-6 pt-32 pb-20">
+        
+        <div class="mb-12">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-100 dark:bg-primary/10 text-primary dark:text-primary text-xs font-bold uppercase tracking-wider mb-4">Block 2 • Day A</div>
+            <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">Supervised Learning Deep Dive</h1>
+            <p class="text-lg text-gray-600 dark:text-slate-400">Learning by correction. Every classical ML algorithm builds on the relationship between labeled data and optimization.</p>
+        </div>
+
+        <div class="space-y-16">
+            
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-bold">1</span> 
+                    The Concept of Supervision
+                </h2>
+                <p class="mb-6 leading-relaxed">Supervised learning is a mathematical mapping: $X \rightarrow y$. The model learns from <b>labeled data</b>—every input (X) is paired with a trusted "Ground Truth" answer (y).</p>
+                
+                
+
+                <div class="p-6 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl mt-6">
+                    <h3 class="font-bold mb-2 flex items-center gap-2 text-primary"><i data-lucide="graduation-cap" class="w-4 h-4"></i> The Student Analogy</h3>
+                    <p class="text-sm text-gray-600 dark:text-slate-400 italic">"Think of a student solving math problems with an answer key at the back. Every time they get a problem wrong, they adjust their logic until their answers match the key."</p>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-bold">2</span> 
+                    Regression vs Classification
+                </h2>
+                <p class="text-sm mb-6 leading-relaxed">The type of problem is defined by the <b>nature of the output (y)</b>. Predicting a price is fundamentally different from predicting a category.</p>
+                
+                [Image comparing a regression line plot with a classification decision boundary plot]
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="p-6 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl border-t-4 border-t-indigo-500">
+                        <h3 class="font-bold mb-2 text-indigo-500 flex items-center gap-2"><i data-lucide="trending-up" class="w-4 h-4"></i> Regression</h3>
+                        <p class="text-xs text-gray-500 leading-relaxed mb-4">Predicts a <b>continuous number</b> on a line.</p>
+                        <ul class="text-[10px] space-y-1 text-slate-400 font-mono">
+                            <li>• House Prices</li>
+                            <li>• Temperature</li>
+                            <li>• Stock Value</li>
+                        </ul>
+                    </div>
+                    <div class="p-6 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl border-t-4 border-t-emerald-500">
+                        <h3 class="font-bold mb-2 text-emerald-500 flex items-center gap-2"><i data-lucide="layout-grid" class="w-4 h-4"></i> Classification</h3>
+                        <p class="text-xs text-gray-500 leading-relaxed mb-4">Predicts a <b>discrete category</b> or class.</p>
+                        <ul class="text-[10px] space-y-1 text-slate-400 font-mono">
+                            <li>• Spam / Not Spam</li>
+                            <li>• Cat / Dog / Bird</li>
+                            <li>• Disease / Healthy</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-bold">3</span> 
+                    The 5 Pillars of Any Supervised System
+                </h2>
+                <div class="grid grid-cols-1 gap-2">
+                    <div class="flex items-center gap-4 p-3 rounded-lg border border-gray-200 dark:border-slate-800">
+                        <span class="w-6 h-6 rounded bg-primary/10 text-primary flex items-center justify-center font-bold text-xs">1</span>
+                        <p class="text-sm"><b>Data (X):</b> Pixel values, word counts, or sensor logs.</p>
+                    </div>
+                    <div class="flex items-center gap-4 p-3 rounded-lg border border-gray-200 dark:border-slate-800">
+                        <span class="w-6 h-6 rounded bg-primary/10 text-primary flex items-center justify-center font-bold text-xs">2</span>
+                        <p class="text-sm"><b>Labels (y):</b> The ground truth "correct answer."</p>
+                    </div>
+                    <div class="flex items-center gap-4 p-3 rounded-lg border border-gray-200 dark:border-slate-800">
+                        <span class="w-6 h-6 rounded bg-primary/10 text-primary flex items-center justify-center font-bold text-xs">3</span>
+                        <p class="text-sm"><b>Model:</b> The function that maps $X \rightarrow y$.</p>
+                    </div>
+                    <div class="flex items-center gap-4 p-3 rounded-lg border border-gray-200 dark:border-slate-800">
+                        <span class="w-6 h-6 rounded bg-primary/10 text-primary flex items-center justify-center font-bold text-xs">4</span>
+                        <p class="text-sm"><b>Loss:</b> The penalty for getting a prediction wrong.</p>
+                    </div>
+                    <div class="flex items-center gap-4 p-3 rounded-lg border border-indigo-500/30 bg-indigo-500/5">
+                        <span class="w-6 h-6 rounded bg-primary text-white flex items-center justify-center font-bold text-xs">5</span>
+                        <p class="text-sm font-medium"><b>Optimization:</b> The method used to change the model and reduce loss.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="bg-slate-900 border border-slate-800 text-slate-300 rounded-2xl p-8 shadow-xl">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="p-2 rounded-lg bg-primary/10 text-primary">
+                            <i data-lucide="shield-check"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-white">⚠️ Ground Truth Warning</h2>
+                    </div>
+                    
+                    <p class="text-sm text-slate-400 mb-6 leading-relaxed">
+                        No algorithm can fix incorrect truth. If your labels are noisy, subjective, or outdated, your model will be fundamentally broken.
+                    </p>
+                    
+                    <div class="p-4 bg-white/5 dark:bg-slate-950/50 rounded-xl border border-white/5">
+                        <p class="text-xs italic text-primary font-medium text-center">"Garbage in, Garbage out."</p>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    
+
+    <script>
+        lucide.createIcons();
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const html = document.documentElement;
+
+        const updateIcon = (isDark) => {
+            themeIcon.setAttribute('data-lucide', isDark ? 'sun' : 'moon');
+            lucide.createIcons();
+        };
+
+        updateIcon(html.classList.contains('dark'));
+
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            const isDark = html.classList.contains('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            updateIcon(isDark);
+        });
+    </script>
+</body>
+</html>

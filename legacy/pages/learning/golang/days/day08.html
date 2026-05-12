@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 8: Arrays & Slices in Go</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../css/style.css">
+    <link rel="icon" type="image/svg+xml" href="../../../../assets/icons/favicon.svg">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] }, colors: { primary: '#00ADD8' } } }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-slate-950 text-gray-900 dark:text-slate-300 font-sans transition-colors duration-300">
+    
+    
+
+    <main class="max-w-3xl mx-auto px-6 pt-32 pb-20">
+        
+        <div class="mb-10">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-500/10 text-blue-700 dark:text-blue-400 text-xs font-bold uppercase tracking-wider mb-4">Day 8</div>
+            <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">Arrays & Slices</h1>
+            <p class="text-lg text-gray-600 dark:text-slate-400">Understanding the core difference between fixed-size arrays and dynamic slices, and mastering the <code class="text-primary font-mono">append</code> function.</p>
+        </div>
+
+        <div class="space-y-16">
+            
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm">1</span> 
+                    The Big Picture: Arrays vs. Slices
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="p-6 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl">
+                        <div class="flex items-center gap-2 mb-3 text-red-500 font-bold">
+                            <i data-lucide="lock" class="w-5 h-5"></i> Arrays (Fixed)
+                        </div>
+                        <p class="text-sm mb-4">Size is part of the type. They cannot grow or shrink once declared.</p>
+                        <div class="bg-slate-950 rounded-lg p-4 font-mono text-xs text-slate-300">
+                            <span class="text-purple-400">var</span> nums [<span class="text-orange-400">3</span>]<span class="text-blue-400">int</span><br>
+                            nums = [<span class="text-orange-400">3</span>]<span class="text-blue-400">int</span>{<span class="text-orange-400">10</span>, <span class="text-orange-400">20</span>, <span class="text-orange-400">30</span>}
+                        </div>
+                    </div>
+
+                    <div class="p-6 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl">
+                        <div class="flex items-center gap-2 mb-3 text-emerald-500 font-bold">
+                            <i data-lucide="unlock" class="w-5 h-5"></i> Slices (Dynamic)
+                        </div>
+                        <p class="text-sm mb-4">Flexible size. These are used in 99% of Go code because they can grow.</p>
+                        <div class="bg-slate-950 rounded-lg p-4 font-mono text-xs text-slate-300">
+                            nums := []<span class="text-blue-400">int</span>{<span class="text-orange-400">10</span>, <span class="text-orange-400">20</span>, <span class="text-orange-400">30</span>}<br>
+                            nums = <span class="text-blue-400">append</span>(nums, <span class="text-orange-400">40</span>)
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm">2</span> 
+                    Slicing Logic
+                </h2>
+                <div class="p-6 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl">
+                    <p class="text-sm mb-4">Use the <code class="font-mono">[start:end]</code> syntax to create a sub-slice. Remember: the <strong>end</strong> index is NOT included.</p>
+                    <div class="bg-slate-950 rounded-lg p-4 font-mono text-xs text-slate-300 space-y-2">
+                        <div>nums := []<span class="text-blue-400">int</span>{<span class="text-orange-400">10</span>, <span class="text-orange-400">20</span>, <span class="text-orange-400">30</span>, <span class="text-orange-400">40</span>, <span class="text-orange-400">50</span>}</div>
+                        <div class="text-slate-500">// Result: [20 30 40]</div>
+                        <div>fmt.<span class="text-blue-400">Println</span>(nums[<span class="text-orange-400">1</span>:<span class="text-orange-400">4</span>])</div>
+                        <div class="text-slate-500">// Result: [10 20 30] (from start)</div>
+                        <div>fmt.<span class="text-blue-400">Println</span>(nums[:<span class="text-orange-400">3</span>])</div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm">3</span> 
+                    Length & Capacity
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="p-4 bg-primary/5 border border-primary/20 rounded-xl">
+                        <h4 class="font-bold text-primary text-sm mb-1">Length (len)</h4>
+                        <p class="text-xs text-gray-500">The number of elements currently in the slice.</p>
+                    </div>
+                    <div class="p-4 bg-primary/5 border border-primary/20 rounded-xl">
+                        <h4 class="font-bold text-primary text-sm mb-1">Capacity (cap)</h4>
+                        <p class="text-xs text-gray-500">The total space allocated in the underlying array.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm">4</span> 
+                    Looping over Slices
+                </h2>
+                <div class="p-6 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl">
+                    <p class="text-sm mb-4">The <code class="font-mono">range</code> keyword is the idiomatic way to loop through slices in Go.</p>
+                    <div class="bg-slate-950 rounded-lg p-4 font-mono text-xs text-slate-300">
+                        <span class="text-purple-400">for</span> index, value := <span class="text-purple-400">range</span> nums {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;fmt.<span class="text-blue-400">Println</span>(index, value)<br>
+                        }<br><br>
+                        <span class="text-slate-500">// If you don't need the index, use the blank identifier:</span><br>
+                        <span class="text-purple-400">for</span> _, value := <span class="text-purple-400">range</span> nums { ... }
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="bg-slate-900 border border-slate-800 text-slate-300 rounded-2xl p-8 shadow-xl">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="p-2 rounded-lg bg-emerald-500/10 text-emerald-500">
+                            <i data-lucide="flask-conical"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-white">🧪 Mini Exercises</h2>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <span class="text-emerald-500 font-bold">01</span>
+                            <p class="text-sm text-slate-400">Create a slice <code class="text-emerald-400">[5, 10, 15, 20]</code>. Append 25 and 30 to it.</p>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <span class="text-emerald-500 font-bold">02</span>
+                            <p class="text-sm text-slate-400">Slice the result from Exercise 1 to get exactly <code class="text-emerald-400">[10, 15, 20]</code>.</p>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <span class="text-emerald-500 font-bold">03</span>
+                            <p class="text-sm text-slate-400">Loop over the slice and print only the <strong>even</strong> numbers.</p>
+                        </div>
+
+                        <div class="flex items-start gap-3 p-4 rounded-xl bg-amber-500/5 border border-amber-500/20">
+                            <i data-lucide="alert-triangle" class="w-5 h-5 text-amber-500 shrink-0 mt-0.5"></i>
+                            <p class="text-sm text-amber-200/80">
+                                <strong class="text-amber-500">Critical Concept:</strong> Why does <code class="font-mono">append</code> work on slices but fails on arrays? 
+                                <span class="block mt-1 opacity-60 italic">(Answer: Slices are dynamic headers pointing to arrays, while arrays are fixed values.)</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    
+
+    <script src="../../../../js/script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

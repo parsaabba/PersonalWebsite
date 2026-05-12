@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 12: Error Handling in Go</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../css/style.css">
+    <link rel="icon" type="image/svg+xml" href="../../../../assets/icons/favicon.svg">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] }, colors: { primary: '#00ADD8' } } }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-slate-950 text-gray-900 dark:text-slate-300 font-sans transition-colors duration-300">
+    
+    
+
+    <main class="max-w-3xl mx-auto px-6 pt-32 pb-20">
+        
+        <div class="mb-10">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-500/10 text-blue-700 dark:text-blue-400 text-xs font-bold uppercase tracking-wider mb-4">Day 12</div>
+            <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">Error Handling in Go</h1>
+            <p class="text-lg text-gray-600 dark:text-slate-400">Understanding the Go philosophy: errors are values, not exceptions. Master the patterns that keep Go code predictable and explicit.</p>
+        </div>
+
+        <div class="space-y-16">
+            
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm">1</span> 
+                    Errors are Values
+                </h2>
+                <p class="text-sm mb-4 text-gray-600 dark:text-slate-400">In Go, <code class="text-primary font-mono">error</code> is an interface, not an exception. It is returned like any other value, making flow control explicit.</p>
+                
+                <div class="p-6 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl">
+                    <h3 class="font-bold text-primary mb-3">The Classic Pattern</h3>
+                    <div class="bg-slate-950 rounded-lg p-4 font-mono text-xs text-slate-300 mb-4">
+                        value, err := <span class="text-blue-400">someFunction</span>()<br>
+                        <span class="text-purple-400">if</span> err != <span class="text-orange-400">nil</span> {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-slate-500">// handle error</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-purple-400">return</span><br>
+                        }
+                    </div>
+                    <p class="text-xs text-amber-500 font-medium italic">⭐ You will see this pattern in almost every Go project.</p>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm">2</span> 
+                    Creating & Returning Errors
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="p-6 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl">
+                        <h3 class="font-bold text-primary mb-3">Simple Errors</h3>
+                        <p class="text-xs text-gray-500 mb-4">Use the <code>errors</code> package for static messages.</p>
+                        <div class="bg-slate-950 rounded-lg p-4 font-mono text-xs text-slate-300">
+                            <span class="text-purple-400">import</span> <span class="text-yellow-300">"errors"</span><br><br>
+                            errors.<span class="text-blue-400">New</span>(<span class="text-yellow-300">"invalid input"</span>)
+                        </div>
+                    </div>
+
+                    <div class="p-6 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl">
+                        <h3 class="font-bold text-primary mb-3">Formatted Errors</h3>
+                        <p class="text-xs text-gray-500 mb-4">Use <code>fmt.Errorf</code> to include variables in your message.</p>
+                        <div class="bg-slate-950 rounded-lg p-4 font-mono text-xs text-slate-300">
+                            <span class="text-purple-400">import</span> <span class="text-yellow-300">"fmt"</span><br><br>
+                            fmt.<span class="text-blue-400">Errorf</span>(<span class="text-yellow-300">"invalid age: %d"</span>, age)
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm">3</span> 
+                    Understanding "nil"
+                </h2>
+                <div class="p-6 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl">
+                    <p class="text-sm mb-4">In Go, <code class="text-primary font-mono">nil</code> represents "no value". It is the default value for interfaces and errors.</p>
+                    <div class="bg-slate-950 rounded-lg p-4 font-mono text-xs text-slate-300">
+                        <span class="text-purple-400">var</span> err <span class="text-blue-400">error</span><br>
+                        fmt.<span class="text-blue-400">Println</span>(err == <span class="text-orange-400">nil</span>) <span class="text-slate-500">// true</span>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="bg-slate-900 border border-slate-800 text-slate-300 rounded-2xl p-8 shadow-xl">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="p-2 rounded-lg bg-emerald-500/10 text-emerald-500">
+                            <i data-lucide="flask-conical"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-white">🧪 Mini Exercises</h2>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <span class="text-emerald-500 font-bold">01</span>
+                            <p class="text-sm text-slate-400">Write a function <code class="text-emerald-400">func sqrt(n float64) (float64, error)</code> that returns an error if the input <code class="font-mono">n</code> is negative.</p>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <span class="text-emerald-500 font-bold">02</span>
+                            <p class="text-sm text-slate-400">Modify your CLI calculator to return an error for invalid operators or division by zero, and handle it in <code class="font-mono">main</code>.</p>
+                        </div>
+
+                        <div class="flex items-start gap-3 p-4 rounded-xl bg-amber-500/5 border border-amber-500/20">
+                            <i data-lucide="help-circle" class="w-5 h-5 text-amber-500 shrink-0 mt-0.5"></i>
+                            <p class="text-sm text-amber-200/80">
+                                <strong class="text-amber-500">Think:</strong> Why does Go prefer returning <code class="font-mono">value, err</code> over throwing exceptions? 
+                                <span class="block mt-1 opacity-60 italic">(Answer: It makes error handling explicit, predictable, and easier to reason about during code review.)</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    
+
+    <script src="../../../../js/script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

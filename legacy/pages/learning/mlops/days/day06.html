@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 6: Templates & Jinja2</title>
+
+    <script>
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: { 
+                extend: { 
+                    fontFamily: { sans: ['Inter', 'sans-serif'] }, 
+                    colors: { 
+                        // Set to Flask Green
+                        primary: '#48c774' 
+                    } 
+                } 
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-slate-950 text-gray-900 dark:text-slate-300 font-sans transition-colors duration-300">
+    
+    
+
+    <main class="max-w-3xl mx-auto px-6 pt-32 pb-20">
+        
+        <div class="mb-10">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 dark:bg-primary/10 text-primary dark:text-primary text-xs font-bold uppercase tracking-wider mb-4">Day 6</div>
+            <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">Templates & Jinja2</h1>
+            <p class="text-lg text-gray-600 dark:text-slate-400">Mastering Server-Side Rendering (SSR) to build dynamic, secure, and maintainable user interfaces.</p>
+        </div>
+
+        <div class="space-y-16">
+            
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-bold">1</span> 
+                    Server-Side Rendering (SSR)
+                </h2>
+                <p class="text-sm mb-6 leading-relaxed">
+                    In Flask, HTML is generated on the <strong>Server</strong> before being sent to the browser. This ensures fast initial loads and excellent SEO. 
+                </p>
+
+                
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+                    <div class="p-5 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl">
+                        <h3 class="font-bold text-xs uppercase text-slate-500 mb-3">The Logic (Python)</h3>
+                        <div class="bg-slate-950 p-3 rounded font-mono text-[11px] text-primary">
+                            return render_template('index.html', user=u)
+                        </div>
+                    </div>
+                    <div class="p-5 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl">
+                        <h3 class="font-bold text-xs uppercase text-slate-500 mb-3">The UI (Jinja2)</h3>
+                        <div class="bg-slate-950 p-3 rounded font-mono text-[11px] text-emerald-400">
+                            &lt;h1&gt;Hello {{ user.name }}&lt;/h1&gt;
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-bold">2</span> 
+                    The DRY Principle: Inheritance
+                </h2>
+                <p class="text-sm mb-6">Instead of copy-pasting your navbar and footer, use <strong>Template Inheritance</strong> to create a base layout that other pages simply "fill in."</p>
+                
+                <div class="bg-slate-950 rounded-xl p-6 border border-slate-800 font-mono text-xs shadow-2xl space-y-4">
+                    <div>
+                        <span class="text-slate-500"># base.html (The Parent)</span>
+                        <div class="text-slate-300 mt-1">&lt;nav&gt;...&lt;/nav&gt;</div>
+                        <div class="text-primary">{% block content %}{% endblock %}</div>
+                        <div class="text-slate-300">&lt;footer&gt;...&lt;/footer&gt;</div>
+                    </div>
+                    <div class="pt-4 border-t border-slate-800">
+                        <span class="text-slate-500"># home.html (The Child)</span>
+                        <div class="text-emerald-400 mt-1">{% extends "base.html" %}</div>
+                        <div class="text-primary">{% block content %}</div>
+                        <div class="text-slate-300 pl-4">&lt;h1&gt;Welcome to Home&lt;/h1&gt;</div>
+                        <div class="text-primary">{% endblock %}</div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-bold">3</span> 
+                    Loops & Conditions
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="p-6 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl">
+                        <h3 class="font-bold text-sm mb-3">Conditional Logic</h3>
+                        <div class="bg-slate-950 p-4 rounded-lg font-mono text-[10px] text-pink-400">
+                            {% if user.is_active %}<br>
+                            &nbsp;&nbsp;&lt;span&gt;Online&lt;/span&gt;<br>
+                            {% else %}<br>
+                            &nbsp;&nbsp;&lt;span&gt;Offline&lt;/span&gt;<br>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="p-6 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl">
+                        <h3 class="font-bold text-sm mb-3">Dynamic Lists</h3>
+                        <div class="bg-slate-950 p-4 rounded-lg font-mono text-[10px] text-primary">
+                            {% for item in items %}<br>
+                            &nbsp;&nbsp;&lt;li&gt;{{ item.name }}&lt;/li&gt;<br>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="bg-slate-900 border border-slate-800 text-slate-300 rounded-2xl p-8 shadow-xl">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="p-2 rounded-lg bg-primary/10 text-primary">
+                            <i data-lucide="shield-check"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-white">🔒 Auto-Escaping Security</h2>
+                    </div>
+                    
+                    <p class="text-sm text-slate-400 mb-6">Jinja2 automatically prevents <strong>Cross-Site Scripting (XSS)</strong> by turning dangerous characters into harmless text. This is a core backend safety feature.</p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="p-4 bg-slate-950 rounded-lg border border-slate-800">
+                            <div class="text-[10px] text-slate-500 uppercase mb-2">User Input</div>
+                            <code class="text-xs text-red-400">&lt;script&gt;alert('Hacked')&lt;/script&gt;</code>
+                        </div>
+                        <div class="p-4 bg-slate-950 rounded-lg border border-slate-800">
+                            <div class="text-[10px] text-slate-500 uppercase mb-2">Rendered Output</div>
+                            <code class="text-xs text-primary">&amp;lt;script&amp;gt;...</code>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    
+
+    <script>
+        lucide.createIcons();
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const html = document.documentElement;
+
+        const updateIcon = (isDark) => {
+            themeIcon.setAttribute('data-lucide', isDark ? 'sun' : 'moon');
+            lucide.createIcons();
+        };
+
+        // Initialize icon state
+        updateIcon(html.classList.contains('dark'));
+
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            const isDark = html.classList.contains('dark');
+            
+            // SAVE preference to localStorage
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            updateIcon(isDark);
+        });
+    </script>
+</body>
+</html>

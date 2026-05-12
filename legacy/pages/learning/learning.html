@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Roadmap | Parsa Abbasian - Technical Skills & Progress</title>
+    <meta name="description"
+        content="Track Parsa Abbasian's technical learning journey, including DSA, machine learning, deep learning, and cloud infrastructure.">
+    <meta name="keywords"
+        content="Parsa Abbasian, Learning Journey, Technical Roadmap, DSA, Machine Learning, Deep Learning, Cloud Infrastructure, Software Engineer Roadmap">
+    <link rel="canonical" href="https://parsaabbasian.com/pages/learning/learning.html">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Learning Roadmap | Parsa Abbasian">
+    <meta property="og:description" content="A detailed look at my technical learning journey and skills progress.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://parsaabbasian.com/pages/learning/learning.html">
+    <meta property="og:image" content="https://parsaabbasian.com/assets/icons/favicon.svg">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="icon" type="image/svg+xml" href="../../assets/icons/favicon.svg">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] }, colors: { primary: '#6366f1' } } }
+        }
+    </script>
+</head>
+
+<body class="bg-gray-50 dark:bg-slate-950 text-gray-900 dark:text-slate-300 font-sans transition-colors duration-300">
+
+
+
+    <main class="max-w-4xl mx-auto px-6 pt-32 pb-20">
+        <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">My Learning Journey</h1>
+        <p class="text-gray-600 dark:text-slate-400 mb-8 max-w-2xl leading-relaxed">
+            I believe in continuous improvement. Here is a snapshot of the technical topics I am currently diving into,
+            tracking my progress from "Just Started" to "Mastery".
+        </p>
+
+        <div class="flex flex-wrap gap-3 mb-10">
+            <button onclick="filterProjects('all')" id="btn-all"
+                class="filter-btn px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 bg-primary text-white shadow-lg shadow-primary/25 border border-transparent">
+                All
+            </button>
+
+            <button onclick="filterProjects('in-process')" id="btn-in-process"
+                class="filter-btn px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 bg-white dark:bg-slate-800 text-gray-600 dark:text-slate-300 border border-gray-200 dark:border-white/10 hover:bg-primary hover:text-white hover:border-primary">
+                In Process
+            </button>
+
+            <button onclick="filterProjects('completed')" id="btn-completed"
+                class="filter-btn px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 bg-white dark:bg-slate-800 text-gray-600 dark:text-slate-300 border border-gray-200 dark:border-white/10 hover:bg-primary hover:text-white hover:border-primary">
+                Completed
+            </button>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="learning-list-full">
+        </div>
+    </main>
+    <script src="../../js/script.js"></script>
+</body>
+
+</html>

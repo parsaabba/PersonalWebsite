@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 1: Go Installation & First Program</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../css/style.css">
+    <link rel="icon" type="image/svg+xml" href="../../../../assets/icons/favicon.svg">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] }, colors: { primary: '#00ADD8' } } }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-slate-950 text-gray-900 dark:text-slate-300 font-sans transition-colors duration-300">
+    
+    
+
+    <main class="max-w-3xl mx-auto px-6 pt-32 pb-20">
+        
+        <div class="mb-10">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-500/10 text-blue-700 dark:text-blue-400 text-xs font-bold uppercase tracking-wider mb-4">Day 1</div>
+            <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">Go Installation & First Program</h1>
+            <p class="text-lg text-gray-600 dark:text-slate-400">Setting up your environment and understanding the anatomy of a Go application.</p>
+        </div>
+
+        <div class="space-y-16">
+            
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm">1</span> 
+                    Installation & Verification
+                </h2>
+                
+                <div class="space-y-4">
+                    <div class="p-6 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl">
+                        <h3 class="font-bold mb-2 flex items-center gap-2"><i data-lucide="download" class="w-4 h-4 text-primary"></i> Step 1: Install Go</h3>
+                        <p class="text-sm leading-relaxed">Go to <a href="https://go.dev/dl" class="text-primary underline">go.dev/dl</a> and download the version for your OS. Follow the standard installation wizard (next &rarr; finish).</p>
+                    </div>
+
+                    <div class="p-6 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl">
+                        <h3 class="font-bold mb-2 flex items-center gap-2"><i data-lucide="terminal" class="w-4 h-4 text-primary"></i> Step 2: Verify Installation</h3>
+                        <p class="text-sm mb-3">Open your Terminal or PowerShell and run:</p>
+                        <div class="bg-slate-950 rounded-lg p-3 font-mono text-xs text-green-400">
+                            go version
+                        </div>
+                        <p class="text-xs mt-2 text-gray-500 italic">Expected output: go version go1.22.x windows/amd64 (or similar)</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm">2</span> 
+                    Creating the Project
+                </h2>
+                <ol class="space-y-6 list-none text-gray-700 dark:text-slate-300">
+                    <li class="flex gap-4">
+                        <div class="flex-none w-6 h-6 rounded bg-slate-200 dark:bg-slate-800 flex items-center justify-center text-xs font-bold">1</div>
+                        <div>
+                            <strong>Create a folder:</strong>
+                            <div class="bg-slate-950 rounded-xl overflow-hidden border border-slate-800 font-mono text-sm shadow-2xl mt-2">
+                                <div class="p-4 text-slate-300">
+                                    mkdir go-day1<br>
+                                    cd go-day1
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="flex gap-4">
+                        <div class="flex-none w-6 h-6 rounded bg-slate-200 dark:bg-slate-800 flex items-center justify-center text-xs font-bold">2</div>
+                        <div>
+                            <strong>Create the file:</strong>
+                            <p class="text-sm mt-1">Inside the folder, create a file named <code>main.go</code> and paste this code:</p>
+                            <div class="bg-slate-950 rounded-xl overflow-hidden border border-slate-800 font-mono text-sm shadow-2xl mt-3">
+                                <div class="flex gap-2 p-3 border-b border-slate-800 bg-slate-900/50">
+                                    <span class="text-xs text-slate-500 uppercase">main.go</span>
+                                </div>
+                                <div class="p-4 text-slate-300">
+                                    <span class="text-purple-400">package</span> main<br><br>
+                                    <span class="text-purple-400">import</span> <span class="text-yellow-300">"fmt"</span><br><br>
+                                    <span class="text-purple-400">func</span> <span class="text-blue-400">main</span>() {<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;fmt.<span class="text-blue-400">Println</span>(<span class="text-yellow-300">"Hello, Parsa! Welcome to Go."</span>)<br>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ol>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm">3</span> 
+                    Line-by-Line Breakdown
+                </h2>
+                <div class="grid grid-cols-1 gap-4">
+                    <div class="flex items-start gap-4 p-4 rounded-lg bg-slate-100 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800">
+                        <code class="text-primary font-bold whitespace-nowrap">package main</code>
+                        <p class="text-sm">Every Go file starts with a package declaration. <strong>main</strong> tells Go this is an executable program, not just a library.</p>
+                    </div>
+                    <div class="flex items-start gap-4 p-4 rounded-lg bg-slate-100 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800">
+                        <code class="text-primary font-bold whitespace-nowrap">import "fmt"</code>
+                        <p class="text-sm">Short for <strong>Format</strong>. It’s a standard library used for printing text to the console and handling input/output.</p>
+                    </div>
+                    <div class="flex items-start gap-4 p-4 rounded-lg bg-slate-100 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800">
+                        <code class="text-primary font-bold whitespace-nowrap">func main()</code>
+                        <p class="text-sm">The <strong>Entry Point</strong>. When you run the program, the computer starts executing instructions from inside these curly braces.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm">4</span> 
+                    Run & Build
+                </h2>
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-lg font-semibold mb-2">Method A: Quick Run (Development)</h3>
+                        <p class="text-sm text-gray-600 dark:text-slate-400 mb-3">Compiles and runs the code instantly without saving a binary.</p>
+                        <div class="bg-slate-950 rounded-lg p-4 font-mono text-sm shadow-lg">
+                            <span class="text-green-400">go run</span> main.go
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold mb-2">Method B: Build (Production)</h3>
+                        <p class="text-sm text-gray-600 dark:text-slate-400 mb-3">Creates a standalone <code>.exe</code> or binary file you can give to anyone.</p>
+                        <div class="bg-slate-950 rounded-lg p-4 font-mono text-sm shadow-lg">
+                            <span class="text-green-400">go build</span><br>
+                            <span class="text-slate-500"># To run the created file:</span><br>
+                            ./main
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+    <section>
+        <div class="bg-slate-900 border border-slate-800 text-slate-300 rounded-2xl p-8 shadow-xl">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="p-2 rounded-lg bg-emerald-500/10 text-emerald-500">
+                    <i data-lucide="flask-conical"></i>
+                </div>
+                <h2 class="text-2xl font-bold text-white">🧪 Mini Exercise</h2>
+            </div>
+            
+            <p class="mb-6 text-slate-400">Modify your <code class="text-emerald-400">main.go</code> file so that it prints the following three lines using multiple <code class="text-emerald-400">fmt.Println</code> calls:</p>
+            
+            <div class="bg-slate-950 rounded-lg p-5 font-mono text-sm border border-slate-800 mb-6 relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-1 h-full bg-emerald-500"></div>
+                <div class="text-slate-300">Go is fast.</div>
+                <div class="text-slate-300">Go is simple.</div>
+                <div class="text-slate-300">Go is powerful.</div>
+            </div>
+            
+            <div class="flex items-start gap-3 p-4 rounded-xl bg-amber-500/5 border border-amber-500/20">
+                <i data-lucide="lightbulb" class="w-5 h-5 text-amber-500 shrink-0 mt-0.5"></i>
+                <p class="text-sm text-amber-200/80">
+                    <strong class="text-amber-500">Hint:</strong> You can use <code>fmt.Println()</code> as many times as you want inside the <code>main()</code> function. Each call will start on a new line.
+                </p>
+            </div>
+        </div>
+    </section>
+
+        </div>
+    </main>
+
+    
+
+    <script src="../../../../js/script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

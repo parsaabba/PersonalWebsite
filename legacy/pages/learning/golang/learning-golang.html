@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Go Programming Journey</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/style.css">
+    <link rel="icon" type="image/svg+xml" href="../../../assets/icons/favicon.svg">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] }, colors: { primary: '#00ADD8' } } }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-slate-950 text-gray-900 dark:text-slate-300 font-sans transition-colors duration-300">
+    
+    
+
+    <main class="max-w-4xl mx-auto px-6 pt-32 pb-20">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
+            <div>
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-100 dark:bg-cyan-500/10 text-cyan-700 dark:text-cyan-400 text-xs font-bold uppercase tracking-wider mb-2">In Progress</div>
+                <h1 class="text-4xl font-bold text-gray-900 dark:text-white">Go (Golang) Programming</h1>
+            </div>
+        </div>
+        <p class="text-lg text-gray-600 dark:text-slate-300 leading-relaxed mb-10 max-w-2xl">4 weeks to mastery. From syntax fundamentals to high-performance concurrency and REST APIs.</p>
+        
+        <div id="golang-calendar-view" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4 mb-16"></div>
+
+    </main>
+
+    <div id="modal-overlay" class="modal-overlay hidden">
+        <div class="modal-content bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 p-8 rounded-2xl shadow-2xl max-w-lg w-full mx-4 relative">
+            <button id="modal-close-btn" class="absolute top-4 right-4 p-2 text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <div id="modal-status" class="mb-4"></div>
+            <h2 id="modal-title" class="text-2xl font-bold text-gray-900 dark:text-white mb-4"></h2>
+            <div class="prose dark:prose-invert">
+                <p id="modal-desc" class="text-gray-600 dark:text-slate-300 leading-relaxed whitespace-pre-line"></p>
+            </div>
+            <div id="modal-link-container" class="mt-6"></div>
+        </div>
+    </div>
+
+    <script src="../../../js/script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // 1. Initialize the interactive grid squares from script.js
+            renderCalendar('golang');
+            
+            // Refresh icons for dynamic content
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

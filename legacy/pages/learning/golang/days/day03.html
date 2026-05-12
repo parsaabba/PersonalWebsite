@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 3: Control Flow in Go</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../css/style.css">
+    <link rel="icon" type="image/svg+xml" href="../../../../assets/icons/favicon.svg">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] }, colors: { primary: '#00ADD8' } } }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-slate-950 text-gray-900 dark:text-slate-300 font-sans transition-colors duration-300">
+    
+    
+
+    <main class="max-w-3xl mx-auto px-6 pt-32 pb-20">
+        
+        <div class="mb-10">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-500/10 text-blue-700 dark:text-blue-400 text-xs font-bold uppercase tracking-wider mb-4">Day 3</div>
+            <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">Control Flow in Go</h1>
+            <p class="text-lg text-gray-600 dark:text-slate-400">Mastering program logic using conditional statements, switch cases, and logical operators.</p>
+        </div>
+
+        <div class="space-y-16">
+            
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm">1</span> 
+                    The if / else Statement
+                </h2>
+                
+                <div class="space-y-6">
+                    <div class="p-6 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl">
+                        <h3 class="font-bold text-primary mb-3">Basic Conditional</h3>
+                        <p class="text-sm mb-4">Go conditions do not use parentheses, and curly braces are strictly mandatory.</p>
+                        <div class="bg-slate-950 rounded-lg p-4 font-mono text-xs text-slate-300">
+                            age := <span class="text-orange-400">20</span><br>
+                            <span class="text-purple-400">if</span> age >= <span class="text-orange-400">18</span> {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;fmt.<span class="text-blue-400">Println</span>(<span class="text-yellow-300">"You are an adult."</span>)<br>
+                            }
+                        </div>
+                    </div>
+
+                    <div class="p-6 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl">
+                        <h3 class="font-bold text-primary mb-3">if with Initialization (Go-Style ⭐)</h3>
+                        <p class="text-sm mb-4">Declare a variable directly in the if statement. It only exists within that scope.</p>
+                        <div class="bg-slate-950 rounded-lg p-4 font-mono text-xs text-slate-300">
+                            <span class="text-purple-400">if</span> x := <span class="text-orange-400">10</span>; x > <span class="text-orange-400">5</span> {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;fmt.<span class="text-blue-400">Println</span>(<span class="text-yellow-300">"x is greater than 5"</span>)<br>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm">2</span> 
+                    Comparison & Logical Operators
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="overflow-hidden border border-gray-200 dark:border-slate-800 rounded-xl text-sm">
+                        <div class="bg-gray-50 dark:bg-slate-900 px-4 py-2 font-bold border-b border-gray-200 dark:border-slate-800">Comparison</div>
+                        <div class="p-4 space-y-2 font-mono">
+                            <div class="flex justify-between"><span>==</span> <span class="text-gray-500">Equal</span></div>
+                            <div class="flex justify-between"><span>!=</span> <span class="text-gray-500">Not Equal</span></div>
+                            <div class="flex justify-between"><span>></span> <span class="text-gray-500">Greater Than</span></div>
+                            <div class="flex justify-between"><span><</span> <span class="text-gray-500">Less Than</span></div>
+                        </div>
+                    </div>
+                    <div class="overflow-hidden border border-gray-200 dark:border-slate-800 rounded-xl text-sm">
+                        <div class="bg-gray-50 dark:bg-slate-900 px-4 py-2 font-bold border-b border-gray-200 dark:border-slate-800">Logical</div>
+                        <div class="p-4 space-y-2 font-mono">
+                            <div class="flex justify-between"><span>&&</span> <span class="text-gray-500">AND</span></div>
+                            <div class="flex justify-between"><span>||</span> <span class="text-gray-500">OR</span></div>
+                            <div class="flex justify-between"><span>!</span> <span class="text-gray-500">NOT</span></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm">3</span> 
+                    The switch Statement
+                </h2>
+                <div class="p-6 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl">
+                    <p class="text-sm mb-4">Go is cleaner: no <code class="font-mono">break</code> is needed between cases.</p>
+                    <div class="bg-slate-950 rounded-lg p-4 font-mono text-xs text-slate-300">
+                        day := <span class="text-orange-400">3</span><br>
+                        <span class="text-purple-400">switch</span> day {<br>
+                        <span class="text-purple-400">case</span> <span class="text-orange-400">1</span>:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;fmt.<span class="text-blue-400">Println</span>(<span class="text-yellow-300">"Monday"</span>)<br>
+                        <span class="text-purple-400">case</span> <span class="text-orange-400">2</span>, <span class="text-orange-400">3</span>:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;fmt.<span class="text-blue-400">Println</span>(<span class="text-yellow-300">"Tuesday or Wednesday"</span>)<br>
+                        <span class="text-purple-400">default</span>:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;fmt.<span class="text-blue-400">Println</span>(<span class="text-yellow-300">"Invalid"</span>)<br>
+                        }
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="bg-slate-900 border border-slate-800 text-slate-300 rounded-2xl p-8 shadow-xl">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="p-2 rounded-lg bg-emerald-500/10 text-emerald-500">
+                            <i data-lucide="flask-conical"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-white">🧪 Mini Exercises</h2>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <p class="mb-3 text-slate-400 font-bold">Exercise 1: Number Checker</p>
+                            <p class="text-sm text-slate-400">Write a program that takes a number and prints <code class="text-emerald-400">Positive</code>, <code class="text-emerald-400">Negative</code>, or <code class="text-emerald-400">Zero</code> using if/else.</p>
+                        </div>
+
+                        <div class="h-px bg-slate-800"></div>
+
+                        <div>
+                            <p class="mb-3 text-slate-400 font-bold">Exercise 2: Weekday Switch</p>
+                            <p class="text-sm text-slate-400">Create a switch statement that takes a number from 1–7 and prints the corresponding day of the week.</p>
+                        </div>
+
+                        <div class="flex items-start gap-3 p-4 rounded-xl bg-amber-500/5 border border-amber-500/20">
+                            <i data-lucide="help-circle" class="w-5 h-5 text-amber-500 shrink-0 mt-0.5"></i>
+                            <p class="text-sm text-amber-200/80">
+                                <strong class="text-amber-500">Think:</strong> Why is calling <code class="font-mono">fmt.Println(x)</code> outside an <code class="font-mono">if x := 5; ...</code> block invalid?
+                                <span class="block mt-1 opacity-60 italic">(Answer: x is scoped only inside the if block.)</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    
+
+    <script src="../../../../js/script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

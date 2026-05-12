@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 26: Go Best Practices & Idiomatic Code</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../css/style.css">
+    <link rel="icon" type="image/svg+xml" href="../../../../assets/icons/favicon.svg">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] }, colors: { primary: '#00ADD8' } } }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-slate-950 text-gray-900 dark:text-slate-300 font-sans transition-colors duration-300">
+    
+    
+
+    <main class="max-w-3xl mx-auto px-6 pt-32 pb-20">
+        
+        <div class="mb-10">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-500/10 text-blue-700 dark:text-blue-400 text-xs font-bold uppercase tracking-wider mb-4">Day 26</div>
+            <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">Go Best Practices</h1>
+            <p class="text-lg text-gray-600 dark:text-slate-400">Writing "idiomatic" Go. Learn the conventions and philosophy that separate a Go developer from someone just writing C++ or Java in Go.</p>
+        </div>
+
+        <div class="space-y-16">
+            
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm">1</span> 
+                    The Zen of Go
+                </h2>
+                <div class="p-6 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl">
+                    <p class="text-sm mb-4 text-gray-600 dark:text-slate-400">Go values <strong>simplicity</strong> and <strong>readability</strong> over "clever" code. If a junior developer can't understand your logic at first glance, it likely isn't idiomatic Go.</p>
+                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                        <li class="flex items-center gap-2 p-3 bg-gray-50 dark:bg-slate-800/50 rounded-lg">
+                            <i data-lucide="check" class="text-emerald-500 w-4 h-4"></i> Explicit over implicit
+                        </li>
+                        <li class="flex items-center gap-2 p-3 bg-gray-50 dark:bg-slate-800/50 rounded-lg">
+                            <i data-lucide="check" class="text-emerald-500 w-4 h-4"></i> Avoid deep nesting
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm">2</span> 
+                    Standard Layout
+                </h2>
+                <p class="text-sm mb-6 text-gray-600 dark:text-slate-400">For scalable applications, follow the community-accepted folder structure to separate entry points from internal logic.</p>
+                
+                
+
+                <div class="bg-slate-950 rounded-xl p-6 font-mono text-xs text-slate-300 border border-slate-800 shadow-lg mt-6">
+                    <div class="space-y-2">
+                        <div><span class="text-emerald-400">/cmd</span> <span class="text-slate-500">// Main applications (binaries)</span></div>
+                        <div><span class="text-emerald-400">/internal</span> <span class="text-slate-500">// Private code; cannot be imported by others</span></div>
+                        <div><span class="text-emerald-400">/pkg</span> <span class="text-slate-500">// Reusable library code</span></div>
+                        <div><span class="text-emerald-400">/api</span> <span class="text-slate-500">// API protocol definitions (Swagger, etc.)</span></div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm">3</span> 
+                    The Mandatory Toolkit
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="p-6 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl">
+                        <h3 class="font-bold text-primary mb-3 flex items-center gap-2"><i data-lucide="layout-template" class="w-4 h-4"></i> gofmt</h3>
+                        <p class="text-xs text-gray-500">Go code has one standard format. Run <code class="font-mono">gofmt -w .</code> to auto-format everything. There are no arguments about curly brace placement in Go.</p>
+                    </div>
+                    <div class="p-6 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl">
+                        <h3 class="font-bold text-primary mb-3 flex items-center gap-2"><i data-lucide="shield-check" class="w-4 h-4"></i> go vet</h3>
+                        <p class="text-xs text-gray-500">Analyzes source code and reports suspicious constructs, such as printf calls whose arguments do not align with the format string.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="bg-slate-900 border border-slate-800 text-slate-300 rounded-2xl p-8 shadow-xl">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="p-2 rounded-lg bg-emerald-500/10 text-emerald-500">
+                            <i data-lucide="brain-circuit"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-white">🧠 Mental Check</h2>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <span class="text-emerald-500 font-bold">01</span>
+                            <p class="text-sm text-slate-400">Review your Student Management System. Are your functions starting with Capital letters unless they need to be private? <strong>Idiom:</strong> Export only what is necessary.</p>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <span class="text-emerald-500 font-bold">02</span>
+                            <p class="text-sm text-slate-400">Do you have <code class="font-mono">panic</code> in your handlers? Replace them with <code class="font-mono text-emerald-400">return err</code> and handle the failure at the caller level.</p>
+                        </div>
+
+                        <div class="flex items-start gap-3 p-4 rounded-xl bg-amber-500/5 border border-amber-500/20">
+                            <i data-lucide="help-circle" class="w-5 h-5 text-amber-500 shrink-0 mt-0.5"></i>
+                            <div class="text-sm text-amber-200/80">
+                                <strong class="text-amber-500">Think:</strong> Why is it common to see single-letter variable names like <code class="font-mono">r</code> for request or <code class="font-mono">w</code> for writer in Go?
+                                <span class="block mt-1 opacity-60 italic">(Answer: Go prefers short names for variables with short scopes. If a variable is only used in a 3-line function, its meaning is clear from context.)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    
+
+    <script src="../../../../js/script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

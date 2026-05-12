@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 2: Variables & Data Types</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../css/style.css">
+    <link rel="icon" type="image/svg+xml" href="../../../../assets/icons/favicon.svg">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] }, colors: { primary: '#00ADD8' } } }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-slate-950 text-gray-900 dark:text-slate-300 font-sans transition-colors duration-300">
+    
+    
+
+    <main class="max-w-3xl mx-auto px-6 pt-32 pb-20">
+        
+        <div class="mb-10">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-500/10 text-blue-700 dark:text-blue-400 text-xs font-bold uppercase tracking-wider mb-4">Day 2</div>
+            <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">Variables & Data Types</h1>
+            <p class="text-lg text-gray-600 dark:text-slate-400">Mastering variable declarations, basic types, and the difference between <code class="text-primary font-mono">var</code> and <code class="text-primary font-mono">:=</code>.</p>
+        </div>
+
+        <div class="space-y-16">
+            
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm">1</span> 
+                    Declaring Variables
+                </h2>
+                
+                <div class="grid grid-cols-1 gap-6">
+                    <div class="p-6 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl">
+                        <h3 class="font-bold text-primary mb-3">Method 1: The 'var' keyword</h3>
+                        <p class="text-sm mb-4">Explicit and clear. Used when you want type clarity or are declaring variables outside functions.</p>
+                        <div class="bg-slate-950 rounded-lg p-4 font-mono text-xs text-slate-300">
+                            <span class="text-purple-400">var</span> age <span class="text-blue-400">int</span> = <span class="text-orange-400">20</span><br>
+                            <span class="text-purple-400">var</span> name <span class="text-blue-400">string</span> = <span class="text-yellow-300">"Parsa"</span>
+                        </div>
+                    </div>
+
+                    <div class="p-6 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl">
+                        <h3 class="font-bold text-primary mb-3">Method 2: Short Declaration (:=)</h3>
+                        <p class="text-sm mb-4">The most common way. Go automatically detects the type.</p>
+                        <div class="bg-slate-950 rounded-lg p-4 font-mono text-xs text-slate-300">
+                            city := <span class="text-yellow-300">"Toronto"</span> <span class="text-slate-500">// Go detects string</span><br>
+                            gpa := <span class="text-orange-400">7.75</span> <span class="text-slate-500">// Go detects float64</span>
+                        </div>
+                        <div class="mt-4 p-3 bg-red-500/10 border border-red-500/20 rounded-lg">
+                            <p class="text-xs text-red-400"><strong>Note:</strong> <code class="font-mono">:=</code> only works inside functions and cannot be used for reassignment.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm">2</span> 
+                    Basic Data Types
+                </h2>
+                <div class="overflow-hidden border border-gray-200 dark:border-slate-800 rounded-xl">
+                    <table class="w-full text-left text-sm">
+                        <thead class="bg-gray-50 dark:bg-slate-900">
+                            <tr>
+                                <th class="px-6 py-3 font-bold">Type</th>
+                                <th class="px-6 py-3 font-bold">Example</th>
+                                <th class="px-6 py-3 font-bold">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200 dark:divide-slate-800">
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-primary">int</td>
+                                <td class="px-6 py-4 font-mono">10</td>
+                                <td class="px-6 py-4">Whole numbers (Integers)</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-primary">float64</td>
+                                <td class="px-6 py-4 font-mono">7.75</td>
+                                <td class="px-6 py-4">Decimal numbers</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-primary">string</td>
+                                <td class="px-6 py-4 font-mono">"Hello"</td>
+                                <td class="px-6 py-4">Textual data</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-mono text-primary">bool</td>
+                                <td class="px-6 py-4 font-mono">true</td>
+                                <td class="px-6 py-4">Logical true or false</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm">3</span> 
+                    Constants & Clean Code
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="p-6 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl">
+                        <h3 class="font-bold mb-2">Constants (const)</h3>
+                        <p class="text-xs text-gray-500 mb-4">Values that never change.</p>
+                        <div class="bg-slate-950 rounded-lg p-4 font-mono text-xs text-slate-300">
+                            <span class="text-purple-400">const</span> pi = <span class="text-orange-400">3.14</span><br>
+                            <span class="text-slate-500">// pi = 3.15 -> Error!</span>
+                        </div>
+                    </div>
+                    <div class="p-6 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl">
+                        <h3 class="font-bold mb-2">Multiple Declaration</h3>
+                        <p class="text-xs text-gray-500 mb-4">Keep your code idiomatic and clean.</p>
+                        <div class="bg-slate-950 rounded-lg p-4 font-mono text-xs text-slate-300">
+                            x, y := <span class="text-orange-400">10</span>, <span class="text-orange-400">20</span><br>
+                            name, age := <span class="text-yellow-300">"Go"</span>, <span class="text-orange-400">14</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="bg-slate-900 border border-slate-800 text-slate-300 rounded-2xl p-8 shadow-xl">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="p-2 rounded-lg bg-emerald-500/10 text-emerald-500">
+                            <i data-lucide="flask-conical"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-white">🧪 Mini Exercises</h2>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <p class="mb-3 text-slate-400 font-bold">Exercise 1: Profile</p>
+                            <p class="text-sm mb-4 text-slate-400">Create variables for your <strong>name</strong>, <strong>age</strong>, <strong>GPA</strong>, and a boolean for <strong>"likesGo"</strong>. Print them all using <code class="text-emerald-400">fmt.Println</code>.</p>
+                        </div>
+
+                        <div class="h-px bg-slate-800"></div>
+
+                        <div>
+                            <p class="mb-3 text-slate-400 font-bold">Exercise 2: Immutable Graduation</p>
+                            <p class="text-sm mb-4 text-slate-400">Create a constant <code class="text-emerald-400">graduationYear = 2029</code>. Try to assign it a new value in the next line and observe the compiler error.</p>
+                        </div>
+
+                        <div class="flex items-start gap-3 p-4 rounded-xl bg-amber-500/5 border border-amber-500/20">
+                            <i data-lucide="help-circle" class="w-5 h-5 text-amber-500 shrink-0 mt-0.5"></i>
+                            <p class="text-sm text-amber-200/80">
+                                <strong class="text-amber-500">Think:</strong> Why does <code class="font-mono">age := 20</code> followed by <code class="font-mono">age := 21</code> fail? 
+                                <span class="block mt-1 opacity-60 italic">(Answer: := cannot redeclare an existing variable in the same scope.)</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    
+
+    <script src="../../../../js/script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

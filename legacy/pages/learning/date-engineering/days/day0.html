@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 0: Why Rust Exists</title>
+
+    <script>
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: { 
+                extend: { 
+                    fontFamily: { sans: ['Inter', 'sans-serif'] }, 
+                    colors: { 
+                        primary: '#ea580c' // Rust Orange (orange-600)
+                    } 
+                } 
+            }
+        }
+    </script>
+    <style>
+        .backdrop-blur-md { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #ea580c; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-slate-950 text-gray-900 dark:text-slate-300 font-sans transition-colors duration-300">
+    
+    
+
+    <main class="max-w-3xl mx-auto px-6 pt-32 pb-20">
+        
+        <div class="mb-12">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-100 dark:bg-primary/10 text-primary dark:text-primary text-xs font-bold uppercase tracking-wider mb-4">Day 0</div>
+            <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">Why Rust Exists</h1>
+            <p class="text-lg text-gray-600 dark:text-slate-400">Comparing Python, C++, and Go to understand the unique mission of the Rust programming language.</p>
+        </div>
+
+        <div class="space-y-16">
+            
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-bold">1</span> 
+                    The Core Similarities
+                </h2>
+                <p class="mb-6 leading-relaxed">Before looking at differences, we must acknowledge that Python, C++, and Go share a fundamental DNA with Rust. They are all <strong>General Purpose</strong>, support <strong>Procedural Logic</strong> (Variables, Loops, Functions), and allow for <strong>Concurrency</strong>.</p>
+                
+                
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+                    <div class="p-6 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl">
+                        <h3 class="font-bold mb-2 flex items-center gap-2 text-primary"><i data-lucide="terminal" class="w-4 h-4"></i> Logic</h3>
+                        <p class="text-sm text-gray-600 dark:text-slate-400">All follow the Input → Process → Output model using standard control flow.</p>
+                    </div>
+                    <div class="p-6 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl">
+                        <h3 class="font-bold mb-2 flex items-center gap-2 text-primary"><i data-lucide="layers" class="w-4 h-4"></i> Capabilities</h3>
+                        <p class="text-sm text-gray-600 dark:text-slate-400">All can build CLIs, handle network traffic, and manipulate complex data structures.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-bold">2</span> 
+                    Memory Management: The Great Divider
+                </h2>
+                <div class="overflow-hidden rounded-xl border border-gray-200 dark:border-slate-800">
+                    <table class="w-full text-left text-sm">
+                        <thead class="bg-gray-100 dark:bg-slate-900 text-gray-700 dark:text-slate-200">
+                            <tr>
+                                <th class="px-4 py-3">Language</th>
+                                <th class="px-4 py-3">Management Style</th>
+                                <th class="px-4 py-3">Control</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200 dark:divide-slate-800">
+                            <tr>
+                                <td class="px-4 py-3 font-bold text-blue-500">Python</td>
+                                <td class="px-4 py-3">Garbage Collection</td>
+                                <td class="px-4 py-3">Automatic (Runtime)</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 font-bold text-cyan-500">Go</td>
+                                <td class="px-4 py-3">Garbage Collection</td>
+                                <td class="px-4 py-3">Automatic (Runtime)</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 font-bold text-red-500">C++</td>
+                                <td class="px-4 py-3">Manual / RAII</td>
+                                <td class="px-4 py-3">Programmer</td>
+                            </tr>
+                            <tr class="bg-orange-50 dark:bg-orange-500/5">
+                                <td class="px-4 py-3 font-bold text-primary">Rust</td>
+                                <td class="px-4 py-3">Ownership System</td>
+                                <td class="px-4 py-3">Compile-time</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="mt-4 text-sm text-gray-500 italic">Rust breaks the trade-off: It offers C++ performance without the manual danger, and Python safety without the Garbage Collector pauses.</p>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-bold">3</span> 
+                    The Language Philosophies
+                </h2>
+                <div class="space-y-4 text-sm">
+                    <div class="p-4 rounded-lg bg-blue-500/5 border border-blue-500/20">
+                        <strong class="text-blue-500">Python:</strong> Speed of writing is king. High abstraction, but slow execution.
+                    </div>
+                    <div class="p-4 rounded-lg bg-red-500/5 border border-red-500/20">
+                        <strong class="text-red-500">C++:</strong> Maximum control. Fast, but allows "undefined behavior" and crashes.
+                    </div>
+                    <div class="p-4 rounded-lg bg-cyan-500/5 border border-cyan-500/20">
+                        <strong class="text-cyan-500">Go:</strong> Simplicity and concurrency. Easy to learn, but less expressive types.
+                    </div>
+                    <div class="p-4 rounded-lg bg-primary/5 border border-primary/20">
+                        <strong class="text-primary">Rust:</strong> Safety first. Forces you to handle every error and memory edge-case before the code even runs.
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="bg-slate-900 border border-slate-800 text-slate-300 rounded-2xl p-8 shadow-xl">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="p-2 rounded-lg bg-primary/10 text-primary">
+                            <i data-lucide="brain-circuit"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-white">The Mental Shift</h2>
+                    </div>
+                    
+                    <p class="mb-6 text-slate-400">To master Rust, you must unlearn certain habits from other languages:</p>
+                    
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-3">
+                            <span class="w-24 font-bold text-primary uppercase text-xs">Unlearn</span>
+                            <span class="text-sm">"The runtime/GC will clean this up later."</span>
+                        </li>
+                        <li class="flex items-center gap-3 border-t border-white/5 pt-4">
+                            <span class="w-24 font-bold text-primary uppercase text-xs">Unlearn</span>
+                            <span class="text-sm">"I can share this variable across any thread safely."</span>
+                        </li>
+                        <li class="flex items-center gap-3 border-t border-white/5 pt-4">
+                            <span class="w-24 font-bold text-primary uppercase text-xs">Learn</span>
+                            <span class="text-sm"><strong>Ownership:</strong> Only one part of the code "owns" data at a time.</span>
+                        </li>
+                        <li class="flex items-center gap-3 border-t border-white/5 pt-4">
+                            <span class="w-24 font-bold text-primary uppercase text-xs">Learn</span>
+                            <span class="text-sm"><strong>Lifetimes:</strong> Explicitly defining how long a reference stays valid.</span>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    
+
+    <script>
+        lucide.createIcons();
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const html = document.documentElement;
+
+        const updateIcon = (isDark) => {
+            themeIcon.setAttribute('data-lucide', isDark ? 'sun' : 'moon');
+            lucide.createIcons();
+        };
+
+        updateIcon(html.classList.contains('dark'));
+
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            const isDark = html.classList.contains('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            updateIcon(isDark);
+        });
+    </script>
+</body>
+</html>

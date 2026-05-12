@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 18: REST API Design</title>
+
+    <script>
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: { 
+                extend: { 
+                    fontFamily: { sans: ['Inter', 'sans-serif'] }, 
+                    colors: { 
+                        // Set to Flask Green
+                        primary: '#48c774' 
+                    } 
+                } 
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-slate-950 text-gray-900 dark:text-slate-300 font-sans transition-colors duration-300">
+    
+    
+
+    <main class="max-w-3xl mx-auto px-6 pt-32 pb-20">
+        
+        <div class="mb-12">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 dark:bg-primary/10 text-primary dark:text-primary text-xs font-bold uppercase tracking-wider mb-4">Day 18</div>
+            <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">REST API Design</h1>
+            <p class="text-lg text-gray-600 dark:text-slate-400">Learning the "Architecture of the Internet." Design professional APIs that are stateless, scalable, and easy to consume.</p>
+        </div>
+
+        <div class="space-y-16">
+            
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-bold">1</span> 
+                    Resources, Not Actions
+                </h2>
+                <p class="mb-6 leading-relaxed">In REST, the URL should always identify a <strong>Noun</strong> (the thing), never a Verb (the action). You use the HTTP Method to describe the action.</p>
+
+                
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+                    <div class="p-5 bg-white dark:bg-slate-900 border border-red-200 dark:border-red-900/30 rounded-xl">
+                        <h3 class="font-bold text-xs uppercase text-red-500 mb-3">❌ Action-Based (Bad)</h3>
+                        <div class="text-[11px] font-mono text-slate-500 space-y-1">
+                            /getUser/5<br>
+                            /deletePost/12<br>
+                            /createComment
+                        </div>
+                    </div>
+                    <div class="p-5 bg-white dark:bg-slate-900 border border-emerald-200 dark:border-emerald-900/30 rounded-xl">
+                        <h3 class="font-bold text-xs uppercase text-emerald-500 mb-3">✅ Resource-Based (REST)</h3>
+                        <div class="text-[11px] font-mono text-slate-500 space-y-1">
+                            /users/5<br>
+                            /posts/12<br>
+                            /comments
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-bold">2</span> 
+                    The Vocabulary of HTTP
+                </h2>
+                <p class="text-sm mb-6 leading-relaxed">REST leverages the existing architecture of the web. By using standard methods, any client (mobile app, browser, or server) knows exactly what to expect.</p>
+                
+                <div class="overflow-hidden border border-gray-200 dark:border-slate-800 rounded-xl">
+                    <table class="w-full text-left text-sm">
+                        <thead class="bg-gray-50 dark:bg-slate-900/50">
+                            <tr class="text-slate-500 uppercase text-[10px] tracking-widest">
+                                <th class="px-4 py-3">Method</th>
+                                <th class="px-4 py-3">Database (CRUD)</th>
+                                <th class="px-4 py-3">Intent</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200 dark:divide-slate-800">
+                            <tr>
+                                <td class="px-4 py-3 font-bold text-sky-500">GET</td>
+                                <td class="px-4 py-3 text-slate-500">Read</td>
+                                <td class="px-4 py-3">Fetch a resource</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 font-bold text-primary">POST</td>
+                                <td class="px-4 py-3 text-slate-500">Create</td>
+                                <td class="px-4 py-3">Add a new resource</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 font-bold text-amber-500">PATCH</td>
+                                <td class="px-4 py-3 text-slate-500">Update</td>
+                                <td class="px-4 py-3">Modify a resource</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 font-bold text-rose-500">DELETE</td>
+                                <td class="px-4 py-3 text-slate-500">Delete</td>
+                                <td class="px-4 py-3">Remove a resource</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-bold">3</span> 
+                    Statelessness: The Key to Scale
+                </h2>
+                <div class="bg-slate-900 border border-slate-800 text-slate-300 rounded-2xl p-8 shadow-xl">
+                    <div class="flex items-start gap-4">
+                        <div class="p-2 rounded-lg bg-primary/10 text-primary">
+                            <i data-lucide="server"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm leading-relaxed mb-4">A REST API is <strong>Stateless</strong>. The server does not store "sessions." Every request from the client must contain all the information necessary to understand and authorize that request (usually via a Token).</p>
+                            <div class="p-4 bg-slate-950 rounded-lg border border-slate-800 border-l-4 border-l-primary">
+                                <p class="text-xs italic text-slate-400">"Statelessness allows us to spin up 100 servers, and a request can go to any one of them and still work."</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-bold">4</span> 
+                    The API's Language
+                </h2>
+                <p class="text-sm mb-6">In REST, we use status codes to communicate result states. An API should never return a "200 OK" if the actual result was an error.</p>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="p-4 rounded-xl bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 shadow-sm">
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                            <span class="font-bold text-xs uppercase">201 Created</span>
+                        </div>
+                        <p class="text-[10px] text-slate-500">Returned after a successful POST request.</p>
+                    </div>
+                    <div class="p-4 rounded-xl bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 shadow-sm">
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                            <span class="font-bold text-xs uppercase">403 Forbidden</span>
+                        </div>
+                        <p class="text-[10px] text-slate-500">User is authenticated but lacks permission.</p>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    
+
+    <script>
+        lucide.createIcons();
+
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const html = document.documentElement;
+
+        const updateIcon = (isDark) => {
+            themeIcon.setAttribute('data-lucide', isDark ? 'sun' : 'moon');
+            lucide.createIcons();
+        };
+
+        // Initialize state
+        updateIcon(html.classList.contains('dark'));
+
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            const isDark = html.classList.contains('dark');
+            
+            // SAVE choice to localStorage
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            updateIcon(isDark);
+        });
+    </script>
+</body>
+</html>

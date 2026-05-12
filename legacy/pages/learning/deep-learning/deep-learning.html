@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Machine Learning Journey</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/style.css">
+    <link rel="icon" type="image/svg+xml" href="../../../assets/icons/favicon.svg">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: { 
+                extend: { 
+                    fontFamily: { sans: ['Inter', 'sans-serif'] }, 
+                    colors: { primary: '#7c3aed' } 
+                } 
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-slate-950 text-gray-900 dark:text-slate-300 font-sans transition-colors duration-300">
+    
+    
+
+    <main class="max-w-4xl mx-auto px-6 pt-32 pb-20">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
+            <div>
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-violet-100 dark:bg-violet-500/10 text-violet-700 dark:text-violet-400 text-xs font-bold uppercase tracking-wider mb-2">Advanced Track</div>
+                <h1 class="text-4xl font-bold text-gray-900 dark:text-white">Deep Learning</h1>
+            </div>
+        </div>
+        <p class="text-lg text-gray-600 dark:text-slate-300 leading-relaxed mb-10 max-w-2xl">
+            Mastering the architecture of modern AI. From the first principles of backpropagation to the complexity of sequential modeling and Transformers.
+        </p>
+        
+        <div id="deep-learning-calendar-view" class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+        </div>
+    </main>
+
+    <script src="../../../js/script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            if (typeof renderCalendar === 'function') {
+                renderCalendar('deep-learning'); 
+            }
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

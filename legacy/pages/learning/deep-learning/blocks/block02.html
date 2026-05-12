@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Block 2: Activation Functions</title>
+
+    <script>
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: { 
+                extend: { 
+                    fontFamily: { sans: ['Inter', 'sans-serif'] }, 
+                    colors: { 
+                        primary: '#7c3aed' // Violet
+                    } 
+                } 
+            }
+        }
+    </script>
+    <style>
+        .backdrop-blur-md { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #7c3aed; border-radius: 10px; }
+        pre { font-family: 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', monospace; }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-slate-950 text-gray-900 dark:text-slate-300 font-sans transition-colors duration-300">
+    
+    
+
+    <main class="max-w-3xl mx-auto px-6 pt-32 pb-20">
+        
+        <div class="mb-12">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-violet-100 text-violet-700 dark:bg-violet-500/10 dark:text-violet-400 text-xs font-bold uppercase tracking-wider mb-4">Block 2 (2-3 Days)</div>
+            <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">Activation Functions</h1>
+            <p class="text-lg text-gray-600 dark:text-slate-400">The "Soul" of Deep Learning. Without these tiny nonlinear functions, neural networks would be nothing more than basic linear regression.</p>
+        </div>
+
+        <div class="space-y-16">
+            
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-bold">1</span> 
+                    The Problem of Linearity
+                </h2>
+                <p class="mb-6 leading-relaxed">Recall the neuron output: $z = w \cdot x + b$. This is a linear equation. If we stack layers without activation, the entire network collapses into a single linear transformation, making it impossible to learn complex patterns.</p>
+                
+                
+
+                <div class="p-6 bg-violet-500/5 border border-violet-500/20 rounded-xl italic text-sm">
+                    "Think of activations as gates: Closed (ignore signal), Half-open (weak signal), or Fully open (strong signal). Without gates, every neuron talks at once—creating noise, not learning."
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-bold">2</span> 
+                    Key Activation Functions
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="p-6 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl">
+                        <h3 class="font-bold mb-2 text-primary">Sigmoid</h3>
+                        <p class="text-xs mb-3 text-gray-500 italic">$\sigma(z) = \frac{1}{1 + e^{-z}}$</p>
+                        <p class="text-xs text-gray-600 dark:text-slate-400 leading-relaxed">Outputs (0, 1). Great for probabilities in the final layer, but suffers from <strong>Vanishing Gradients</strong> in hidden layers.</p>
+                        
+                    </div>
+
+                    <div class="p-6 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl border-2 border-primary/30">
+                        <div class="flex items-center gap-2 mb-2">
+                            <h3 class="font-bold text-primary">ReLU</h3>
+                            <span class="text-[10px] bg-primary/10 text-primary px-2 py-0.5 rounded font-bold uppercase">Game Changer</span>
+                        </div>
+                        <p class="text-xs mb-3 text-gray-500 italic">$f(z) = \max(0, z)$</p>
+                        <p class="text-xs text-gray-600 dark:text-slate-400 leading-relaxed">Simple and fast. Reduces vanishing gradients. The standard default for hidden layers since 2012.</p>
+                        
+                    </div>
+
+                    <div class="p-6 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl">
+                        <h3 class="font-bold mb-2 text-primary">Tanh</h3>
+                        <p class="text-xs mb-3 text-gray-500 italic">$f(z) = \tanh(z)$</p>
+                        <p class="text-xs text-gray-600 dark:text-slate-400 leading-relaxed">Outputs (-1, 1). Zero-centered, which helps the model learn faster than sigmoid, but still saturates at extremes.</p>
+                        
+                    </div>
+
+                    <div class="p-6 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl">
+                        <h3 class="font-bold mb-2 text-primary">Leaky ReLU</h3>
+                        <p class="text-xs mb-3 text-gray-500 italic">$f(z) = z \text{ if } z > 0, \text{ else } 0.01z$</p>
+                        <p class="text-xs text-gray-600 dark:text-slate-400 leading-relaxed">Fixes the <strong>"Dying ReLU"</strong> problem by allowing a small, non-zero gradient when input is negative.</p>
+                        
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-bold">3</span> 
+                    Selection Strategy
+                </h2>
+                <div class="overflow-hidden rounded-xl border border-gray-200 dark:border-slate-800">
+                    <table class="w-full text-left text-sm">
+                        <thead class="bg-slate-50 dark:bg-slate-900/50">
+                            <tr>
+                                <th class="p-4 font-bold text-gray-900 dark:text-white">Layer Type</th>
+                                <th class="p-4 font-bold text-gray-900 dark:text-white">Recommended Activation</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200 dark:divide-slate-800">
+                            <tr>
+                                <td class="p-4">Hidden Layers</td>
+                                <td class="p-4"><span class="text-primary font-bold">ReLU</span> or Leaky ReLU</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4">Binary Classification Output</td>
+                                <td class="p-4">Sigmoid</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4">Multi-class Output</td>
+                                <td class="p-4">Softmax</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4">Regression Output</td>
+                                <td class="p-4">Linear (None)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-bold">4</span> 
+                    Softmax Intuition
+                </h2>
+                <p class="mb-6 text-sm">Used in the <strong>Output Layer ONLY</strong> for multi-class classification. It converts raw scores (logits) into a probability distribution that sums to 1.</p>
+                
+                
+                <div class="bg-slate-950 rounded-xl p-6 font-mono text-xs text-slate-300 border border-slate-800 shadow-lg custom-scrollbar overflow-x-auto mt-6">
+                    <div class="text-primary mb-4">// Activation Logic in Python</div>
+<pre class="text-slate-300">
+import math
+
+def relu(z):
+    return max(0, z)
+
+def sigmoid(z):
+    return 1 / (1 + math.exp(-z))
+
+# Softmax highlights the strongest class
+scores = [2.1, 1.2, 0.3]
+# Result: [0.65, 0.24, 0.11] (probabilities sum to 1)
+</pre>
+                </div>
+            </section>
+
+            <section>
+                <div class="bg-slate-900 border border-slate-800 text-slate-300 rounded-2xl p-8 shadow-xl">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="p-2 rounded-lg bg-emerald-500/10 text-emerald-500">
+                            <i data-lucide="check-square"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-white">Block 2 Review</h2>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="flex items-center gap-3 p-3 bg-slate-800/50 rounded-lg border border-white/5">
+                            <i data-lucide="check" class="text-emerald-500 w-4 h-4"></i>
+                            <span class="text-xs">Explain the Vanishing Gradient problem</span>
+                        </div>
+                        <div class="flex items-center gap-3 p-3 bg-slate-800/50 rounded-lg border border-white/5">
+                            <i data-lucide="check" class="text-emerald-500 w-4 h-4"></i>
+                            <span class="text-xs">Why ReLU is more computationally efficient</span>
+                        </div>
+                        <div class="flex items-center gap-3 p-3 bg-slate-800/50 rounded-lg border border-white/5">
+                            <i data-lucide="check" class="text-emerald-500 w-4 h-4"></i>
+                            <span class="text-xs">Differentiate Sigmoid vs Softmax use cases</span>
+                        </div>
+                        <div class="flex items-center gap-3 p-3 bg-slate-800/50 rounded-lg border border-white/5">
+                            <i data-lucide="check" class="text-emerald-500 w-4 h-4"></i>
+                            <span class="text-xs">The concept of "Dying ReLU" neurons</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    
+
+    <script>
+        lucide.createIcons();
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const html = document.documentElement;
+
+        const updateIcon = (isDark) => {
+            themeIcon.setAttribute('data-lucide', isDark ? 'sun' : 'moon');
+            lucide.createIcons();
+        };
+
+        updateIcon(html.classList.contains('dark'));
+
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            const isDark = html.classList.contains('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            updateIcon(isDark);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 10: Structs in Go</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../css/style.css">
+    <link rel="icon" type="image/svg+xml" href="../../../../assets/icons/favicon.svg">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] }, colors: { primary: '#00ADD8' } } }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-slate-950 text-gray-900 dark:text-slate-300 font-sans transition-colors duration-300">
+    
+    
+
+    <main class="max-w-3xl mx-auto px-6 pt-32 pb-20">
+        
+        <div class="mb-10">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-500/10 text-blue-700 dark:text-blue-400 text-xs font-bold uppercase tracking-wider mb-4">Day 10</div>
+            <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">Structs in Go</h1>
+            <p class="text-lg text-gray-600 dark:text-slate-400">Building custom data types to group related data together into clean, real-world objects.</p>
+        </div>
+
+        <div class="space-y-16">
+            
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm">1</span> 
+                    Defining & Creating Structs
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="p-6 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl">
+                        <h3 class="font-bold text-primary mb-3">1. Define the Structure</h3>
+                        <p class="text-sm mb-4 text-gray-600 dark:text-slate-400">Group related fields under one name.</p>
+                        <div class="bg-slate-950 rounded-lg p-4 font-mono text-xs text-slate-300">
+                            <span class="text-purple-400">type</span> Student <span class="text-purple-400">struct</span> {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;Name <span class="text-blue-400">string</span><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;Age  <span class="text-blue-400">int</span><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;GPA  <span class="text-blue-400">float64</span><br>
+                            }
+                        </div>
+                    </div>
+
+                    <div class="p-6 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl">
+                        <h3 class="font-bold text-primary mb-3">2. Create a Literal</h3>
+                        <p class="text-sm mb-4 text-gray-600 dark:text-slate-400">Initialize values using a struct literal.</p>
+                        <div class="bg-slate-950 rounded-lg p-4 font-mono text-xs text-slate-300">
+                            s := Student{<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;Name: <span class="text-yellow-300">"Parsa"</span>,<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;Age:  <span class="text-orange-400">20</span>,<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;GPA:  <span class="text-orange-400">7.75</span>,<br>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm">2</span> 
+                    Slice of Structs
+                </h2>
+                <div class="p-6 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl">
+                    <p class="text-sm mb-4">This is the most common pattern in Go for handling lists of objects, like database results or JSON arrays.</p>
+                    <div class="bg-slate-950 rounded-lg p-4 font-mono text-xs text-slate-300 mb-4">
+                        students := []Student{<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;{Name: <span class="text-yellow-300">"Parsa"</span>, Age: <span class="text-orange-400">20</span>, GPA: <span class="text-orange-400">7.75</span>},<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;{Name: <span class="text-yellow-300">"Sara"</span>, Age: <span class="text-orange-400">21</span>, GPA: <span class="text-orange-400">8.2</span>},<br>
+                        }<br><br>
+                        <span class="text-purple-400">for</span> _, s := <span class="text-purple-400">range</span> students {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;fmt.<span class="text-blue-400">Println</span>(s.Name, s.GPA)<br>
+                        }
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm">3</span> 
+                    Philosophy: Composition over Inheritance
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="p-4 bg-primary/5 border border-primary/20 rounded-xl text-center">
+                        <i data-lucide="zap" class="w-5 h-5 text-primary mx-auto mb-2"></i>
+                        <h4 class="font-bold text-sm mb-1">No Classes</h4>
+                        <p class="text-[10px] text-gray-500">Go keeps it simple by avoiding complex hierarchy.</p>
+                    </div>
+                    <div class="p-4 bg-primary/5 border border-primary/20 rounded-xl text-center">
+                        <i data-lucide="shield-check" class="w-5 h-5 text-primary mx-auto mb-2"></i>
+                        <h4 class="font-bold text-sm mb-1">Predictable</h4>
+                        <p class="text-[10px] text-gray-500">Fields are explicit and easy to track.</p>
+                    </div>
+                    <div class="p-4 bg-primary/5 border border-primary/20 rounded-xl text-center">
+                        <i data-lucide="box" class="w-5 h-5 text-primary mx-auto mb-2"></i>
+                        <h4 class="font-bold text-sm mb-1">Composition</h4>
+                        <p class="text-[10px] text-gray-500">Build complex objects by nesting structs.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="bg-slate-900 border border-slate-800 text-slate-300 rounded-2xl p-8 shadow-xl">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="p-2 rounded-lg bg-emerald-500/10 text-emerald-500">
+                            <i data-lucide="flask-conical"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-white">🧪 Mini Exercises</h2>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <span class="text-emerald-500 font-bold">01</span>
+                            <p class="text-sm text-slate-400">Create a <code class="text-emerald-400">Course</code> struct with Name, Code, and Grade. Instantiate two courses and print them.</p>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <span class="text-emerald-500 font-bold">02</span>
+                            <p class="text-sm text-slate-400">Create a slice of <code class="text-emerald-400">Student</code> structs, loop over it, and print only the names of students with a GPA over 8.0.</p>
+                        </div>
+
+                        <div class="flex items-start gap-3 p-4 rounded-xl bg-amber-500/5 border border-amber-500/20">
+                            <i data-lucide="help-circle" class="w-5 h-5 text-amber-500 shrink-0 mt-0.5"></i>
+                            <p class="text-sm text-amber-200/80">
+                                <strong class="text-amber-500">Think:</strong> Why does Go prefer structs over classes? 
+                                <span class="block mt-1 opacity-60 italic">(Answer: To promote simplicity and composition over deep, fragile inheritance chains.)</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    
+
+    <script src="../../../../js/script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

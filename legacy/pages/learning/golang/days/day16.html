@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 16: Channels in Go</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../css/style.css">
+    <link rel="icon" type="image/svg+xml" href="../../../../assets/icons/favicon.svg">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] }, colors: { primary: '#00ADD8' } } }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-slate-950 text-gray-900 dark:text-slate-300 font-sans transition-colors duration-300">
+    
+    
+
+    <main class="max-w-3xl mx-auto px-6 pt-32 pb-20">
+        
+        <div class="mb-10">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-500/10 text-blue-700 dark:text-blue-400 text-xs font-bold uppercase tracking-wider mb-4">Day 16</div>
+            <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">Channels in Go</h1>
+            <p class="text-lg text-gray-600 dark:text-slate-400">Mastering communication between goroutines. Learn to synchronize execution and share data safely without shared memory.</p>
+        </div>
+
+        <div class="space-y-16">
+            
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm">1</span> 
+                    What is a Channel?
+                </h2>
+                <p class="text-sm mb-6 text-gray-600 dark:text-slate-400">A channel is a pipe that goroutines use to communicate. It allows one goroutine to send values to another, ensuring safe data transfer.</p>
+                <blockquote class="p-4 my-4 border-l-4 border-primary bg-primary/5 text-primary italic text-sm">
+                    “Do not communicate by sharing memory; share memory by communicating.”
+                </blockquote>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+                    <div class="p-6 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl">
+                        <h3 class="font-bold text-primary mb-3">Creating a Channel</h3>
+                        <div class="bg-slate-950 rounded-lg p-4 font-mono text-xs text-slate-300">
+                            ch := <span class="text-blue-400">make</span>(<span class="text-purple-400">chan</span> <span class="text-blue-400">int</span>)<br>
+                            <span class="text-slate-500">// Channels are type-safe</span>
+                        </div>
+                    </div>
+                    <div class="p-6 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl">
+                        <h3 class="font-bold text-primary mb-3">Send & Receive</h3>
+                        <div class="bg-slate-950 rounded-lg p-4 font-mono text-xs text-slate-300 space-y-2">
+                            <div>ch &lt;- <span class="text-orange-400">10</span> <span class="text-slate-500">// Send</span></div>
+                            <div>val := &lt;-ch <span class="text-slate-500">// Receive</span></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm">2</span> 
+                    Blocking Behavior
+                </h2>
+                <div class="p-6 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl">
+                    <h3 class="font-bold text-red-500 mb-3 flex items-center gap-2"><i data-lucide="alert-octagon" class="w-5 h-5"></i> Critical Concept</h3>
+                    <p class="text-sm mb-4">By default, sends and receives block until the other side is ready. This allows goroutines to synchronize without explicit locks or condition variables.</p>
+                    <div class="bg-slate-950 rounded-lg p-4 font-mono text-xs text-slate-300">
+                        ch := <span class="text-blue-400">make</span>(<span class="text-purple-400">chan</span> <span class="text-blue-400">int</span>)<br>
+                        ch &lt;- <span class="text-orange-400">5</span> <span class="text-slate-500">// ❌ Deadlock if no one is receiving!</span>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm">3</span> 
+                    Synchronization Example
+                </h2>
+                <p class="text-sm mb-4 text-gray-600 dark:text-slate-400">Channels provide a clean way to fix the problem where <code class="font-mono">main()</code> exits before goroutines finish.</p>
+                <div class="bg-slate-950 rounded-xl overflow-hidden border border-slate-800 font-mono text-sm shadow-2xl">
+                    <div class="flex gap-2 p-3 border-b border-slate-800 bg-slate-900/50">
+                        <span class="text-xs text-slate-500 uppercase">sync.go</span>
+                    </div>
+                    <div class="p-4 text-slate-300 text-xs">
+                        <span class="text-purple-400">func</span> <span class="text-blue-400">main</span>() {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;done := <span class="text-blue-400">make</span>(<span class="text-purple-400">chan</span> <span class="text-blue-400">bool</span>)<br><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-purple-400">go func</span>() {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fmt.<span class="text-blue-400">Println</span>(<span class="text-yellow-300">"Processing..."</span>)<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;done &lt;- <span class="text-purple-400">true</span> <span class="text-slate-500">// Signal completion</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;}()<br><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;-done <span class="text-slate-500">// Block here until signal received</span><br>
+                        }
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="bg-slate-900 border border-slate-800 text-slate-300 rounded-2xl p-8 shadow-xl">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="p-2 rounded-lg bg-emerald-500/10 text-emerald-500">
+                            <i data-lucide="flask-conical"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-white">🧪 Mini Exercises</h2>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <span class="text-emerald-500 font-bold">01</span>
+                            <p class="text-sm text-slate-400">Create a goroutine that sends your <strong>name</strong> to a channel, and have <code class="font-mono">main()</code> receive and print it.</p>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <span class="text-emerald-500 font-bold">02</span>
+                            <p class="text-sm text-slate-400">Use a loop within a goroutine to send numbers 1–5 to a channel, then receive and print them in <code class="font-mono">main()</code>.</p>
+                        </div>
+
+                        <div class="flex items-start gap-3 p-4 rounded-xl bg-amber-500/5 border border-amber-500/20">
+                            <i data-lucide="help-circle" class="w-5 h-5 text-amber-500 shrink-0 mt-0.5"></i>
+                            <div class="text-sm text-amber-200/80">
+                                <strong class="text-amber-500">Think:</strong> Why does <code class="font-mono">ch := make(chan int); ch <- 1; fmt.Println(<-ch)</code> cause a deadlock?
+                                <span class="block mt-1 opacity-60 italic">(Answer: The send operation blocks the main goroutine before it can ever reach the receive operation. There is no other goroutine to "unblock" the channel.)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    
+
+    <script src="../../../../js/script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 4: Loops in Go</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../css/style.css">
+    <link rel="icon" type="image/svg+xml" href="../../../../assets/icons/favicon.svg">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] }, colors: { primary: '#00ADD8' } } }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-slate-950 text-gray-900 dark:text-slate-300 font-sans transition-colors duration-300">
+    
+    
+
+    <main class="max-w-3xl mx-auto px-6 pt-32 pb-20">
+        
+        <div class="mb-10">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-500/10 text-blue-700 dark:text-blue-400 text-xs font-bold uppercase tracking-wider mb-4">Day 4</div>
+            <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">Loops in Go</h1>
+            <p class="text-lg text-gray-600 dark:text-slate-400">Understanding all forms of the <code class="text-primary font-mono">for</code> loop, flow control with break/continue, and how Go simplifies iteration.</p>
+        </div>
+
+        <div class="space-y-16">
+            
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm">1</span> 
+                    The "for" Everything Loop
+                </h2>
+                
+                <div class="grid grid-cols-1 gap-6">
+                    <div class="p-6 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl">
+                        <h3 class="font-bold text-primary mb-3">1. Classic for Loop</h3>
+                        <p class="text-sm mb-4">The standard initialization, condition, and update pattern.</p>
+                        <div class="bg-slate-950 rounded-lg p-4 font-mono text-xs text-slate-300">
+                            <span class="text-purple-400">for</span> i := <span class="text-orange-400">0</span>; i < <span class="text-orange-400">5</span>; i++ {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;fmt.<span class="text-blue-400">Println</span>(i)<br>
+                            }
+                        </div>
+                    </div>
+
+                    <div class="p-6 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl">
+                        <h3 class="font-bold text-primary mb-3">2. for as a "while" Loop</h3>
+                        <p class="text-sm mb-4">Go does not have a <code>while</code> keyword. Simply omit the initialization and update.</p>
+                        <div class="bg-slate-950 rounded-lg p-4 font-mono text-xs text-slate-300">
+                            i := <span class="text-orange-400">0</span><br>
+                            <span class="text-purple-400">for</span> i < <span class="text-orange-400">5</span> {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;fmt.<span class="text-blue-400">Println</span>(i)<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;i++<br>
+                            }
+                        </div>
+                    </div>
+
+                    <div class="p-6 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl">
+                        <h3 class="font-bold text-primary mb-3">3. Infinite Loop</h3>
+                        <p class="text-sm mb-4">Runs forever until a <code>break</code> or <code>return</code> is encountered.</p>
+                        <div class="bg-slate-950 rounded-lg p-4 font-mono text-xs text-slate-300">
+                            <span class="text-purple-400">for</span> {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;fmt.<span class="text-blue-400">Println</span>(<span class="text-yellow-300">"Running forever"</span>)<br>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm">2</span> 
+                    Break & Continue
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="p-6 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl">
+                        <h3 class="font-bold text-red-400 mb-2">break</h3>
+                        <p class="text-xs text-gray-500 mb-4">Exits the loop immediately.</p>
+                        <div class="bg-slate-950 rounded-lg p-4 font-mono text-xs text-slate-300">
+                            <span class="text-purple-400">if</span> i == <span class="text-orange-400">5</span> {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-purple-400">break</span><br>
+                            }
+                        </div>
+                    </div>
+                    <div class="p-6 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl">
+                        <h3 class="font-bold text-amber-400 mb-2">continue</h3>
+                        <p class="text-xs text-gray-500 mb-4">Skips the current iteration.</p>
+                        <div class="bg-slate-950 rounded-lg p-4 font-mono text-xs text-slate-300">
+                            <span class="text-purple-400">if</span> i == <span class="text-orange-400">3</span> {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-purple-400">continue</span><br>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="bg-slate-900 border border-slate-800 text-slate-300 rounded-2xl p-8 shadow-xl">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="p-2 rounded-lg bg-emerald-500/10 text-emerald-500">
+                            <i data-lucide="flask-conical"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-white">🧪 Mini Exercises</h2>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <span class="text-emerald-500 font-bold">01</span>
+                            <p class="text-sm text-slate-400">Print numbers 1 to 10 using a loop.</p>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <span class="text-emerald-500 font-bold">02</span>
+                            <p class="text-sm text-slate-400">Print even numbers from 1 to 20. (Hint: use <code class="text-emerald-400">%</code>)</p>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <span class="text-emerald-500 font-bold">03</span>
+                            <p class="text-sm text-slate-400">Write a loop from 1 to 10 that stops entirely when it reaches 7.</p>
+                        </div>
+
+                        <div class="flex items-start gap-3 p-4 rounded-xl bg-amber-500/5 border border-amber-500/20">
+                            <i data-lucide="help-circle" class="w-5 h-5 text-amber-500 shrink-0 mt-0.5"></i>
+                            <p class="text-sm text-amber-200/80">
+                                <strong class="text-amber-500">Think:</strong> What is the difference between <code class="font-mono">for i:=0; i<5; i++</code> and <code class="font-mono">for i < 5</code>?
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    
+
+    <script src="../../../../js/script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

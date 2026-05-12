@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 9: Database Theory</title>
+
+    <script>
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: { 
+                extend: { 
+                    fontFamily: { sans: ['Inter', 'sans-serif'] }, 
+                    colors: { 
+                        // Set to Flask Green
+                        primary: '#48c774' 
+                    } 
+                } 
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-slate-950 text-gray-900 dark:text-slate-300 font-sans transition-colors duration-300">
+    
+    
+
+    <main class="max-w-3xl mx-auto px-6 pt-32 pb-20">
+        
+        <div class="mb-10">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 dark:bg-primary/10 text-primary dark:text-primary text-xs font-bold uppercase tracking-wider mb-4">Day 9</div>
+            <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">Database Theory</h1>
+            <p class="text-lg text-gray-600 dark:text-slate-400">The blueprint of the backend. Understanding how data survives, connects, and stays consistent.</p>
+        </div>
+
+        <div class="space-y-16">
+            
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-bold">1</span> 
+                    Memory vs. Persistence
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="p-5 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl">
+                        <div class="flex items-center gap-2 mb-3 text-amber-500">
+                            <i data-lucide="cpu" class="w-5 h-5"></i>
+                            <h3 class="font-bold">RAM (Memory)</h3>
+                        </div>
+                        <ul class="text-sm space-y-2 text-slate-500">
+                            <li>• Fast, but temporary</li>
+                            <li>• Lost on server restart</li>
+                            <li>• Where Python variables live</li>
+                        </ul>
+                    </div>
+                    <div class="p-5 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl">
+                        <div class="flex items-center gap-2 mb-3 text-primary">
+                            <i data-lucide="hard-drive" class="w-5 h-5"></i>
+                            <h3 class="font-bold">Database (Disk)</h3>
+                        </div>
+                        <ul class="text-sm space-y-2 text-slate-500">
+                            <li>• Persistent and shared</li>
+                            <li>• Survives restarts & crashes</li>
+                            <li>• Structured for fast access</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-bold">2</span> 
+                    The Core Structure
+                </h2>
+                <p class="text-sm mb-6 leading-relaxed">Think of a Database as a collection of Excel sheets, but with strict rules.</p>
+
+                
+                
+                <div class="bg-slate-950 rounded-xl p-6 border border-slate-800 font-mono text-sm shadow-2xl">
+                    <div class="text-primary mb-4 flex items-center gap-2">
+                        <i data-lucide="table-2" class="w-4 h-4"></i> Table: Users
+                    </div>
+                    <div class="grid grid-cols-3 border-b border-slate-800 pb-2 mb-2 text-slate-500 text-xs uppercase tracking-widest">
+                        <div>ID (PK)</div>
+                        <div>Username</div>
+                        <div>Email</div>
+                    </div>
+                    <div class="grid grid-cols-3 py-1 text-slate-300">
+                        <div class="text-primary">1</div>
+                        <div>alice_dev</div>
+                        <div>alice@mail.com</div>
+                    </div>
+                    <div class="grid grid-cols-3 py-1 text-slate-300">
+                        <div class="text-primary">2</div>
+                        <div>bob_coder</div>
+                        <div>bob@mail.com</div>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+                    <div class="text-center">
+                        <h4 class="font-bold text-gray-900 dark:text-white text-sm">Table</h4>
+                        <p class="text-xs text-slate-500">The "Thing" (Class)</p>
+                    </div>
+                    <div class="text-center">
+                        <h4 class="font-bold text-gray-900 dark:text-white text-sm">Row</h4>
+                        <p class="text-xs text-slate-500">One Record (Object)</p>
+                    </div>
+                    <div class="text-center">
+                        <h4 class="font-bold text-gray-900 dark:text-white text-sm">Column</h4>
+                        <p class="text-xs text-slate-500">Attribute (Field)</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-bold">3</span> 
+                    Relationships & Keys
+                </h2>
+                <div class="space-y-6">
+                    <div class="p-6 bg-emerald-500/5 border border-emerald-500/20 rounded-xl">
+                        <h3 class="text-primary font-bold mb-2 flex items-center gap-2">Primary Key (PK)</h3>
+                        <p class="text-sm text-slate-500">The unique passport for every row. It must never change and never repeat.</p>
+                    </div>
+
+                    <div class="p-6 bg-purple-500/5 border border-purple-500/20 rounded-xl">
+                        <h3 class="text-purple-500 font-bold mb-2 flex items-center gap-2">Foreign Key (FK)</h3>
+                        <p class="text-sm text-slate-500">A column that points to the Primary Key of <em>another</em> table. This is how we link a Post to its Author.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-bold">4</span> 
+                    The CRUD Operations
+                </h2>
+                <div class="overflow-hidden border border-gray-200 dark:border-slate-800 rounded-xl">
+                    <table class="w-full text-left text-sm">
+                        <thead class="bg-gray-50 dark:bg-slate-900/50">
+                            <tr class="text-slate-500 uppercase text-[10px] tracking-widest">
+                                <th class="px-6 py-4">Operation</th>
+                                <th class="px-6 py-4">Database Action</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200 dark:divide-slate-800">
+                            <tr>
+                                <td class="px-6 py-4 font-bold text-primary">Create</td>
+                                <td class="px-6 py-4 text-slate-500">Adding a new row (Signup, New Post)</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-bold text-emerald-500">Read</td>
+                                <td class="px-6 py-4 text-slate-500">Fetching data (Profile page, Feed)</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-bold text-amber-500">Update</td>
+                                <td class="px-6 py-4 text-slate-500">Modifying a row (Edit Profile, Change Password)</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-bold text-red-500">Delete</td>
+                                <td class="px-6 py-4 text-slate-500">Removing data (Delete Account, Remove Comment)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section>
+                <div class="bg-slate-900 border border-slate-800 text-slate-300 rounded-2xl p-8 shadow-xl">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="p-2 rounded-lg bg-primary/10 text-primary">
+                            <i data-lucide="brain-circuit"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-white">Day 9 Outcome</h2>
+                    </div>
+                    <p class="text-sm text-slate-400 mb-6">Before writing code, you must master the "Think before you store" mindset. You should now be able to:</p>
+                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+                        <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-primary"></i> Differentiate RAM vs. Disk storage</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-primary"></i> Map real-world items to Tables/Rows</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-primary"></i> Explain why PKs are mandatory</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-primary"></i> Understand SQL vs. NoSQL basics</li>
+                    </ul>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    
+
+    <script>
+        lucide.createIcons();
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const html = document.documentElement;
+
+        const updateIcon = (isDark) => {
+            themeIcon.setAttribute('data-lucide', isDark ? 'sun' : 'moon');
+            lucide.createIcons();
+        };
+
+        // Initialize icon state
+        updateIcon(html.classList.contains('dark'));
+
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            const isDark = html.classList.contains('dark');
+            
+            // SAVE preference to localStorage
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            updateIcon(isDark);
+        });
+    </script>
+</body>
+</html>

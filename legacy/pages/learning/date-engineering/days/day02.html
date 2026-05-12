@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rust Curriculum: Days 2 & 3</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: { 
+                extend: { 
+                    fontFamily: { sans: ['Inter', 'sans-serif'] }, 
+                    colors: { primary: '#ea580c' } 
+                } 
+            }
+        }
+    </script>
+    <style>
+        .backdrop-blur-md { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+        pre { font-family: 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', monospace; }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-slate-950 text-gray-900 dark:text-slate-300 font-sans transition-colors duration-300">
+    
+    
+
+    <main class="max-w-3xl mx-auto px-6 pt-32 pb-20">
+        
+        <section class="mb-24">
+            <div class="mb-12">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-100 dark:bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider mb-4">Day 2</div>
+                <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">Variables, Mutability & Types</h1>
+                <p class="text-lg text-gray-600 dark:text-slate-400">Understanding how Rust's type system and strict variable rules prevent bugs before they happen.</p>
+            </div>
+
+            <div class="space-y-12">
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                        <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-bold">1</span> 
+                        Immutability & mut
+                    </h2>
+                    <p class="mb-4">In Rust, variables are <strong>immutable by default</strong>. If you want to change a value, you must be explicit.</p>
+                    <div class="bg-slate-950 rounded-xl border border-slate-800 p-5 font-mono text-sm text-slate-300 mb-4">
+                        <span class="text-slate-500">// Immutable</span><br>
+                        let x = 10;<br><br>
+                        <span class="text-slate-500">// Mutable</span><br>
+                        let <span class="text-orange-500">mut</span> y = 20;<br>
+                        y = 30;
+                    </div>
+                </div>
+
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                        <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-bold">2</span> 
+                        Shadowing vs Mutation
+                    </h2>
+                    <p class="mb-4">Shadowing allows you to re-declare a variable with the same name, potentially changing its type while keeping the data immutable.</p>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-sm border-collapse">
+                            <thead class="bg-gray-100 dark:bg-slate-900">
+                                <tr>
+                                    <th class="p-3 border border-gray-200 dark:border-slate-800">Feature</th>
+                                    <th class="p-3 border border-gray-200 dark:border-slate-800">Shadowing</th>
+                                    <th class="p-3 border border-gray-200 dark:border-slate-800">Mutation</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="p-3 border border-gray-200 dark:border-slate-800">New Variable?</td>
+                                    <td class="p-3 border border-gray-200 dark:border-slate-800 text-green-500">Yes</td>
+                                    <td class="p-3 border border-gray-200 dark:border-slate-800 text-red-500">No</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 border border-gray-200 dark:border-slate-800">Change Type?</td>
+                                    <td class="p-3 border border-gray-200 dark:border-slate-800 text-green-500">Yes</td>
+                                    <td class="p-3 border border-gray-200 dark:border-slate-800 text-red-500">No</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="border-gray-200 dark:border-white/5 mb-24">
+
+        <section class="mb-24">
+            <div class="mb-12">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-100 dark:bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider mb-4">Day 3</div>
+                <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">Control Flow & Pattern Matching</h1>
+                <p class="text-lg text-gray-600 dark:text-slate-400">Mastering <code>match</code> and the power of expressions over statements.</p>
+            </div>
+
+            <div class="space-y-12">
+                <section>
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                        <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-bold">1</span> 
+                        The match Superpower
+                    </h2>
+                    <p class="mb-6 leading-relaxed">Rust's <code>match</code> is exhaustive. The compiler ensures you have handled every possible case, preventing "unhandled state" bugs common in other languages.</p>
+                    
+                    
+
+                    <div class="bg-slate-950 rounded-xl border border-slate-800 p-6 font-mono text-sm text-slate-300">
+<pre>
+<span class="text-orange-500">match</span> number {
+    1 => <span class="text-green-400">println!</span>(<span class="text-orange-300">"One"</span>),
+    2 => <span class="text-green-400">println!</span>(<span class="text-orange-300">"Two"</span>),
+    <span class="text-slate-500">_</span> => <span class="text-green-400">println!</span>(<span class="text-orange-300">"Anything else"</span>),
+}
+</pre>
+                    </div>
+                </section>
+
+                <section>
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                        <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-bold">2</span> 
+                        Loops: Safe & Iterative
+                    </h2>
+                    <p class="mb-4">Rust prefers <code>for</code> loops over iterators to avoid out-of-bounds errors.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="p-6 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl">
+                            <h3 class="font-bold mb-2 text-primary">Infinite Loop</h3>
+                            <p class="text-xs font-mono">loop { ... }</p>
+                            <p class="text-xs mt-2 text-gray-500">Can return values using break.</p>
+                        </div>
+                        <div class="p-6 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl">
+                            <h3 class="font-bold mb-2 text-primary">For Iterator</h3>
+                            <p class="text-xs font-mono">for item in collection { ... }</p>
+                            <p class="text-xs mt-2 text-gray-500">No manual index management.</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </main>
+
+    
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

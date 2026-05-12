@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "next-migration",
   "version": "0.1.0",
   "private": true,
@@ -7,10 +8,22 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint"
+=======
+  "name": "personal-website",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+>>>>>>> 5dddd68a4baf65f9e620d1b0be3b4c1c94139b41
   },
   "dependencies": {
     "clsx": "^2.1.1",
     "framer-motion": "^12.38.0",
+<<<<<<< HEAD
     "lucide-react": "^0.418.0",
     "next": "16.2.6",
     "next-themes": "^0.4.6",
@@ -27,5 +40,25 @@
     "eslint-config-next": "16.2.6",
     "tailwindcss": "^4",
     "typescript": "^5"
+=======
+    "lucide-react": "^1.7.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "tailwind-merge": "^3.5.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.4",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "autoprefixer": "^10.4.27",
+    "eslint": "^9.39.4",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "globals": "^17.4.0",
+    "postcss": "^8.5.8",
+    "tailwindcss": "^4.2.2",
+    "vite": "^8.0.1"
+>>>>>>> 5dddd68a4baf65f9e620d1b0be3b4c1c94139b41
   }
 }

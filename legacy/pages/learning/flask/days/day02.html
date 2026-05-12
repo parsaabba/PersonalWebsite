@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 2: Python for Backend Development</title>
+
+    <script>
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: { 
+                extend: { 
+                    fontFamily: { sans: ['Inter', 'sans-serif'] }, 
+                    colors: { 
+                        primary: '#48c774' 
+                    } 
+                } 
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-slate-950 text-gray-900 dark:text-slate-300 font-sans transition-colors duration-300">
+    
+    
+
+    <main class="max-w-3xl mx-auto px-6 pt-32 pb-20">
+        
+        <div class="mb-10">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 dark:bg-primary/10 text-primary dark:text-primary text-xs font-bold uppercase tracking-wider mb-4">Day 2</div>
+            <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">Python for Backend</h1>
+            <p class="text-lg text-gray-600 dark:text-slate-400">Professional environment setup, dependency management, and production project structure.</p>
+        </div>
+
+        <div class="space-y-16">
+            
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-bold">1</span> 
+                    Virtual Environments (venv)
+                </h2>
+                
+                <div class="space-y-4">
+                    <p class="text-sm leading-relaxed">Backend development requires isolation. A <strong>Virtual Environment</strong> is a private box where your project lives alone, preventing version conflicts between different apps.</p>
+                    
+                    <div class="p-6 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl">
+                        <h3 class="font-bold text-primary mb-3 flex items-center gap-2"><i data-lucide="terminal" class="w-4 h-4"></i> Setup Commands</h3>
+                        <div class="bg-slate-950 rounded-lg p-4 font-mono text-xs text-slate-300 space-y-2">
+                            <div><span class="text-slate-500"># Create the environment</span></div>
+                            <div>python -m venv venv</div>
+                            <div class="pt-2"><span class="text-slate-500"># Activate (Windows)</span></div>
+                            <div>venv\Scripts\activate</div>
+                            <div class="pt-2"><span class="text-slate-500"># Activate (Mac/Linux)</span></div>
+                            <div>source venv/bin/activate</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-bold">2</span> 
+                    Pip & requirements.txt
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="p-6 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl">
+                        <h3 class="font-bold mb-2 text-primary">pip (The Manager)</h3>
+                        <p class="text-xs text-gray-500 mb-4">Installs 3rd-party libraries like Flask.</p>
+                        <div class="bg-slate-950 rounded-lg p-3 font-mono text-[10px] text-primary">
+                            pip install flask
+                        </div>
+                    </div>
+                    <div class="p-6 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl">
+                        <h3 class="font-bold mb-2 text-primary">requirements.txt</h3>
+                        <p class="text-xs text-gray-500 mb-4">A record of every package needed.</p>
+                        <div class="bg-slate-950 rounded-lg p-3 font-mono text-[10px] text-slate-300">
+                            Flask==2.3.2<br>SQLAlchemy==2.0.25
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3 mb-6">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-bold">3</span> 
+                    The "Backend Style" Structure
+                </h2>
+                <p class="text-sm mb-6">Unlike scripts, backend apps need a organized hierarchy to remain scalable and testable.</p>
+                
+                
+
+                <div class="bg-slate-950 rounded-xl p-6 border border-slate-800 font-mono text-sm shadow-2xl">
+                    <div class="flex items-center gap-2 mb-2 text-primary"><i data-lucide="folder" class="w-4 h-4"></i> project/</div>
+                    <div class="pl-6 flex items-center gap-2 mb-2 text-primary/80"><i data-lucide="folder" class="w-4 h-4"></i> app/ <span class="text-[10px] text-slate-500 ml-2"># Logic & Routes</span></div>
+                    <div class="pl-12 text-slate-400 mb-1">├── __init__.py</div>
+                    <div class="pl-12 text-slate-400 mb-1">├── routes.py</div>
+                    <div class="pl-12 text-slate-400 mb-1">└── models.py</div>
+                    <div class="pl-6 text-slate-400 mb-1">├── requirements.txt</div>
+                    <div class="pl-6 text-slate-400 mb-1">├── .env <span class="text-[10px] text-amber-500 ml-2"># Secrets</span></div>
+                    <div class="pl-6 text-slate-400">└── run.py</div>
+                </div>
+            </section>
+
+            <section>
+                <div class="bg-slate-900 border border-slate-800 text-slate-300 rounded-2xl p-8 shadow-xl">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="p-2 rounded-lg bg-primary/10 text-primary">
+                            <i data-lucide="box"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-white">🧪 Day 2 Mission</h2>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <p class="mb-3 text-primary font-bold">1. Build Your Box</p>
+                            <p class="text-sm text-slate-400">Create a new folder, initialize a virtual environment, and activate it.</p>
+                        </div>
+                        <div class="h-px bg-slate-800"></div>
+                        <div>
+                            <p class="mb-3 text-primary font-bold">2. Install Flask</p>
+                            <p class="text-sm text-slate-400">Run <code class="text-primary">pip install flask</code> and then create your <code class="text-primary">requirements.txt</code> file using <code class="text-primary">pip freeze > requirements.txt</code>.</p>
+                        </div>
+
+                        <div class="flex items-start gap-3 p-4 rounded-xl bg-amber-500/5 border border-amber-500/20">
+                            <i data-lucide="shield-check" class="w-5 h-5 text-amber-500 shrink-0 mt-0.5"></i>
+                            <p class="text-sm text-amber-200/80">
+                                <strong class="text-amber-500">Security Rule:</strong> Always add <code>venv/</code> and <code>.env</code> to a <code>.gitignore</code> file. Never share your secrets or your private box with GitHub.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    
+
+    <script>
+        lucide.createIcons();
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const html = document.documentElement;
+
+        const updateIcon = (isDark) => {
+            themeIcon.setAttribute('data-lucide', isDark ? 'sun' : 'moon');
+            lucide.createIcons();
+        };
+
+        updateIcon(html.classList.contains('dark'));
+
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            const isDark = html.classList.contains('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            updateIcon(isDark);
+        });
+    </script>
+</body>
+</html>
