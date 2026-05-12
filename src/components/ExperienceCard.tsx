@@ -19,7 +19,7 @@ export const ExperienceCard = ({ item }: ExperienceCardProps) => {
   return (
     <div className="relative pl-8 group mb-8 last:mb-0">
       <span className="absolute top-2 -left-[5px] w-2.5 h-2.5 rounded-full bg-gray-300 dark:bg-slate-700 border border-white dark:border-slate-950 group-hover:bg-primary transition-colors ring-4 ring-white dark:ring-slate-950"></span>
-      
+
       <div className="flex items-start gap-4 mb-4">
         {item.logo ? (
           <div className="shrink-0 w-12 h-12 rounded-xl bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 p-2 flex items-center justify-center shadow-sm group-hover:border-primary/50 transition-colors">
@@ -46,17 +46,17 @@ export const ExperienceCard = ({ item }: ExperienceCardProps) => {
 
       {item.collapsible ? (
         <div className="mt-2">
-          <button 
+          <button
             onClick={() => setIsOpen(!isOpen)}
             className="inline-flex items-center gap-2 px-3 py-1.5 bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-slate-300 rounded-lg text-xs font-bold hover:bg-primary/10 hover:text-primary border border-transparent hover:border-primary/30 transition-all select-none"
           >
             <span>{isOpen ? 'Hide Details' : 'View Details'}</span>
             <ChevronRight className={`w-3.5 h-3.5 transition-transform ${isOpen ? 'rotate-90' : ''}`} />
           </button>
-          
+
           <AnimatePresence>
             {isOpen && (
-              <motion.div 
+              <motion.div
                 initial={{ height: 0, opacity: 0 }}
                 animate={{ height: "auto", opacity: 1 }}
                 exit={{ height: 0, opacity: 0 }}
@@ -67,7 +67,7 @@ export const ExperienceCard = ({ item }: ExperienceCardProps) => {
                   <ul className="text-sm space-y-1">
                     {details.map((det, i) => (
                       <li key={i} className="text-gray-600 dark:text-slate-400 flex items-start gap-2">
-                        <span className="mt-2 w-1.5 h-1.5 rounded-full bg-gray-400 dark:bg-slate-600 shrink-0"></span> 
+                        <span className="mt-2 w-1.5 h-1.5 rounded-full bg-gray-400 dark:bg-slate-600 shrink-0"></span>
                         {det}
                       </li>
                     ))}
@@ -83,7 +83,7 @@ export const ExperienceCard = ({ item }: ExperienceCardProps) => {
           <ul className="text-sm space-y-1">
             {details.map((det, i) => (
               <li key={i} className="text-gray-600 dark:text-slate-400 flex items-start gap-2">
-                <span className="mt-2 w-1.5 h-1.5 rounded-full bg-gray-400 dark:bg-slate-600 shrink-0"></span> 
+                <span className="mt-2 w-1.5 h-1.5 rounded-full bg-gray-400 dark:bg-slate-600 shrink-0"></span>
                 {det}
               </li>
             ))}

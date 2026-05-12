@@ -24,7 +24,7 @@ export const ProjectCard = ({ item }: ProjectCardProps) => {
           <span className="text-[10px] uppercase font-bold tracking-wide text-primary border border-primary/20 bg-primary/5 px-2 py-0.5 rounded-full">{item.status}</span>
         ) : item.stars ? (
           <div className="flex items-center gap-1 text-gray-500 dark:text-slate-500 text-xs">
-            {item.stars === 'Hackathon' ? <Trophy className="w-3 h-3 text-yellow-500" /> : <Star className="w-3 h-3" />} 
+            {item.stars === 'Hackathon' ? <Trophy className="w-3 h-3 text-yellow-500" /> : <Star className="w-3 h-3" />}
             {item.stars}
           </div>
         ) : null}

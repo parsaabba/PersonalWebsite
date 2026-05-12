@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
-import { ThemeProvider } from "@/components/ThemeProvider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -40,17 +39,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${inter.variable} scroll-smooth`}>
-      <body className="bg-gray-50 dark:bg-slate-950 text-gray-900 dark:text-slate-300 font-sans transition-colors duration-300">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <Navbar />
-          {children}
-        </ThemeProvider>
+    <html lang="en" className={`${inter.variable} scroll-smooth dark`}>
+      <body className="bg-slate-950 text-slate-300 font-sans transition-colors duration-300">
+        <Navbar />
+        {children}
       </body>
     </html>
   );
