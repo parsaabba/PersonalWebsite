@@ -1,6 +1,28 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --color-background: #020617;
+  --color-surface: #0f172a;
+  --color-border: #1e293b;
+  --color-primary: #6366f1;
+  --color-secondary: #a855f7;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+.dark {
+  --background: #020617;
+  --foreground: #ededed;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: 'Inter', sans-serif;
+}
 
 html {
     scroll-behavior: smooth;
@@ -73,8 +95,4 @@ html {
 
 .modal-overlay.active .modal-content {
     transform: scale(1);
-}
-
-.hidden {
-    display: none;
 }
