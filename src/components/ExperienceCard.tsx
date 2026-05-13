@@ -11,7 +11,8 @@ interface ExperienceCardProps {
 }
 
 export const ExperienceCard = ({ item }: ExperienceCardProps) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const isCollapsible = item.collapsible === true;
+  const [isOpen, setIsOpen] = useState(!isCollapsible);
 
   const details = item.details || [];
   const description = Array.isArray(item.description) ? item.description.join(' ') : item.description;
@@ -47,23 +48,25 @@ export const ExperienceCard = ({ item }: ExperienceCardProps) => {
 
       {hasDetails && (
         <div className="mt-2">
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="inline-flex items-center gap-2 px-3 py-1.5 bg-accent text-foreground/80 rounded-lg text-xs font-bold hover:bg-primary/10 hover:text-primary border border-border transition-all select-none"
-          >
-            <span>{isOpen ? 'Hide Details' : 'View Details'}</span>
-            <ChevronRight className={`w-3.5 h-3.5 transition-transform ${isOpen ? 'rotate-90' : ''}`} />
-          </button>
+          {isCollapsible && (
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="inline-flex items-center gap-2 px-3 py-1.5 bg-accent text-foreground/80 rounded-lg text-xs font-bold hover:bg-primary/10 hover:text-primary border border-border transition-all select-none mb-2"
+            >
+              <span>{isOpen ? 'Hide Details' : 'View Details'}</span>
+              <ChevronRight className={`w-3.5 h-3.5 transition-transform ${isOpen ? 'rotate-90' : ''}`} />
+            </button>
+          )}
 
-          <AnimatePresence>
+          <AnimatePresence initial={false}>
             {isOpen && (
               <motion.div
-                initial={{ height: 0, opacity: 0 }}
+                initial={isCollapsible ? { height: 0, opacity: 0 } : false}
                 animate={{ height: "auto", opacity: 1 }}
                 exit={{ height: 0, opacity: 0 }}
                 className="overflow-hidden"
               >
-                <div className="pt-4">
+                <div className={isCollapsible ? "pt-2" : ""}>
                   {description && <p className="text-muted mb-2 leading-relaxed">{description}</p>}
                   {details.length > 0 && (
                     <ul className="text-sm space-y-2">
