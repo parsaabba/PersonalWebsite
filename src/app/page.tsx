@@ -1,14 +1,14 @@
-import { 
-  educationData, 
-  experienceData, 
-  volunteeringData, 
-  highSchoolData, 
-  skillsData, 
-  currentProjectData, 
-  certificateData, 
-  blogData, 
-  thoughtData, 
-  learningData 
+import {
+  educationData,
+  experienceData,
+  volunteeringData,
+  highSchoolData,
+  skillsData,
+  currentProjectData,
+  certificateData,
+  blogData,
+  thoughtData,
+  learningData
 } from "@/lib/data";
 import { ExperienceCard } from "@/components/ExperienceCard";
 import { ProjectCard } from "@/components/ProjectCard";
@@ -17,19 +17,19 @@ import { CertificateCard } from "@/components/CertificateCard";
 import { BlogCard } from "@/components/BlogCard";
 import { ThoughtCard } from "@/components/ThoughtCard";
 import { LearningCard } from "@/components/LearningCard";
-import { 
-  Cpu, 
-  FileText, 
-  Download, 
-  ArrowUpRight, 
+import {
+  Cpu,
+  FileText,
+  Download,
+  ArrowUpRight,
   Briefcase,
   GraduationCap,
   HeartHandshake,
-  Layers, 
-  ArrowRight, 
-  PenTool, 
-  BookOpen, 
-  Award, 
+  Layers,
+  ArrowRight,
+  PenTool,
+  BookOpen,
+  Award,
   Coffee,
   Mail,
   Linkedin,
@@ -267,7 +267,7 @@ export default function Home() {
                   <Github className="w-4 h-4" /> GitHub
                 </a>
               </div>
-              
+
               <form action="https://api.web3forms.com/submit" method="POST" className="max-w-md mx-auto text-left space-y-3">
                 <input type="hidden" name="access_key" value="8a8c7bdb-5ee1-4733-b958-e31a433577b9" />
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">

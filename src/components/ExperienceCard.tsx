@@ -11,10 +11,11 @@ interface ExperienceCardProps {
 }
 
 export const ExperienceCard = ({ item }: ExperienceCardProps) => {
-  const [isOpen, setIsOpen] = useState(!item.collapsible);
+  const [isOpen, setIsOpen] = useState(false);
 
   const details = item.details || [];
   const description = Array.isArray(item.description) ? item.description.join(' ') : item.description;
+  const hasDetails = details.length > 0 || description;
 
   return (
     <div className="relative pl-8 group mb-8 last:mb-0">
@@ -44,7 +45,7 @@ export const ExperienceCard = ({ item }: ExperienceCardProps) => {
         </div>
       )}
 
-      {item.collapsible ? (
+      {hasDetails && (
         <div className="mt-2">
           <button
             onClick={() => setIsOpen(!isOpen)}
@@ -63,32 +64,22 @@ export const ExperienceCard = ({ item }: ExperienceCardProps) => {
                 className="overflow-hidden"
               >
                 <div className="pt-4">
-                  <p className="text-muted mb-2 leading-relaxed">{description}</p>
-                  <ul className="text-sm space-y-2">
-                    {details.map((det, i) => (
-                      <li key={i} className="text-muted flex items-start gap-3">
-                        <span className="mt-2 w-1.5 h-1.5 rounded-full bg-primary/40 shrink-0"></span>
-                        <span className="leading-relaxed">{det}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  {description && <p className="text-muted mb-2 leading-relaxed">{description}</p>}
+                  {details.length > 0 && (
+                    <ul className="text-sm space-y-2">
+                      {details.map((det, i) => (
+                        <li key={i} className="text-muted flex items-start gap-3">
+                          <span className="mt-2 w-1.5 h-1.5 rounded-full bg-primary/40 shrink-0"></span>
+                          <span className="leading-relaxed">{det}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
               </motion.div>
             )}
           </AnimatePresence>
         </div>
-      ) : (
-        <>
-          <p className="text-muted mb-2 leading-relaxed">{description}</p>
-          <ul className="text-sm space-y-2">
-            {details.map((det, i) => (
-              <li key={i} className="text-muted flex items-start gap-3">
-                <span className="mt-2 w-1.5 h-1.5 rounded-full bg-primary/40 shrink-0"></span>
-                <span className="leading-relaxed">{det}</span>
-              </li>
-            ))}
-          </ul>
-        </>
       )}
     </div>
   );
