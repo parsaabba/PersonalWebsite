@@ -355,7 +355,7 @@ export default function Home() {
                   <input type="email" name="email" placeholder="Email" required className="w-full bg-background/50 border border-border rounded-lg px-4 py-3 text-foreground text-sm focus:outline-none focus:border-primary transition-colors" />
                 </div>
                 <textarea name="message" rows={3} placeholder="Message..." required className="w-full bg-background/50 border border-border rounded-lg px-4 py-3 text-foreground text-sm focus:outline-none focus:border-primary transition-colors resize-none" />
-                <button type="submit" className="w-full py-3 bg-primary text-white font-bold rounded-lg hover:opacity-90 transition-all shadow-lg shadow-primary/20 text-sm flex items-center justify-center gap-2">
+                <button type="submit" className="w-full py-3 bg-primary text-background font-bold rounded-full hover:opacity-90 transition-all shadow-lg shadow-primary/25 text-sm flex items-center justify-center gap-2">
                   Send Message <ArrowRight className="w-4 h-4" />
                 </button>
               </form>
