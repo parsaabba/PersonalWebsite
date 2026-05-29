@@ -117,9 +117,9 @@ export const educationData: Education[] = [
 export const experienceData: Experience[] = [
   {
     title: "Undergraduate Researcher",
-    subtitle: "Lassonde School of Engineering — York University",
+    subtitle: "EXINES Lab — York University",
     date: "June 2026 - Present",
-    description: "Conducting undergraduate research at the Lassonde School of Engineering, York University.",
+    description: "Conducting research at the EXperimentally INtelligent in Engineering Software (EXINES) Lab, Lassonde School of Engineering.",
     details: [
       "Researching AI agents for software engineering applications",
       "Studying benchmark frameworks like SWE-bench for code repair",
