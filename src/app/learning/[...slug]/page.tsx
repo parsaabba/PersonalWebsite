@@ -10,8 +10,8 @@ export default async function LearningDetailPage({ params }: { params: Promise<{
       <article className="max-w-4xl mx-auto">
         <header className="mb-10 border-b border-gray-200 dark:border-white/10 pb-10">
           <div className="flex items-center gap-4 mb-6">
-            <Link 
-              href="/learning" 
+            <Link
+              href="/learning"
               className="p-2 rounded-full bg-gray-100 dark:bg-slate-800 text-gray-500 hover:text-primary transition-colors"
             >
               <ArrowLeft className="w-5 h-5" />

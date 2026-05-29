@@ -89,6 +89,7 @@ export const educationData: Education[] = [
     description: "Computer Engineering Student. Awarded York International Scholarship of Distinction and the Bethune Prize for Outstanding Contribution to College Life.",
     grade: "First Class Standing With Distinction",
     details: [
+      "Dean's List — Academic Excellence",
       "Bethune Prize for Outstanding Contribution to College Life",
       "Undergraduate Researcher | Space Geodesy Lab",
       "Note Share & Class Rep @ MATH 1013, EECS 1028 & PHYS 1801 (Sep 2025 - Present)"
@@ -114,6 +115,22 @@ export const educationData: Education[] = [
 ];
 
 export const experienceData: Experience[] = [
+  {
+    title: "Undergraduate Researcher",
+    subtitle: "Lassonde School of Engineering — York University",
+    date: "June 2026 - Present",
+    description: "Conducting undergraduate research at the Lassonde School of Engineering, York University.",
+    details: [
+      "Researching AI agents for software engineering applications",
+      "Studying benchmark frameworks like SWE-bench for code repair",
+      "Reviewing recent literature on large language models, agentic systems, and software engineering",
+      "Assisting with experiment design, implementation, and analysis of model performance"
+    ],
+    bg: "bg-red-50 dark:bg-red-500/10",
+    color: "text-red-600 dark:text-red-400",
+    icon: "microscope",
+    logo: "https://yt3.googleusercontent.com/ytc/AIdro_lBwfRjUJyXvedGbLFHlF9x_YjCKIe65wVBzmZy3Pp6nE8=s900-c-k-c0x00ffffff-no-rj"
+  },
   {
     title: "Operations Lead",
     subtitle: "Google Developer Groups (GDG)",
@@ -249,15 +266,6 @@ export const skillsData: SkillCategory[] = [
 ];
 
 export const currentProjectData: Project[] = [
-  {
-    title: "GitProfileX",
-    desc: "The next-generation GitHub Profile README generator. Build a stunning profile with premium templates and dynamic stats.",
-    tech: ["React", "TypeScript", "Tailwind", "Framer Motion"],
-    status: "Active",
-    link: "https://gitprofilex.vercel.app/",
-    icon: "github",
-    color: "text-indigo-500",
-  },
   {
     title: "UniSpot",
     desc: "High-performance, real-time event discovery platform for York U. Features a Live Map, GPS Verification, and instant sync via WebSockets.",
@@ -543,3 +551,35 @@ export const learningData: LearningItem[] = [
 export const getProjectBySlug = (slug: string) => {
   return [...currentProjectData].find(p => p.title.toLowerCase().replace(/[^a-z0-9]+/g, '-') === slug);
 };
+
+export interface LearningInsight {
+  title: string;
+  date: string;
+  desc: string;
+  link: string;
+  category?: string;
+}
+
+export const learningInsightsData: LearningInsight[] = [
+  {
+    title: "Understanding Model Context Protocol (MCP)",
+    date: "May 2026",
+    desc: "A deep dive into how MCP is standardizing the way AI models interact with local and remote data sources.",
+    link: "learning/mcp-protocol",
+    category: "AI Infrastructure"
+  },
+  {
+    title: "The Power of Go Routines",
+    date: "May 2026",
+    desc: "How Golang's lightweight threads enable massive concurrency with minimal overhead.",
+    link: "learning/golang-concurrency",
+    category: "Backend"
+  },
+  {
+    title: "Framer Motion Best Practices",
+    date: "April 2026",
+    desc: "Optimizing layout animations and shared element transitions for a premium feel.",
+    link: "learning/framer-motion-tips",
+    category: "Frontend"
+  }
+];

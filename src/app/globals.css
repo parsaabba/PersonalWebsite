@@ -12,14 +12,14 @@
 }
 
 .dark {
-    --background: #020617;
-    --foreground: #f8fafc;
-    --surface: #0f172a;
-    --border: #1e293b;
-    --primary: #818cf8;
-    --secondary: #a78bfa;
+    --background: #08091a;
+    --foreground: #f1f5f9;
+    --surface: #111827;
+    --border: #2d3a52;
+    --primary: #a5b4fc;
+    --secondary: #c4b5fd;
     --muted: #94a3b8;
-    --accent: #1e293b;
+    --accent: #1e2d45;
 }
 
 @theme {
@@ -73,6 +73,43 @@ html {
 
 .dark ::-webkit-scrollbar-thumb:hover {
     background: #334155;
+}
+
+/* --- SCROLL REVEAL --- */
+.reveal-hidden {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- FLOATING SQUARES ANIMATION --- */
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) rotate(var(--r, 0deg));
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-110vh) rotate(calc(var(--r, 0deg) + 180deg));
+    opacity: 0;
+  }
+}
+
+.floating-square {
+  animation-name: floatUp;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  border-radius: 4px;
 }
 
 /* --- CALENDAR GRID STYLES --- */
