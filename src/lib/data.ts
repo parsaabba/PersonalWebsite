@@ -91,7 +91,6 @@ export const educationData: Education[] = [
     details: [
       "Dean's List — Academic Excellence",
       "Bethune Prize for Outstanding Contribution to College Life",
-      "Undergraduate Researcher | Space Geodesy Lab",
       "Note Share & Class Rep @ MATH 1013, EECS 1028 & PHYS 1801 (Sep 2025 - Present)"
     ],
     bg: "bg-indigo-50 dark:bg-indigo-500/10",
@@ -146,22 +145,6 @@ export const experienceData: Experience[] = [
     color: "text-cyan-600 dark:text-cyan-400",
     icon: "settings",
     logo: "/assets/logos/gdg-logo.png"
-  },
-  {
-    title: "Undergraduate Researcher",
-    subtitle: "Space Geodesy Lab — York University",
-    date: "Jan 2026 - Present",
-    description: "Conducting scientific research on 'A Data-Driven Exploration of Extreme Weather Events Using Satellite and Model Data' under Dr. Spiros Pagiatakis and Yuying (Alice) Wang.",
-    details: [
-      "Navigating the full scientific programming workflow: data acquisition, analysis, and visualization",
-      "Utilizing satellite and climate model datasets to examine atmospheric research topics",
-      "Developing AI-driven machine learning algorithms to discover patterns in weather system impacts",
-      "Building high-level data analysis competencies for atmospheric and climate science"
-    ],
-    bg: "bg-emerald-50 dark:bg-emerald-500/10",
-    color: "text-emerald-600 dark:text-emerald-400",
-    icon: "microscope",
-    logo: "/assets/logos/stem-fellowship-logo.png"
   },
   {
     title: "Vice President",
