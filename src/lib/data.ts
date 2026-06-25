@@ -116,6 +116,37 @@ export const educationData: Education[] = [
 
 export const experienceData: Experience[] = [
   {
+    title: "Founder & Full-Stack Developer",
+    subtitle: "Diamond AI",
+    date: "June 2026 - Present",
+    description: "Building a high-performance AI video generation studio powered by Google's Gemini Veo and ElevenLabs.",
+    details: [
+      "Architecting a full-stack Next.js application for seamless AI video synthesis and storyboarding",
+      "Integrating Gemini Veo for prompt-based video generation and ElevenLabs for dynamic voice synthesis",
+      "Developing complex UI workflows including Character Libraries, Quick Shots, and Usage Dashboards"
+    ],
+    bg: "bg-blue-50 dark:bg-blue-500/10",
+    color: "text-blue-600 dark:text-blue-400",
+    icon: "diamond",
+    logo: "/assets/logos/diamondinyou_logo.jpg"
+  },
+  {
+    title: "Undergraduate Researcher",
+    subtitle: "EXINES Lab — York University",
+    date: "Present",
+    description: "Conducting software engineering research under the supervision of Prof. Maleknaz Nayebi.",
+    details: [
+      "SWE-bench Multimodal Evaluation Pipelines",
+      "Dockerized Execution Sandboxes",
+      "AI Model Performance Evaluation",
+      "Scalable Python Infrastructure"
+    ],
+    bg: "bg-orange-50 dark:bg-orange-500/10",
+    color: "text-orange-600 dark:text-orange-400",
+    icon: "microscope",
+    logo: "/assets/logos/lassonde-logo.png"
+  },
+  {
     title: "Operations Lead",
     subtitle: "Google Developer Groups (GDG)",
     date: "April 2026 - Present",
@@ -548,7 +579,7 @@ export const learningInsightsData: LearningInsight[] = [
   {
     title: "What I Learned Reading SWE-bench",
     date: "May 2026",
-    desc: "A breakdown of the ICLR 2024 paper that tests AI on real GitHub bugs — and why the results were humbling.",
+    desc: "A breakdown of the ICLR 2024 paper that tests AI on real GitHub bugs, and why the results were humbling.",
     link: "learning/swe-bench",
     category: "AI Research"
   },
