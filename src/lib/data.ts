@@ -116,30 +116,15 @@ export const educationData: Education[] = [
 
 export const experienceData: Experience[] = [
   {
-    title: "Founder & Full-Stack Developer",
-    subtitle: "Diamond AI",
-    date: "June 2026 - Present",
-    description: "Building a high-performance AI video generation studio powered by Google's Gemini Veo and ElevenLabs.",
-    details: [
-      "Architecting a full-stack Next.js application for seamless AI video synthesis and storyboarding",
-      "Integrating Gemini Veo for prompt-based video generation and ElevenLabs for dynamic voice synthesis",
-      "Developing complex UI workflows including Character Libraries, Quick Shots, and Usage Dashboards"
-    ],
-    bg: "bg-blue-50 dark:bg-blue-500/10",
-    color: "text-blue-600 dark:text-blue-400",
-    icon: "diamond",
-    logo: "/assets/logos/diamondinyou_logo.jpg"
-  },
-  {
     title: "Undergraduate Researcher",
     subtitle: "EXINES Lab — York University",
     date: "Present",
-    description: "Conducting software engineering research under the supervision of Prof. Maleknaz Nayebi.",
+    description: "Conducting advanced software engineering and AI research under the supervision of Prof. Maleknaz Nayebi.",
     details: [
-      "SWE-bench Multimodal Evaluation Pipelines",
-      "Dockerized Execution Sandboxes",
-      "AI Model Performance Evaluation",
-      "Scalable Python Infrastructure"
+      "Architecting multimodal evaluation pipelines for SWE-bench to rigorously assess AI-driven coding agents",
+      "Engineering secure, Dockerized execution sandboxes for safe and reproducible model testing",
+      "Evaluating the performance and limitations of state-of-the-art Large Language Models on complex software engineering tasks",
+      "Developing scalable Python infrastructure to support large-scale automated code evaluation"
     ],
     bg: "bg-orange-50 dark:bg-orange-500/10",
     color: "text-orange-600 dark:text-orange-400",
@@ -147,51 +132,20 @@ export const experienceData: Experience[] = [
     logo: "/assets/logos/lassonde-logo.png"
   },
   {
-    title: "Operations Lead",
-    subtitle: "Google Developer Groups (GDG)",
-    date: "April 2026 - Present",
-    description: "Mastering the logistics of high-impact community events. Ensuring every workshop and meetup runs like clockwork, from venue booking to hybrid streaming.",
-    details: [
-      "Own event logistics from start to finish",
-      "Coordinate with university venue services and vendors",
-      "Manage hybrid event technology (streaming, recording, interactive polls)",
-      "Develop contingency plans for large-scale events"
-    ],
-    bg: "bg-cyan-50 dark:bg-cyan-500/10",
-    color: "text-cyan-600 dark:text-cyan-400",
-    icon: "settings",
-    logo: "/assets/logos/gdg-logo.png"
-  },
-  {
     title: "Undergraduate Researcher",
     subtitle: "Space Geodesy Lab — York University",
     date: "Jan 2026 - Present",
-    description: "Conducting scientific research on 'A Data-Driven Exploration of Extreme Weather Events Using Satellite and Model Data' under Dr. Spiros Pagiatakis and Yuying (Alice) Wang.",
+    description: "Conducting scientific research on extreme weather events using satellite data and machine learning under Dr. Spiros Pagiatakis and Yuying (Alice) Wang.",
     details: [
-      "Navigating the full scientific programming workflow: data acquisition, analysis, and visualization",
-      "Utilizing satellite and climate model datasets to examine atmospheric research topics",
-      "Developing AI-driven machine learning algorithms to discover patterns in weather system impacts",
-      "Building high-level data analysis competencies for atmospheric and climate science"
+      "Executing end-to-end scientific programming workflows encompassing massive data acquisition, preprocessing, and visualization",
+      "Analyzing complex satellite telemetry and global climate model datasets to investigate pressing atmospheric phenomena",
+      "Designing AI-driven machine learning algorithms to uncover hidden patterns in extreme weather system impacts",
+      "Applying advanced data science methodologies to solve high-impact problems in atmospheric and climate science"
     ],
     bg: "bg-emerald-50 dark:bg-emerald-500/10",
     color: "text-emerald-600 dark:text-emerald-400",
     icon: "microscope",
     logo: "/assets/logos/stem-fellowship-logo.png"
-  },
-  {
-    title: "Vice President",
-    subtitle: "MBH&Co.",
-    date: "Jan 2026 - Present",
-    description: "Helping businesses grow through trusted relationships, meaningful connections, and structured collaboration.",
-    details: [
-      "Leading strategic initiatives to foster business growth through relationship building",
-      "Implementing structured collaboration frameworks for team efficiency",
-      "Developing meaningful connections within the business community"
-    ],
-    bg: "bg-indigo-50 dark:bg-indigo-500/10",
-    color: "text-indigo-600 dark:text-indigo-400",
-    icon: "briefcase",
-    logo: "/assets/logos/mbh-logo.png"
   }
 ];
 
