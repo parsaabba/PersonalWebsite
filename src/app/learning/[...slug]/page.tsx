@@ -6,7 +6,7 @@ export default async function LearningDetailPage({ params }: { params: Promise<{
   const title = slug[slug.length - 1].split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
 
   return (
-    <main className="max-w-6xl mx-auto px-6 pt-32 pb-20">
+    <main className="max-w-6xl mx-auto px-6 pt-24 pb-20">
       <article className="max-w-4xl mx-auto">
         <header className="mb-10 border-b border-gray-200 dark:border-white/10 pb-10">
           <div className="flex items-center gap-4 mb-6">

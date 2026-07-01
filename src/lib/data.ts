@@ -92,25 +92,12 @@ export const educationData: Education[] = [
       "Dean's List — Academic Excellence",
       "Bethune Prize for Outstanding Contribution to College Life",
       "Undergraduate Researcher | Space Geodesy Lab",
-      "Note Share & Class Rep @ MATH 1013, EECS 1028 & PHYS 1801 (Sep 2025 - Present)"
+      "Class Rep & Note Share — MATH 1013, EECS 1028, PHYS 1801"
     ],
     bg: "bg-indigo-50 dark:bg-indigo-500/10",
     color: "text-indigo-600 dark:text-indigo-400",
     icon: "graduation-cap",
     logo: "/assets/logos/lassonde-logo.png"
-  },
-  {
-    title: "Ontario Secondary School Diploma",
-    subtitle: "Earl Haig Secondary School",
-    date: "2023 - 2025",
-    description: "Graduated as Ontario Scholar (x2).",
-    grade: "4.0 GPA",
-    details: [
-      "Library Club Member (2024 - 2025)"
-    ],
-    bg: "bg-blue-50 dark:bg-blue-500/10",
-    color: "text-blue-600 dark:text-blue-400",
-    icon: "school"
   }
 ];
 
@@ -121,10 +108,10 @@ export const experienceData: Experience[] = [
     date: "Present",
     description: "Conducting advanced software engineering and AI research under the supervision of Prof. Maleknaz Nayebi.",
     details: [
-      "Architecting multimodal evaluation pipelines for SWE-bench to rigorously assess AI-driven coding agents",
-      "Engineering secure, Dockerized execution sandboxes for safe and reproducible model testing",
-      "Evaluating the performance and limitations of state-of-the-art Large Language Models on complex software engineering tasks",
-      "Developing scalable Python infrastructure to support large-scale automated code evaluation"
+      "SWE-bench multimodal evaluation pipelines for AI coding agents",
+      "Dockerized sandboxes for safe, reproducible model testing",
+      "LLM evaluation on complex software engineering tasks",
+      "Scalable Python infrastructure for automated code evaluation"
     ],
     bg: "bg-orange-50 dark:bg-orange-500/10",
     color: "text-orange-600 dark:text-orange-400",
@@ -132,20 +119,66 @@ export const experienceData: Experience[] = [
     logo: "/assets/logos/lassonde-logo.png"
   },
   {
+    title: "Operations Lead",
+    subtitle: "GDG on Campus York University",
+    date: "Mar 2026 - Present",
+    description: "Leading operational strategy and execution for Google Developer Groups on Campus at York University, coordinating events and community growth.",
+    details: [
+      "Logistics, scheduling, and resource planning for workshops",
+      "Cross-functional coordination for GDG campus initiatives",
+      "Partnerships to grow student engagement with dev tech",
+      "Streamlined operations for consistent event delivery"
+    ],
+    bg: "bg-sky-50 dark:bg-sky-500/10",
+    color: "text-sky-600 dark:text-sky-400",
+    icon: "users",
+    logo: "/assets/logos/gdg-logo.png"
+  },
+  {
+    title: "AI Application Engineer",
+    subtitle: "Diamond AI",
+    date: "June 2026 - Present",
+    description: "Building a high-performance AI video generation studio powered by Google's Gemini Veo and ElevenLabs.",
+    details: [
+      "Full-stack Next.js app for AI video synthesis and storyboarding",
+      "Gemini Veo video generation and ElevenLabs voice integration",
+      "Character Libraries, Quick Shots, and Usage Dashboard workflows"
+    ],
+    bg: "bg-blue-50 dark:bg-blue-500/10",
+    color: "text-blue-600 dark:text-blue-400",
+    icon: "diamond",
+    logo: "/assets/logos/diamondinyou_logo.jpg"
+  },
+  {
     title: "Undergraduate Researcher",
     subtitle: "Space Geodesy Lab — York University",
     date: "Jan 2026 - Present",
     description: "Conducting scientific research on extreme weather events using satellite data and machine learning under Dr. Spiros Pagiatakis and Yuying (Alice) Wang.",
     details: [
-      "Executing end-to-end scientific programming workflows encompassing massive data acquisition, preprocessing, and visualization",
-      "Analyzing complex satellite telemetry and global climate model datasets to investigate pressing atmospheric phenomena",
-      "Designing AI-driven machine learning algorithms to uncover hidden patterns in extreme weather system impacts",
-      "Applying advanced data science methodologies to solve high-impact problems in atmospheric and climate science"
+      "End-to-end satellite data acquisition, preprocessing, and visualization",
+      "Satellite telemetry and climate model analysis for atmospheric research",
+      "ML algorithms for patterns in extreme weather system impacts",
+      "Data science methods for atmospheric and climate science"
     ],
     bg: "bg-emerald-50 dark:bg-emerald-500/10",
     color: "text-emerald-600 dark:text-emerald-400",
     icon: "microscope",
     logo: "/assets/logos/stem-fellowship-logo.png"
+  },
+  {
+    title: "Vice President",
+    subtitle: "MBH&Co.",
+    date: "Jan 2026 - Present",
+    description: "Helping businesses grow through trusted relationships, meaningful connections, and structured collaboration.",
+    details: [
+      "Strategic initiatives for business growth through relationships",
+      "Collaboration frameworks to improve team efficiency",
+      "Meaningful connections within the business community"
+    ],
+    bg: "bg-indigo-50 dark:bg-indigo-500/10",
+    color: "text-indigo-600 dark:text-indigo-400",
+    icon: "briefcase",
+    logo: "/assets/logos/mbh-logo.png"
   }
 ];
 
@@ -153,65 +186,16 @@ export const volunteeringData: Experience[] = [
   {
     title: "Class Rep & Note Share Volunteer",
     subtitle: "MATH 1013, EECS 1028 & PHYS 1801 — York University",
-    date: "Sep 2025 - Present",
+    date: "Sep 2025 - April 2026",
     description: "Representing student interests and supporting academic accessibility through structured technical note sharing.",
     details: [
-      "Liaised between students and faculty to communicate feedback and advocate for academic improvements",
-      "Supported inclusive education by providing high-quality, structured technical notes for students with accessibility requirements"
+      "Liaised between students and faculty on academic feedback",
+      "Structured technical notes for accessibility-focused students"
     ],
     bg: "bg-purple-50 dark:bg-purple-500/10",
     color: "text-purple-600 dark:text-purple-400",
     icon: "hand-helping",
     logo: "/assets/logos/lassonde-logo.png"
-  }
-];
-
-export const highSchoolData: Experience[] = [
-  {
-    title: "Newcomer Program Assistant",
-    subtitle: "Afterschool Program for Newcomers",
-    date: "Sep 2024 - Feb 2025",
-    description: "Volunteered at an afterschool program for newcomer youth and families, working alongside a settlement worker.",
-    details: [
-      "Assisted in organizing and running community workshops and events",
-      "Fostered an inclusive and welcoming environment for newcomer participants",
-      "Collaborated with settlement workers to bridge communication gaps for families"
-    ],
-    bg: "bg-teal-50 dark:bg-teal-500/10",
-    color: "text-teal-600 dark:text-teal-400",
-    icon: "heart-handshake",
-    collapsible: true
-  },
-  {
-    title: "Library Volunteer & Organizer",
-    subtitle: "Earl Haig Secondary School Library",
-    date: "Feb 2024 - June 2024",
-    description: "Managed library operations and supported student resources while training new staff members.",
-    details: [
-      "Organized and shelved books to ensure students and staff had easy access to resources",
-      "Managed and maintained printing equipment to support library daily operations",
-      "Represented the library on Parent-Teacher Day, communicating core goals to the school community",
-      "Trained and mentored new library assistants to help them adapt to their responsibilities"
-    ],
-    bg: "bg-blue-50 dark:bg-blue-500/10",
-    color: "text-blue-600 dark:text-blue-400",
-    icon: "book-open",
-    collapsible: true
-  },
-  {
-    title: "PIAC Conference Volunteer",
-    subtitle: "17th Annual Parent Involvement Advisory Committee (PIAC)",
-    date: "Feb 2024",
-    description: "Assisted in the coordination and logistics of the annual PIAC conference.",
-    details: [
-      "Coordinated event activities, welcomed attendees, and guided them to designated sessions",
-      "Managed event material setup and ensured smooth transitions between workshops",
-      "Provided on-site support to speakers and participants to enhance the event experience"
-    ],
-    bg: "bg-rose-50 dark:bg-rose-500/10",
-    color: "text-rose-600 dark:text-rose-400",
-    icon: "users",
-    collapsible: true
   }
 ];
 
@@ -253,16 +237,6 @@ export const currentProjectData: Project[] = [
     link: "https://www.mbhandco.com/",
     icon: "briefcase",
     color: "text-indigo-500"
-  },
-  {
-    title: "MATH 1014",
-    desc: "An interactive platform for mastering Calculus II, featuring step-by-step practice problems for infinite sequences and series.",
-    tech: ["React", "Vite", "Tailwind CSS"],
-    status: "Active",
-    link: "https://math1014.vercel.app/",
-    icon: "sigma",
-    color: "text-blue-500",
-    customIcon: "/assets/icons/math1014-logo.svg"
   },
   {
     title: "Undercut",

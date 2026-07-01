@@ -5,7 +5,7 @@ import { BookOpen, Lightbulb } from "lucide-react";
 
 export default function LearningPage() {
   return (
-    <main className="max-w-6xl mx-auto px-6 pt-32 pb-20 space-y-20">
+    <main className="max-w-6xl mx-auto px-6 pt-24 pb-20 space-y-20">
       {/* Header */}
       <section>
         <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">Learning & Growth</h1>

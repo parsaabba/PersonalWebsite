@@ -13,7 +13,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
   }
 
   return (
-    <main className="max-w-6xl mx-auto px-6 pt-32 pb-20">
+    <main className="max-w-6xl mx-auto px-6 pt-24 pb-20">
       <article className="max-w-4xl mx-auto">
         <header className="mb-10 border-b border-gray-200 dark:border-white/10 pb-10">
           <div className="flex items-center gap-4 mb-6">

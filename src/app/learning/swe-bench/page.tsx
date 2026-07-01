@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function SweBenchPage() {
   return (
-    <main className="max-w-6xl mx-auto px-6 pt-32 pb-20">
+    <main className="max-w-6xl mx-auto px-6 pt-24 pb-20">
       <article className="max-w-2xl mx-auto">
         <div className="mb-8">
           <Link
