@@ -1,5 +1,7 @@
 "use client";
 
+import { usePathname } from "next/navigation";
+
 const shapes = [
   { size: 48, left: "8%",  delay: "0s",    duration: "18s", opacity: 0.15, rotate: 15 },
   { size: 24, left: "18%", delay: "3s",    duration: "22s", opacity: 0.12, rotate: 45 },
@@ -16,6 +18,10 @@ const shapes = [
 ];
 
 export function AnimatedBackground() {
+  const pathname = usePathname();
+  const isArticle = /^\/learning\/.+/.test(pathname) || /^\/blogs\/.+/.test(pathname);
+  if (isArticle) return null;
+
   return (
     <div className="fixed inset-0 pointer-events-none overflow-hidden -z-10" aria-hidden="true">
       {/* Soft ambient blobs */}

@@ -546,6 +546,13 @@ export interface LearningInsight {
 
 export const learningInsightsData: LearningInsight[] = [
   {
+    title: "What I Learned Reading SWE-bench",
+    date: "May 2026",
+    desc: "A breakdown of the ICLR 2024 paper that tests AI on real GitHub bugs — and why the results were humbling.",
+    link: "learning/swe-bench",
+    category: "AI Research"
+  },
+  {
     title: "Understanding Model Context Protocol (MCP)",
     date: "May 2026",
     desc: "A deep dive into how MCP is standardizing the way AI models interact with local and remote data sources.",
