@@ -94,8 +94,8 @@ export const educationData: Education[] = [
       "Undergraduate Researcher | Space Geodesy Lab",
       "Class Rep & Note Share — MATH 1013, EECS 1028, PHYS 1801"
     ],
-    bg: "bg-indigo-50 dark:bg-indigo-500/10",
-    color: "text-indigo-600 dark:text-indigo-400",
+    bg: "bg-emerald-50 dark:bg-emerald-500/10",
+    color: "text-emerald-700 dark:text-emerald-300",
     icon: "graduation-cap",
     logo: "/assets/logos/lassonde-logo.png"
   }
@@ -144,8 +144,8 @@ export const experienceData: Experience[] = [
       "Gemini Veo video generation and ElevenLabs voice integration",
       "Character Libraries, Quick Shots, and Usage Dashboard workflows"
     ],
-    bg: "bg-blue-50 dark:bg-blue-500/10",
-    color: "text-blue-600 dark:text-blue-400",
+    bg: "bg-emerald-50 dark:bg-emerald-500/10",
+    color: "text-emerald-700 dark:text-emerald-300",
     icon: "diamond",
     logo: "/assets/logos/diamondinyou_logo.jpg"
   },
@@ -175,8 +175,8 @@ export const experienceData: Experience[] = [
       "Collaboration frameworks to improve team efficiency",
       "Meaningful connections within the business community"
     ],
-    bg: "bg-indigo-50 dark:bg-indigo-500/10",
-    color: "text-indigo-600 dark:text-indigo-400",
+    bg: "bg-emerald-50 dark:bg-emerald-500/10",
+    color: "text-emerald-700 dark:text-emerald-300",
     icon: "briefcase",
     logo: "/assets/logos/mbh-logo.png"
   }
@@ -236,7 +236,7 @@ export const currentProjectData: Project[] = [
     status: "Beta",
     link: "https://www.mbhandco.com/",
     icon: "briefcase",
-    color: "text-indigo-500"
+    color: "text-emerald-600"
   },
   {
     title: "Undercut",
@@ -379,7 +379,7 @@ export const learningData: LearningItem[] = [
     desc: "Mastering memory management, pointers, and OOP.",
     status: "In Progress",
     icon: "code-2",
-    color: "text-blue-600 dark:text-blue-400",
+    color: "text-emerald-700 dark:text-emerald-300",
     link: "learning/cpp",
     checklist: [
       { task: "Day 1", done: true, date: "Dec 24", summary: "Syntax, data types, I/O, logic, and iteration.", link: "learning/cpp/days/day1" }
@@ -422,7 +422,7 @@ export const learningData: LearningItem[] = [
     desc: "Mastering the mathematical intuition and practical implementation of ML from foundations to Scikit-learn.",
     status: "In Progress",
     icon: "brain-circuit",
-    color: "text-indigo-600 dark:text-indigo-400",
+    color: "text-emerald-700 dark:text-emerald-300",
     link: "learning/machine-learning",
     levels: [
       { title: "Block 1: Foundations", desc: "ML vs traditional programming, problem framing, and real-world use cases.", link: "learning/machine-learning/blocks/block01-daya" },

@@ -30,7 +30,7 @@ export function AnimatedBackground() {
 
   return (
     <div className="fixed inset-0 pointer-events-none overflow-hidden -z-10" aria-hidden="true">
-      <div className="absolute inset-0 dot-grid opacity-[0.14] dark:opacity-[0.07]" />
+      <div className="absolute inset-0 dot-grid opacity-[0.1] dark:opacity-[0.05]" />
 
       <div
         className="absolute inset-[-20%] mesh-layer"

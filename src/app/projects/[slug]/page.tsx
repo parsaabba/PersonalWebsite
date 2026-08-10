@@ -53,8 +53,8 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
           </div>
         </header>
 
-        <div className="prose prose-lg prose-indigo dark:prose-invert max-w-none text-gray-600 dark:text-slate-400 leading-loose">
-          <div className="p-8 rounded-2xl bg-indigo-50/50 dark:bg-indigo-900/10 border border-indigo-100 dark:border-indigo-500/20 text-center">
+        <div className="prose prose-lg dark:prose-invert max-w-none text-muted leading-loose">
+          <div className="p-8 rounded-2xl bg-accent/50 border border-border text-center">
             <FileText className="w-12 h-12 text-primary mx-auto mb-4 opacity-50" />
             <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Detailed Case Study Coming Soon</h3>
             <p className="max-w-md mx-auto">I'm currently polishing the documentation for this project. Check back soon for the full technical breakdown, architecture overview, and GitHub README integration.</p>

@@ -36,10 +36,9 @@ export const Navbar = () => {
 
   const navLinks = [
     { name: "Experience", href: "/#experience" },
+    { name: "Projects", href: "/#projects" },
     { name: "Skills", href: "/#skills" },
-    { name: "Projects", href: "/current-projects" },
-    { name: "Blog", href: "/blogs" },
-    { name: "Learning", href: "/learning" },
+    { name: "Contact", href: "/#contact" },
   ];
 
   return (
@@ -59,7 +58,7 @@ export const Navbar = () => {
           </Link>
         ) : (
           <Link href="/" className="font-display text-lg font-bold tracking-tight text-foreground">
-            PA<span className="text-primary">.</span>
+            Parsa<span className="text-primary">.</span>
           </Link>
         )}
 

@@ -20,7 +20,7 @@ export default async function ThoughtDetailPage({ params }: { params: Promise<{ 
           <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">{title}</h1>
         </header>
 
-        <div className="prose prose-lg prose-indigo dark:prose-invert max-w-none text-gray-600 dark:text-slate-400 leading-loose">
+        <div className="prose prose-lg dark:prose-invert max-w-none text-muted leading-loose">
           <div className="p-8 rounded-2xl bg-emerald-50/50 dark:bg-emerald-900/10 border border-emerald-100 dark:border-emerald-500/20 text-center">
             <Coffee className="w-12 h-12 text-green-500 mx-auto mb-4 opacity-50" />
             <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Refining this thought...</h3>

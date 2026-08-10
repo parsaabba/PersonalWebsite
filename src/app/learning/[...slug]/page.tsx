@@ -20,7 +20,7 @@ export default async function LearningDetailPage({ params }: { params: Promise<{
           <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">{title}</h1>
         </header>
 
-        <div className="prose prose-lg prose-indigo dark:prose-invert max-w-none text-gray-600 dark:text-slate-400 leading-loose">
+        <div className="prose prose-lg dark:prose-invert max-w-none text-muted leading-loose">
           <div className="p-8 rounded-2xl bg-purple-50/50 dark:bg-purple-900/10 border border-purple-100 dark:border-purple-500/20 text-center">
             <BookOpen className="w-12 h-12 text-primary mx-auto mb-4 opacity-50" />
             <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Curriculum Migration in Progress</h3>

@@ -1,17 +1,18 @@
 import type { Metadata } from "next";
-import { Inter, Plus_Jakarta_Sans } from "next/font/google";
+import { Bricolage_Grotesque, Figtree } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
+import { ThemeProvider } from "@/components/ThemeProvider";
+import { AnimatedBackground } from "@/components/AnimatedBackground";
 
-const inter = Inter({
+const figtree = Figtree({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-figtree",
 });
 
-const jakarta = Plus_Jakarta_Sans({
+const bricolage = Bricolage_Grotesque({
   subsets: ["latin"],
-  variable: "--font-jakarta",
-  weight: ["500", "600", "700", "800"],
+  variable: "--font-bricolage",
 });
 
 export const metadata: Metadata = {
@@ -24,13 +25,13 @@ export const metadata: Metadata = {
     url: "https://parsaabbasian.com/",
     title: "Parsa Abbasian | Computer Engineering Portfolio",
     description: "Computer Engineering Student at York University exploring software, AI, and technology. View my projects and journey.",
-    images: [{ url: "https://parsaabbasian.com/assets/icons/favicon.svg" }],
+    images: [{ url: "https://parsaabbasian.com/assets/images/parsa-portrait.png" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Parsa Abbasian | Computer Engineering Portfolio",
     description: "Computer Engineering Student at York University exploring software, AI, and technology. View my projects and journey.",
-    images: ["https://parsaabbasian.com/assets/icons/favicon.svg"],
+    images: ["https://parsaabbasian.com/assets/images/parsa-portrait.png"],
   },
   icons: {
     icon: "/assets/icons/favicon.svg",
@@ -39,20 +40,17 @@ export const metadata: Metadata = {
   },
 };
 
-import { ThemeProvider } from "@/components/ThemeProvider";
-import { AnimatedBackground } from "@/components/AnimatedBackground";
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${jakarta.variable} scroll-smooth`} suppressHydrationWarning>
+    <html lang="en" className={`${figtree.variable} ${bricolage.variable} scroll-smooth`} suppressHydrationWarning>
       <body className="font-sans transition-colors duration-300">
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
           enableColorScheme={false}

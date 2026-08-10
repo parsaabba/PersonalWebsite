@@ -1,27 +1,29 @@
 @import "tailwindcss";
 
 :root {
-    --background: #dfe5ed;
-    --foreground: #0f172a;
-    --surface: #f2f5f9;
-    --border: #b8c4d4;
-    --primary: #1d6fd4;
-    --secondary: #3b82f6;
-    --muted: #52607a;
-    --accent: #d4dce8;
-    --glow: rgba(29, 111, 212, 0.14);
+    /* Clean page with portrait green as the accent */
+    --background: #f3f7f5;
+    --foreground: #122821;
+    --surface: #ffffff;
+    --border: #d3e2da;
+    --primary: #2d7d62;
+    --secondary: #1a5c47;
+    --muted: #5a7368;
+    --accent: #e6f1ec;
+    --glow: rgba(45, 125, 98, 0.14);
 }
 
 .dark {
-    --background: #0b1120;
-    --foreground: #e8edf5;
-    --surface: #131c2e;
-    --border: #243044;
-    --primary: #4d9af5;
-    --secondary: #60a5fa;
-    --muted: #8fa0b8;
-    --accent: #1a2438;
-    --glow: rgba(77, 154, 245, 0.1);
+    /* Deep forest base; portrait green as accent */
+    --background: #0f1f1a;
+    --foreground: #eef6f2;
+    --surface: #173028;
+    --border: #2a4a3e;
+    --primary: #4eba8f;
+    --secondary: #7dcdb0;
+    --muted: #9bb5a9;
+    --accent: #1a3830;
+    --glow: rgba(78, 186, 143, 0.16);
 }
 
 @theme {
@@ -33,14 +35,14 @@
     --color-secondary: var(--secondary);
     --color-muted: var(--muted);
     --color-accent: var(--accent);
-    --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-    --font-display: var(--font-jakarta), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+    --font-sans: var(--font-figtree), ui-sans-serif, system-ui, sans-serif;
+    --font-display: var(--font-bricolage), var(--font-figtree), ui-sans-serif, system-ui, sans-serif;
 }
 
 body {
     color: var(--foreground);
     background: var(--background);
-    font-family: var(--font-inter), sans-serif;
+    font-family: var(--font-figtree), sans-serif;
 }
 
 html {
@@ -51,7 +53,8 @@ html {
 }
 
 .font-display {
-    font-family: var(--font-jakarta), var(--font-inter), sans-serif;
+    font-family: var(--font-bricolage), var(--font-figtree), sans-serif;
+    letter-spacing: -0.02em;
 }
 
 .dot-grid {
@@ -60,12 +63,12 @@ html {
 }
 
 .mesh-layer {
-    filter: blur(110px) saturate(1.25);
-    opacity: 0.48;
+    filter: blur(110px) saturate(1.15);
+    opacity: 0.35;
 }
 
 .dark .mesh-layer {
-    opacity: 0.38;
+    opacity: 0.28;
 }
 
 .mesh-blob {
@@ -78,7 +81,7 @@ html {
     height: 50vmax;
     top: -18%;
     left: -14%;
-    background: radial-gradient(circle at 35% 35%, color-mix(in srgb, var(--primary) 70%, transparent), transparent 68%);
+    background: radial-gradient(circle at 35% 35%, color-mix(in srgb, var(--primary) 55%, transparent), transparent 68%);
     animation: mesh-1 36s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
 }
 
@@ -87,7 +90,7 @@ html {
     height: 44vmax;
     top: 28%;
     right: -16%;
-    background: radial-gradient(circle at 60% 40%, color-mix(in srgb, var(--secondary) 55%, transparent), transparent 70%);
+    background: radial-gradient(circle at 60% 40%, color-mix(in srgb, var(--secondary) 40%, transparent), transparent 70%);
     animation: mesh-2 42s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
     animation-delay: -12s;
 }
@@ -97,7 +100,7 @@ html {
     height: 40vmax;
     bottom: -14%;
     left: 18%;
-    background: radial-gradient(circle at 40% 60%, color-mix(in srgb, var(--primary) 50%, transparent), transparent 72%);
+    background: radial-gradient(circle at 40% 60%, color-mix(in srgb, var(--primary) 35%, transparent), transparent 72%);
     animation: mesh-3 30s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
     animation-delay: -20s;
 }
@@ -107,7 +110,7 @@ html {
     height: 32vmax;
     top: 8%;
     left: 42%;
-    background: radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--secondary) 35%, transparent), transparent 75%);
+    background: radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--secondary) 25%, transparent), transparent 75%);
     animation: mesh-4 38s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
     animation-delay: -8s;
 }
@@ -117,23 +120,23 @@ html {
         linear-gradient(
             115deg,
             transparent 20%,
-            color-mix(in srgb, var(--primary) 6%, transparent) 48%,
+            color-mix(in srgb, var(--primary) 5%, transparent) 48%,
             transparent 52%,
-            color-mix(in srgb, var(--secondary) 5%, transparent) 80%
+            color-mix(in srgb, var(--secondary) 4%, transparent) 80%
         );
     background-size: 300% 300%;
     animation: mesh-shine 24s ease-in-out infinite;
-    opacity: 0.7;
+    opacity: 0.55;
 }
 
 .bg-noise {
-    opacity: 0.035;
+    opacity: 0.03;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     background-size: 128px 128px;
 }
 
 .dark .bg-noise {
-    opacity: 0.05;
+    opacity: 0.045;
 }
 
 .bg-vignette {
@@ -201,9 +204,39 @@ html {
     50% { background-position: 100% 60%; }
 }
 
+@keyframes hero-rise {
+    from {
+        opacity: 0;
+        transform: translateY(28px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes hero-fade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.hero-rise {
+    animation: hero-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hero-rise-delay-1 { animation-delay: 0.12s; }
+.hero-rise-delay-2 { animation-delay: 0.24s; }
+.hero-rise-delay-3 { animation-delay: 0.36s; }
+
+.hero-portrait {
+    animation: hero-fade 1.2s ease-out both;
+}
+
 @media (prefers-reduced-motion: reduce) {
     .mesh-blob,
-    .bg-mesh-shine {
+    .bg-mesh-shine,
+    .hero-rise,
+    .hero-portrait {
         animation: none;
     }
 }
@@ -247,7 +280,7 @@ html {
 }
 
 .section-label {
-    font-family: var(--font-jakarta), sans-serif;
+    font-family: var(--font-bricolage), sans-serif;
     font-size: 0.65rem;
     font-weight: 700;
     letter-spacing: 0.14em;
@@ -267,12 +300,12 @@ html {
     gap: 0.5rem;
     padding: 0.75rem 1.5rem;
     background: var(--primary);
-    color: #fff;
+    color: #ffffff;
     font-weight: 700;
     font-size: 0.875rem;
     border-radius: 0.625rem;
     transition: opacity 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-    box-shadow: 0 4px 16px var(--glow);
+    box-shadow: 0 4px 14px var(--glow);
 }
 
 .btn-primary:hover {
@@ -280,12 +313,17 @@ html {
     transform: translateY(-1px);
 }
 
+.dark .btn-primary {
+    background: var(--primary);
+    color: #0f1f1a;
+}
+
 .btn-secondary {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
     padding: 0.75rem 1.5rem;
-    background: var(--surface);
+    background: transparent;
     color: var(--foreground);
     font-weight: 600;
     font-size: 0.875rem;
